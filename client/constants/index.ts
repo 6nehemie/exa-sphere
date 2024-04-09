@@ -1,3 +1,25 @@
+export const userInfo = {
+  fullName: 'Naomi Liu',
+  email: 'naomi.liu@test.com',
+  description:
+    'Experienced software engineer passionate about problem-solving and innovation. Skilled in full-stack development with a focus on React.js, Node.js, and Spring Boot. Committed to continuous learning and collaboration for impactful projects.',
+
+  education: [
+    {
+      id: 1,
+      school: 'University of XYZ',
+      degree: 'Bachelor of Science in Computer Science',
+      graduationYear: 2020,
+    },
+    {
+      id: 2,
+      school: 'ABC Business School',
+      degree: 'Master of Business Administration',
+      graduationYear: 2018,
+    },
+  ],
+};
+
 export const auth = {
   testimonial: `“Exa Sphere has been instrumental in streamlining my job application process. Their AI-generated cover letters, tailored to my job experience and the specific field I'm applying to, have been incredibly effective. It's like having a personal career advisor guiding me towards success.”`,
   author: 'Naomi Liu',
