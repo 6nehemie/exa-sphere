@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-import { Repeat2, Keyboard, LogOut, Settings, Users } from 'lucide-react';
+import { LogOut, Repeat2, Settings, Users } from 'lucide-react';
 
 import {
   DropdownMenu,
@@ -11,11 +11,10 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import Link from 'next/link';
 import toInitials from '@/utils/functions/toInitials';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const NavMenu = () => {
