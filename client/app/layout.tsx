@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('', openSans.className)}>{children}</body>
+      <body className={cn('bg-gray-3 text-white', openSans.className)}>
+        {children}
+      </body>
     </html>
   );
 }
