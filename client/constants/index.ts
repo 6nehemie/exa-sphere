@@ -1,33 +1,28 @@
 export const userInfo = {
   id: 1,
   avatar: '/avatar.png',
+  firstName: 'Naomi',
+  lastName: 'Liu',
   fullName: 'Naomi Liu',
   email: 'naomi.liu@test.com',
   description:
     'Experienced software engineer passionate about problem-solving and innovation. Skilled in full-stack development with a focus on React.js, Node.js, and Spring Boot. Committed to continuous learning and collaboration for impactful projects.',
 
+  phoneNumber: {
+    countryCode: '41',
+    number: '123 456 789',
+  },
   phone: '+41 123 456 789',
 
-  addresses: [
-    {
-      id: 1,
-      title: 'Main Home, Zurich',
-      address: 'Brunnacherstrasse 100',
-      city: 'Zurich',
-      zip: '8047',
-      state: 'Zurich',
-      country: 'Switzerland',
-    },
-    {
-      id: 2,
-      title: 'Vacation Home, Geneva',
-      address: 'Rue de la Servette 100',
-      city: 'Geneva',
-      zip: '1201',
-      state: 'Geneva',
-      country: 'Switzerland',
-    },
-  ],
+  address: {
+    id: 1,
+    title: 'Main Home, Zurich',
+    street: 'Brunnacherstrasse 100',
+    city: 'Zurich',
+    zip: '8047',
+    state: 'Zurich',
+    country: 'Switzerland',
+  },
 
   education: [
     {

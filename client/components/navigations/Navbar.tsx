@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'grid grid-cols-2 md:grid-cols-3 p-side py-4 sticky top-0 z-[100] mb-[68px] bg-gray-3'
+        'grid grid-cols-2 md:grid-cols-3 p-side py-4 sticky top-0 z-[100] mb-14 md:mb-[68px] bg-gray-3'
       )}
     >
       <Logo href="/my-profiles" text="max-sm:hidden" />

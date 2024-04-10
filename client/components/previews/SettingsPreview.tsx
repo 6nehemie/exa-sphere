@@ -8,6 +8,7 @@ interface ISettingsPreview {
   btnAction?: () => void;
   titleStyle?: string;
   btnStyle?: string;
+  isEditing?: boolean;
 }
 
 const SettingsPreview: React.FC<ISettingsPreview> = ({
@@ -17,19 +18,23 @@ const SettingsPreview: React.FC<ISettingsPreview> = ({
   btnAction,
   titleStyle,
   btnStyle,
+  isEditing,
 }) => {
   return (
-    <div className="grid grid-cols-9 gap-5 justify-between items-center">
+    <div className="grid md:grid-cols-9 max-md:grid-cols-2 gap-10 md:gap-5 justify-between items-center">
       {/* //? title */}
       <h3
-        className={cn('col-span-2 text-gray-1 font-light w-max', {
-          [`${titleStyle}`]: titleStyle,
-        })}
+        className={cn(
+          'max:md:row-start-1 max-md:row-end-2 max-md:col-start-1 max-md:col-end-2 col-span-2 text-gray-1 font-light w-max h-max self-start',
+          {
+            [`${titleStyle}`]: titleStyle,
+          }
+        )}
       >
         {title}
       </h3>
 
-      <div className="col-start-3 col-end-8">
+      <div className="max-md:col-start-1 max-md:col-end-3 md:col-start-3 md:col-end-8 h-max">
         {/* //? content */}
         {content}
       </div>
@@ -38,13 +43,13 @@ const SettingsPreview: React.FC<ISettingsPreview> = ({
       <button
         onClick={btnAction}
         className={cn(
-          'col-start-8 col-end-10 text-sm text-gray-1 font-light btn w-max justify-self-end',
+          'btn max-md:col-start-2 max-md:col-end-3 max-md:row-start-1 max-md:row-end-2 md:col-start-8 md:col-end-10 text-sm text-gray-1 font-light w-max justify-self-end self-start',
           {
             [`${btnStyle}`]: btnStyle,
           }
         )}
       >
-        {btnLabel}
+        {!isEditing ? `${btnLabel}` : 'Cancel'}
       </button>
     </div>
   );

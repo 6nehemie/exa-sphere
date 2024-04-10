@@ -1,7 +1,7 @@
 export interface IAddress {
   id: number;
   title: string;
-  address: string;
+  street: string;
   city: string;
   zip: string;
   state: string;
@@ -18,10 +18,18 @@ export interface IEducation {
 export interface IUser {
   id: number;
   avatar: string;
+  firstName: string;
+  lastName: string;
   fullName: string;
   email: string;
   description: string;
+  phoneNumber: IPhoneNumber;
   phone: string;
-  addresses: IAddress[];
+  address: IAddress;
   education: IEducation[];
+}
+
+export interface IPhoneNumber {
+  countryCode: string;
+  number: string;
 }

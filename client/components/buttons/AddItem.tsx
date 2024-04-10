@@ -7,7 +7,7 @@ const AddItem = ({
   btnAction,
 }: {
   label: string;
-  btnAction?: () => {};
+  btnAction?: () => void;
 }) => {
   return (
     <button

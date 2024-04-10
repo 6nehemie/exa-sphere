@@ -1,4 +1,4 @@
-import UpdatePasswordForm from '@/components/forms/UpdatePasswordForm';
+import UpdatePassword from '@/components/sections/UpdatePassword';
 import { Separator } from '@/components/ui/separator';
 import { settingsSecurity } from '@/constants';
 
@@ -14,7 +14,7 @@ const SecuritySettings = () => {
 
       <Separator />
 
-      <UpdatePasswordForm />
+      <UpdatePassword />
     </section>
   );
 };

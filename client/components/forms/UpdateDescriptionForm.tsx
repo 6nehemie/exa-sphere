@@ -8,31 +8,30 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { IUser } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 
 const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(2),
+  description: z.string().min(1).max(250).optional(),
 });
 
-const UpdateEmailForm = ({ user }: { user: IUser }) => {
+const UpdateDescriptionForm = ({ user }: { user: IUser }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: user.email,
-      password: '',
+      description: user.description,
     },
   });
 
@@ -48,32 +47,16 @@ const UpdateEmailForm = ({ user }: { user: IUser }) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
-          name="email"
+          name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-light">Email</FormLabel>
+              <FormLabel className="font-light">Description</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} />
+                <Textarea placeholder="Type your message here." {...field} />
               </FormControl>
-              {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-light">Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Password" type="password" {...field} />
-              </FormControl>
-              {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
+              <FormDescription>
+                A short description about yourself. Max 250 characters.
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -95,4 +78,4 @@ const UpdateEmailForm = ({ user }: { user: IUser }) => {
     </Form>
   );
 };
-export default UpdateEmailForm;
+export default UpdateDescriptionForm;

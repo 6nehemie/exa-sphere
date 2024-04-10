@@ -79,6 +79,6 @@
   }
 
   .btn {
-    @apply px-2 py-0.5 rounded-sm hover:bg-gray-2 focus:bg-none transition-colors duration-200;
+    @apply px-2 py-0.5 rounded-sm md:hover:bg-gray-2 transition-colors duration-200;
   }
 }

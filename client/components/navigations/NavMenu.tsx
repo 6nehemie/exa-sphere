@@ -38,7 +38,7 @@ const NavMenu = () => {
         </Avatar>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-56 mx-6">
+      <DropdownMenuContent className="w-56 mx-6 z-[120]">
         <DropdownMenuLabel className="text-sm font-light">
           {email}
         </DropdownMenuLabel>
