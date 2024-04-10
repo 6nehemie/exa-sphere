@@ -43,7 +43,7 @@ export const navigation = [
 ];
 
 export const settingsNavigation = [
-  { label: 'Profile', href: '/settings/profile' },
+  { label: 'Profile', href: '/settings' },
   { label: 'Security', href: '/settings/security' },
 ];
 

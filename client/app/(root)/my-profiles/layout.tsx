@@ -6,7 +6,7 @@ const ProfilesLayout = ({ children }: { children: ReactNode }) => {
     <div className="lg:grid grid-cols-3 xl:grid-cols-4 gap-5 max-lg:space-y-8">
       <UserInfo />
 
-      <section className="col-start-2 col-end-4 xl:col-end-5 bg-red-400">
+      <section className="col-start-2 col-end-4 xl:col-end-5">
         {children}
       </section>
     </div>
