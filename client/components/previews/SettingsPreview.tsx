@@ -38,7 +38,7 @@ const SettingsPreview: React.FC<ISettingsPreview> = ({
       <button
         onClick={btnAction}
         className={cn(
-          'col-start-8 col-end-10 text-sm font-light btn w-max justify-self-end',
+          'col-start-8 col-end-10 text-sm text-gray-1 font-light btn w-max justify-self-end',
           {
             [`${btnStyle}`]: btnStyle,
           }
