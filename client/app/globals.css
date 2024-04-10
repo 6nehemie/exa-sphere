@@ -77,4 +77,8 @@
   .p-side {
     @apply px-6 lg:px-8 xl:px-10;
   }
+
+  .btn {
+    @apply px-2 py-0.5 rounded-sm hover:bg-gray-2 focus:bg-none transition-colors duration-200;
+  }
 }
