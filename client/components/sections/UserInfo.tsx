@@ -1,21 +1,30 @@
+'use client';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 
-import { UserCog, GraduationCap } from 'lucide-react';
-import { userInfo } from '@/constants/index';
+import { IUser } from '@/types';
 import toInitials from '@/utils/functions/toInitials';
+import { UserCog } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
-const UserInfo = () => {
+const UserInfo = ({ user }: { user: IUser }) => {
+  const pathname = usePathname();
   const editBtnStyle =
     'px-2 py-0.5 rounded-sm hover:bg-gray-2 focus:bg-none transition-colors duration-200';
 
   return (
-    <section className="lg:max-w-[308px] w-full space-y-8">
+    <section
+      className={cn('lg:sticky top-[140px] lg:max-w-[308px] w-full space-y-8', {
+        'max-lg:hidden': pathname === '/my-profiles/new',
+      })}
+    >
       <div className="space-y-4">
         <div className="flex justify-between items-start">
           <Avatar className="size-[84px]">
-            <AvatarImage src="/avatar.png" alt="@shadcn" />
-            <AvatarFallback>{toInitials(userInfo.fullName)}</AvatarFallback>
+            <AvatarImage src={user.avatar} alt="@shadcn" />
+            <AvatarFallback>{toInitials(user.fullName)}</AvatarFallback>
           </Avatar>
 
           <Link href="/settings" className={editBtnStyle}>
@@ -28,8 +37,8 @@ const UserInfo = () => {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-light">{userInfo.fullName}</h1>
-        <p className="text-sm font-light text-gray-1">{userInfo.description}</p>
+        <h1 className="text-3xl font-light">{user.fullName}</h1>
+        <p className="text-sm font-light text-gray-1">{user.description}</p>
       </div>
 
       {/* <div className="space-y-4">

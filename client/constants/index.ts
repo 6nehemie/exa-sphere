@@ -67,8 +67,8 @@ export const settingsNavigation = [
   { label: 'Security', href: '/settings/security' },
 ];
 
-export const jobProfile = {
-  title: 'Job Profile',
+export const newJobProfile = {
+  title: 'New Job Profile',
   description:
     'Create your new profile! Your profile will help tailor cover letters to suit your skills and experiences.',
 };
@@ -102,3 +102,170 @@ export const settingsSecurity = {
   description:
     'Update your password to ensure your account is secure and protected.',
 };
+
+export const profiles = [
+  {
+    id: 1,
+    title: 'Software Engineer',
+    description:
+      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
+    skills: 'React.js, Node.js, Spring Boot',
+    experience: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience2: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience3: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    characteristics: 'Problem-solving, Innovative, Team Player',
+  },
+  {
+    id: 2,
+    title: 'Software Engineer',
+    description:
+      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
+    skills: 'React.js, Node.js, Spring Boot',
+    experience: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience2: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience3: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    characteristics: 'Problem-solving, Innovative, Team Player',
+  },
+  {
+    id: 3,
+    title: 'Software Engineer',
+    description:
+      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
+    skills: 'React.js, Node.js, Spring Boot',
+    experience: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience2: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience3: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    characteristics: 'Problem-solving, Innovative, Team Player',
+  },
+  {
+    id: 4,
+    title: 'Software Engineer',
+    description:
+      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
+    skills: 'React.js, Node.js, Spring Boot',
+    experience: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience2: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    experience3: {
+      jobTitle: 'Software Engineer',
+      company: 'XYZ Company',
+      location: 'Zurich, Switzerland',
+      startDate: 'Jan 2022',
+      endDate: 'Present',
+      responsibilities:
+        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
+      achievements:
+        'Increased application performance by 30% through code optimization and refactoring.',
+    },
+    characteristics: 'Problem-solving, Innovative, Team Player',
+  },
+];

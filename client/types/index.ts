@@ -33,3 +33,32 @@ export interface IPhoneNumber {
   countryCode: string;
   number: string;
 }
+
+export interface IProfile {
+  id: number;
+  title: string;
+  description: string;
+  skills: string;
+  experience: {
+    jobTitle: string;
+    company: string;
+    location: string;
+    startDate: string;
+    endDate: string;
+    responsibilities: string;
+    achievements?: string;
+  };
+  experience2?: IExperience;
+  experience3?: IExperience;
+  characteristics: string;
+}
+
+export interface IExperience {
+  jobTitle: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  responsibilities: string;
+  achievements?: string;
+}
