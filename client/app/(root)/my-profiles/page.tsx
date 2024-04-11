@@ -1,10 +1,7 @@
 import AddItem from '@/components/buttons/AddItem';
 import ProfileCard from '@/components/cards/ProfileCard';
 import { jobProfiles, profiles } from '@/constants';
-import { cn } from '@/lib/utils';
-import { User } from 'lucide-react';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 const MyProfiles = () => {
   return (
@@ -16,7 +13,7 @@ const MyProfiles = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 items-start gap-5">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 items-start gap-5">
         {profiles.map((profile) => {
           return <ProfileCard profile={profile} key={profile.id} />;
         })}

@@ -26,7 +26,7 @@ export interface IUser {
   phoneNumber: IPhoneNumber;
   phone: string;
   address: IAddress;
-  education: IEducation[];
+  // education: IEducation[];
 }
 
 export interface IPhoneNumber {

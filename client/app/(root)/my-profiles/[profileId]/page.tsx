@@ -1,5 +1,5 @@
 import UpdateProfile from '@/components/sections/UpdateProfile';
-import { profiles } from '@/constants';
+import { jobProfiles, profiles } from '@/constants';
 
 const Profile = ({ params }: { params: { profileId: string } }) => {
   console.log(params.profileId);
@@ -11,9 +11,16 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
   console.log('Profile: ', profile);
 
   return (
-    <div>
+    <section>
+      <div className="space-y-2 mb-12">
+        <h1 className="text-2xl font-light">Update {jobProfiles.title}</h1>
+        <p className="font-light text-sm text-gray-1 max-w-[830px]">
+          {jobProfiles.description}
+        </p>
+      </div>
+
       <UpdateProfile profile={profile} />
-    </div>
+    </section>
   );
 };
 export default Profile;

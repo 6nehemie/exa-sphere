@@ -17,7 +17,9 @@ const UserInfo = ({ user }: { user: IUser }) => {
   return (
     <section
       className={cn('lg:sticky top-[140px] lg:max-w-[308px] w-full space-y-8', {
-        'max-lg:hidden': pathname === '/my-profiles/new',
+        'max-lg:hidden':
+          pathname === '/my-profiles/new' ||
+          pathname.startsWith('/my-profiles/'),
       })}
     >
       <div className="space-y-4">
