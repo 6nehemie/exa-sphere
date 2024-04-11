@@ -32,7 +32,7 @@ const UserInfo = () => {
         <p className="text-sm font-light text-gray-1">{userInfo.description}</p>
       </div>
 
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         <div className="flex justify-between items-start">
           <h3 className="flex items-center gap-2">
             <GraduationCap size={20} className="" strokeWidth={1.4} />
@@ -57,7 +57,7 @@ const UserInfo = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </section>
   );
 };
