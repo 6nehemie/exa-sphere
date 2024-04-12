@@ -13,7 +13,7 @@ public class CustomLogoutHandler implements LogoutHandler {
 
 
     private final TokenRepository tokenRepository;
-    
+
     public CustomLogoutHandler(TokenRepository tokenRepository) {
         this.tokenRepository = tokenRepository;
     }
@@ -38,8 +38,8 @@ public class CustomLogoutHandler implements LogoutHandler {
         // invalidate token
         if (token != null) {
             storedToken.setValid(false);
+            // save token to db
             tokenRepository.save(storedToken);
         }
-        // save token to db
     }
 }

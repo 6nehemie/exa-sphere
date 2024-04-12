@@ -12,6 +12,7 @@ import _6nehemie.com.server.model.Token;
 import _6nehemie.com.server.model.User;
 import _6nehemie.com.server.repository.TokenRepository;
 import _6nehemie.com.server.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,15 +29,20 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final TokenRepository tokenRepository;
+    private final EmailService emailService;
+    private final CodeGeneratorService codeGeneratorService;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager, TokenRepository tokenRepository) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager, TokenRepository tokenRepository, EmailService emailService, CodeGeneratorService codeGeneratorService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
         this.tokenRepository = tokenRepository;
+        this.emailService = emailService;
+        this.codeGeneratorService = codeGeneratorService;
     }
 
+    @Transactional
     public AuthenticationResponseDto register(RegisterDto request) {
         if (userRepository.existsByEmail(request.email())) {
             throw new BadRequestException("Email already exists");
@@ -49,8 +55,17 @@ public class AuthService {
         user.setUsername(request.email());
         user.setPassword(passwordEncoder.encode(request.password()));
         user.setRole(Role.USER);
+        
+        user.setVerificationCode(codeGeneratorService.generateSixDigitCode());
 
         user = userRepository.save(user);
+
+        //? Send verification code to user
+//        emailService.sendEmail(
+//                user.getEmail(),
+//                "Verification Code",
+//                "Your verification code is: " + user.getVerificationCode()
+//        );
 
         String token = jwtService.generateToken(user);
         Date expiresIn = jwtService.extractExpiration(token);

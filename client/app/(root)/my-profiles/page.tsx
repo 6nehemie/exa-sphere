@@ -3,7 +3,7 @@ import ProfileCard from '@/components/cards/ProfileCard';
 import { jobProfiles, profiles } from '@/constants';
 import Link from 'next/link';
 
-const MyProfiles = () => {
+const MyProfiles = async () => {
   return (
     <section>
       <div className="space-y-2 mb-12">
@@ -12,7 +12,6 @@ const MyProfiles = () => {
           {jobProfiles.description}
         </p>
       </div>
-
       <div className="grid md:grid-cols-2 xl:grid-cols-3 items-start gap-5">
         {profiles.map((profile) => {
           return <ProfileCard profile={profile} key={profile.id} />;

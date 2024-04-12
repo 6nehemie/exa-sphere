@@ -39,6 +39,9 @@ public class User implements UserDetails {
     
     private String password;
     
+    private boolean isVerified;
+    private String verificationCode;
+    
     @Enumerated(EnumType.STRING)
     private Role role;
     

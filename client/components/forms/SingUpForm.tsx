@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import AuthBtn from '../buttons/AuthBtn';
+import registerAction from '@/utils/actions/authentication/registerAction';
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: 'First name is required' }),
@@ -32,16 +33,26 @@ const SingUpForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
-      firstName: '',
-      lastName: '',
+      firstName: 'Naomi',
+      lastName: 'Liu',
+      email: 'naomi.liu@one.com',
+      password: 'testtest',
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const response = (await registerAction(values)) as any;
+
+    if (response && response.error) {
+      if (response.error.toLowerCase().includes('email')) {
+        form.setError('email', {
+          type: 'manual',
+          message: response.error,
+        });
+      }
+    }
+
     console.log(values);
   }
 
