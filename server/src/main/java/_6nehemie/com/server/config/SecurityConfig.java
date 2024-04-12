@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -23,10 +24,12 @@ public class SecurityConfig {
 
     private final UserDetailsImpl userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final CustomLogoutHandler logoutHandler;
 
-    public SecurityConfig(UserDetailsImpl userDetailsService, JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfig(UserDetailsImpl userDetailsService, JwtAuthenticationFilter jwtAuthenticationFilter, CustomLogoutHandler logoutHandler) {
         this.userDetailsService = userDetailsService;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.logoutHandler = logoutHandler;
     }
 
     @Bean
@@ -50,6 +53,12 @@ public class SecurityConfig {
                 )
 
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout -> logout
+                        .logoutUrl("/auth/logout")
+                        .addLogoutHandler(logoutHandler)
+                        .logoutSuccessHandler(
+                                (req, res, auth) -> SecurityContextHolder.clearContext())
+                )
                 .build();
     }
 

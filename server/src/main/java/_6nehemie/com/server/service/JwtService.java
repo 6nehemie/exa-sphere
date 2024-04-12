@@ -1,6 +1,7 @@
 package _6nehemie.com.server.service;
 
 import _6nehemie.com.server.model.User;
+import _6nehemie.com.server.repository.TokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -19,6 +20,11 @@ public class JwtService {
 
     @Value("${jwt.secret}")
     private String SECRET_KEY;
+    private final TokenRepository tokenRepository;
+
+    public JwtService(TokenRepository tokenRepository) {
+        this.tokenRepository = tokenRepository;
+    }
 
     public String extractUsername(String token) {
 
@@ -28,7 +34,12 @@ public class JwtService {
 
     public boolean isValid(String token, UserDetails user) {
         String username = extractUsername(token);
-        return (username.equals(user.getUsername()) && !isTokenExpired(token));
+
+        boolean isValidToken = tokenRepository.findByToken(token)
+                .map(token1 -> token1.isValid())
+                .orElse(false);
+
+        return (username.equals(user.getUsername()) && !isTokenExpired(token) && isValidToken);
     }
 
     private boolean isTokenExpired(String token) {
