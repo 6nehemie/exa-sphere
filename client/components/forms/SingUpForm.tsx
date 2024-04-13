@@ -15,6 +15,8 @@ import {
 import { Input } from '@/components/ui/input';
 import AuthBtn from '../buttons/AuthBtn';
 import registerAction from '@/utils/actions/authentication/registerAction';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: 'First name is required' }),
@@ -29,6 +31,9 @@ const formSchema = z.object({
 });
 
 const SingUpForm = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,6 +47,7 @@ const SingUpForm = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
     const response = (await registerAction(values)) as any;
 
     if (response && response.error) {
@@ -51,9 +57,11 @@ const SingUpForm = () => {
           message: response.error,
         });
       }
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+      router.push('/sign-in');
     }
-
-    console.log(values);
   }
 
   return (
@@ -125,7 +133,7 @@ const SingUpForm = () => {
             )}
           />
 
-          <AuthBtn label={register.btn} />
+          <AuthBtn label={register.btn} isLoading={isLoading} />
         </div>
       </form>
     </Form>

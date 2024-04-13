@@ -2,6 +2,7 @@
 
 import { login } from '@/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -13,6 +14,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import AuthBtn from '../buttons/AuthBtn';
 
 const formSchema = z.object({
@@ -24,20 +27,40 @@ const formSchema = z.object({
 });
 
 const SignInForm = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'naomi.liu@one.com',
+      password: 'testtest',
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    try {
+      const response = await signIn('credentials', {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+      });
+
+      if (response && response.error) throw new Error(response.error);
+
+      setIsLoading(false);
+      router.push('/my-profiles');
+    } catch (error: any) {
+      console.error(error);
+
+      form.setError('email', { message: 'Invalid Email or Password.' });
+      form.setError('password', { message: 'Invalid Email or Password.' });
+
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -77,7 +100,7 @@ const SignInForm = () => {
             )}
           />
 
-          <AuthBtn label={login.btn} />
+          <AuthBtn label={login.btn} isLoading={isLoading} />
         </div>
       </form>
     </Form>
