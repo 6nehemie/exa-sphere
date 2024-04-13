@@ -1,6 +1,7 @@
 package _6nehemie.com.server.model;
 
 
+import _6nehemie.com.server.enums.Registration;
 import _6nehemie.com.server.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,9 @@ public class User implements UserDetails {
     
     @Enumerated(EnumType.STRING)
     private Role role;
+    
+    @Enumerated(EnumType.STRING)
+    private Registration authType;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Token> tokens;

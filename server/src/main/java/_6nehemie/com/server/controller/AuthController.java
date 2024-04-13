@@ -2,6 +2,7 @@ package _6nehemie.com.server.controller;
 
 import _6nehemie.com.server.dto.auth.AuthenticationResponseDto;
 import _6nehemie.com.server.dto.auth.LoginDto;
+import _6nehemie.com.server.dto.auth.OAuthDto;
 import _6nehemie.com.server.dto.auth.RegisterDto;
 import _6nehemie.com.server.service.AuthService;
 import _6nehemie.com.server.service.EmailService;
@@ -31,6 +32,13 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponseDto> login(@Validated @RequestBody LoginDto request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+    
+    @PostMapping("/oauth")
+    public ResponseEntity<AuthenticationResponseDto> oAuth(@Validated @RequestBody OAuthDto request) {
+        System.out.println(request);
+        
+        return ResponseEntity.ok(authService.oAuth(request));
     }
 
     @GetMapping("/test")

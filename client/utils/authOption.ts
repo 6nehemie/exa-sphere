@@ -1,19 +1,19 @@
-import { AxiosError } from 'axios';
-import { NextAuthOptions } from 'next-auth';
+import { Axios, AxiosError } from 'axios';
+import { Account, NextAuthOptions, Profile, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 import { noAuthFetch } from './apis/exaSphereApi';
+import { AdapterUser } from 'next-auth/adapters';
 
-type AuthUser = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  accessToken: string;
-  expiresIn: number;
-};
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+    }),
     CredentialsProvider({
       name: 'credentials',
       credentials: {
@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
             id: data.user.id,
             name: `${data.user.firstName} ${data.user.lastName}`,
             email: data.user.email,
-            image: data.user.image,
+            image: data.user.image || '',
             accessToken: data.accessToken,
           };
 
@@ -57,6 +57,41 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    signIn: async ({
+      user,
+      account,
+      profile,
+    }: {
+      user: User | AdapterUser;
+      account: Account | null;
+      profile?: Profile | any | undefined;
+    }) => {
+      if (profile && !profile.email) {
+        throw new Error('No email found');
+      }
+
+      try {
+        const response = await noAuthFetch.post('/auth/oauth', {
+          firstName: profile?.given_name,
+          lastName: profile?.family_name,
+          email: user.email,
+          avatar: user.image,
+          provider: {
+            provider: account?.provider,
+            type: account?.type,
+            issuedUrl: profile?.iss,
+          },
+        });
+
+        const { data: responseUser } = response;
+        user.accessToken = responseUser.accessToken;
+
+        return true;
+      } catch (error: AxiosError | any) {
+        console.error(error);
+        return false;
+      }
+    },
     jwt: async ({ token, user }: { token: any; user: any }) => {
       if (user) {
         token = { ...token, ...user };
