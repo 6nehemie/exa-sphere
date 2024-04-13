@@ -62,3 +62,12 @@ export interface IExperience {
   responsibilities: string;
   achievements?: string;
 }
+
+export interface ISession {
+  user: {
+    name: string;
+    email: string;
+    image: string;
+    accessToken: string;
+  };
+}

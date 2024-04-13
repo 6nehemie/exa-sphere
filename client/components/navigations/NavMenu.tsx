@@ -16,6 +16,7 @@ import {
 import toInitials from '@/utils/functions/toInitials';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import logoutAction from '@/utils/actions/authentication/logoutAction';
 
 const NavMenu = () => {
   const router = useRouter();
@@ -23,10 +24,19 @@ const NavMenu = () => {
   const fullName = 'Naomi Liu';
   const initials = toInitials(fullName);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     //? Implement logout logic here
+    const response = await logoutAction();
 
-    router.push('/sign-in');
+    if (response && response.error) {
+      //? Show a toast message
+
+      console.error(response.error);
+      return;
+    }
+
+    router.refresh();
+    // router.push('/sign-in');
   };
 
   return (

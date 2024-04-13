@@ -2,8 +2,14 @@ import Logo from '@/components/icons/Logo';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import { auth } from '@/constants';
+import isAuth from '@/utils/functions/isAuth';
+import { redirect } from 'next/navigation';
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+const AuthLayout = async ({ children }: { children: ReactNode }) => {
+  if (await isAuth()) {
+    return redirect('/my-profiles');
+  }
+
   const boxStyle = 'py-6 px-6 lg:px-8 xl:px-10';
   return (
     <main className="min-h-screen h-full">
