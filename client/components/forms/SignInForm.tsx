@@ -2,7 +2,7 @@
 
 import { login } from '@/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -28,6 +28,9 @@ const formSchema = z.object({
 
 const SignInForm = () => {
   const router = useRouter();
+  const session = useSession();
+  // console.log(session);
+
   const [isLoading, setIsLoading] = useState(false);
 
   // 1. Define your form.

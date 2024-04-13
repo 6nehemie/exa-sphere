@@ -1,11 +1,9 @@
+import { AxiosError } from 'axios';
+import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { NextAuthOptions, Session, User } from 'next-auth';
-import axios, { AxiosError } from 'axios';
-import { cookies } from 'next/headers';
-import { JWT } from 'next-auth/jwt';
 import { noAuthFetch } from './apis/exaSphereApi';
 
-type AuthResponse = {
+type AuthUser = {
   id: string;
   firstName: string;
   lastName: string;
@@ -38,7 +36,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           const data = response.data;
-          console.log(data.user);
+          // console.log(data.user);
 
           const user = {
             id: data.user.id,
@@ -56,7 +54,31 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    jwt: async ({ token, user }: { token: any; user: any }) => {
+      if (user) {
+        token = { ...token, ...user };
+      }
+      return token;
+    },
 
+    session: async ({
+      session,
+      token,
+      user,
+    }: {
+      session: any | any;
+      token: any;
+      user: any;
+    }) => {
+      session.user.accessToken = token.accessToken;
+
+      return Promise.resolve(session);
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  },
   debug: process.env.NODE_ENV === 'development',
 };

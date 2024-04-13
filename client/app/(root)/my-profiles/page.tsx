@@ -1,6 +1,7 @@
 import AddItem from '@/components/buttons/AddItem';
 import ProfileCard from '@/components/cards/ProfileCard';
 import { jobProfiles, profiles } from '@/constants';
+import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 
 const MyProfiles = async () => {
