@@ -1,5 +1,7 @@
 package _6nehemie.com.server.dto.user;
 
+import _6nehemie.com.server.enums.Registration;
+
 public record GetUserResponseDto(
         Long id,
         String avatar,
@@ -7,6 +9,7 @@ public record GetUserResponseDto(
         String lastName,
         String email,
         String username,
-        String description
+        String description,
+        Registration authType
 ) {
 }

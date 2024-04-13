@@ -71,3 +71,14 @@ export interface ISession {
     accessToken: string;
   };
 }
+
+export interface User {
+  id: number | null;
+  avatar: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  description: string | null;
+  authType: string;
+}

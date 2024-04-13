@@ -4,6 +4,8 @@ import SessionProvider from '@/providers/SessionProvider';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { getServerSession } from 'next-auth';
+import getUser from '@/utils/actions/user/getUser';
+import StoreProvider from '@/providers/StoreProvider';
 
 // const inter = Inter({ subsets: ['latin'] });
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -19,13 +21,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await getServerSession();
+  // const user = await getUser();
 
   return (
     <html lang="en">
       <SessionProvider session={session}>
+        {/* <StoreProvider user={user}> */}
         <body className={cn('bg-gray-3 text-white', openSans.className)}>
           {children}
         </body>
+        {/* </StoreProvider> */}
       </SessionProvider>
     </html>
   );

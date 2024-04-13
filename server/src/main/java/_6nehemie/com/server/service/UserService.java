@@ -28,7 +28,8 @@ public class UserService {
                 user.getLastName(),
                 user.getEmail(),
                 user.getUsername(),
-                user.getDescription()
+                user.getDescription(),
+                user.getAuthType()
         );
     }
 }

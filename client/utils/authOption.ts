@@ -70,27 +70,35 @@ export const authOptions: NextAuthOptions = {
         throw new Error('No email found');
       }
 
-      try {
-        const response = await noAuthFetch.post('/auth/oauth', {
-          firstName: profile?.given_name,
-          lastName: profile?.family_name,
-          email: user.email,
-          avatar: user.image,
-          provider: {
-            provider: account?.provider,
-            type: account?.type,
-            issuedUrl: profile?.iss,
-          },
-        });
+      if (account?.provider === 'google') {
+        // console.log('Oauth User: ', user);
+        // console.log('Oauth Account: ', account);
+        // console.log('Oauth Profile: ', profile);
 
-        const { data: responseUser } = response;
-        user.accessToken = responseUser.accessToken;
+        try {
+          const response = await noAuthFetch.post('/auth/oauth', {
+            firstName: profile?.given_name,
+            lastName: profile?.family_name,
+            email: user.email,
+            avatar: user.image,
+            provider: {
+              provider: account?.provider,
+              type: account?.type,
+              issuedUrl: profile?.iss,
+            },
+          });
 
-        return true;
-      } catch (error: AxiosError | any) {
-        console.error(error);
-        return false;
+          const { data: responseUser } = response;
+          user.accessToken = responseUser.accessToken;
+
+          return true;
+        } catch (error: AxiosError | any) {
+          console.error(error);
+          return false;
+        }
       }
+
+      return true;
     },
     jwt: async ({ token, user }: { token: any; user: any }) => {
       if (user) {
