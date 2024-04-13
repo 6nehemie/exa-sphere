@@ -1,8 +1,12 @@
 import UpdatePassword from '@/components/sections/UpdatePassword';
 import { Separator } from '@/components/ui/separator';
 import { settingsSecurity } from '@/constants';
+import isOauth from '@/utils/functions/isOauth';
+import { redirect } from 'next/navigation';
 
-const SecuritySettings = () => {
+const SecuritySettings = async () => {
+  if (await isOauth()) redirect('/settings');
+
   return (
     <section className="space-y-7">
       <div className="space-y-2 mb-12">

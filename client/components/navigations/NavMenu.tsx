@@ -17,11 +17,13 @@ import toInitials from '@/utils/functions/toInitials';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import logoutAction from '@/utils/actions/authentication/logoutAction';
+import { useAppSelector } from '@/lib/hooks';
 
 const NavMenu = () => {
   const router = useRouter();
-  const email = '6naomi.liu@test.com';
-  const fullName = 'Naomi Liu';
+  const user = useAppSelector((state) => state.user);
+
+  const fullName = `${user.firstName} ${user.lastName}`;
   const initials = toInitials(fullName);
 
   const handleLogout = async () => {
@@ -36,21 +38,20 @@ const NavMenu = () => {
     }
 
     router.refresh();
-    // router.push('/sign-in');
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
-          <AvatarImage src="/avatar.png" alt="@shadcn" />
+          <AvatarImage src={user.avatar} alt="@shadcn" />
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-56 mx-6 z-[120]">
         <DropdownMenuLabel className="text-sm font-light">
-          {email}
+          {user.email}
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />

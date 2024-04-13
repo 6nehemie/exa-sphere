@@ -117,6 +117,7 @@ export const authOptions: NextAuthOptions = {
       user: any;
     }) => {
       session.user.accessToken = token.accessToken;
+      session.user.authType = token.authType;
 
       return Promise.resolve(session);
     },

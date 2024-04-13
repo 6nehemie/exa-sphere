@@ -4,9 +4,11 @@ import { usePathname } from 'next/navigation';
 import { settingsNavigation } from '../../constants';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { useAppSelector } from '@/lib/hooks';
 
 const SettingsNavigation = () => {
   const pathname = usePathname();
+  const user = useAppSelector((state) => state.user);
 
   return (
     <div className="relative">
@@ -31,6 +33,8 @@ const SettingsNavigation = () => {
                     'block font-light text-sm py-1.5 px-2.5 rounded-sm hover:bg-gray-2 transition-colors duration-200 ease-in-out',
                     {
                       'bg-gray-2': isActive,
+                      hidden:
+                        user.authType === 'OAUTH' && link.label === 'Security',
                     }
                   )}
                 >

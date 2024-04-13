@@ -3,14 +3,17 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 
-import { IUser } from '@/types';
 import toInitials from '@/utils/functions/toInitials';
 import { UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { useAppSelector } from '@/lib/hooks';
 
-const UserInfo = ({ user }: { user: IUser }) => {
+const UserInfo = () => {
   const pathname = usePathname();
+  const user = useAppSelector((state) => state.user);
+  const fullName = `${user.firstName} ${user.lastName}`;
+
   const editBtnStyle =
     'px-2 py-0.5 rounded-sm hover:bg-gray-2 focus:bg-none transition-colors duration-200';
 
@@ -26,7 +29,7 @@ const UserInfo = ({ user }: { user: IUser }) => {
         <div className="flex justify-between items-start">
           <Avatar className="size-[84px]">
             <AvatarImage src={user.avatar} alt="@shadcn" />
-            <AvatarFallback>{toInitials(user.fullName)}</AvatarFallback>
+            <AvatarFallback>{toInitials(fullName)}</AvatarFallback>
           </Avatar>
 
           <Link href="/settings" className={editBtnStyle}>
@@ -39,7 +42,7 @@ const UserInfo = ({ user }: { user: IUser }) => {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-light">{user.fullName}</h1>
+        <h1 className="text-3xl font-light">{fullName}</h1>
         <p className="text-sm font-light text-gray-1">{user.description}</p>
       </div>
 
