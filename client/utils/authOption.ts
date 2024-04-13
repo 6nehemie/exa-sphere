@@ -42,6 +42,7 @@ export const authOptions: NextAuthOptions = {
             id: data.user.id,
             name: `${data.user.firstName} ${data.user.lastName}`,
             email: data.user.email,
+            image: data.user.image,
             accessToken: data.accessToken,
           };
 
