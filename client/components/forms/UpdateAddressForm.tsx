@@ -8,17 +8,19 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { IUser } from '@/types';
-import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { updateUser } from '@/lib/features/user/userSlice';
+import { useAppDispatch } from '@/lib/hooks';
 import { cn } from '@/lib/utils';
+import { Address } from '@/types';
+import updateAddressAction from '@/utils/actions/user/updateAddressAction';
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 const formSchema = z.object({
   street: z.string().min(1, { message: 'Address is required' }),
@@ -28,26 +30,39 @@ const formSchema = z.object({
   country: z.string().min(1, { message: 'Country is required' }),
 });
 
-const UpdateAddressForm = ({ user }: { user: IUser }) => {
+const UpdateAddressForm = ({
+  address,
+  closeForm,
+}: {
+  address: Address | null;
+  closeForm: () => void;
+}) => {
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      street: user.address.street || '',
-      city: user.address.city || '',
-      zip: user.address.zip || '',
-      state: user.address.state || '',
-      country: user.address.country || '',
+      street: address?.street || '',
+      city: address?.city || '',
+      zip: address?.zip || '',
+      state: address?.state || '',
+      country: address?.country || '',
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    const response = await updateAddressAction(values);
+
+    if (response && response.error) {
+      setIsLoading(false);
+      return console.error(response.error);
+    }
+
+    dispatch(updateUser(response));
+    closeForm();
+    setIsLoading(false);
   }
 
   return (

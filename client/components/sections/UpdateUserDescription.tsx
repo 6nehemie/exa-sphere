@@ -4,8 +4,10 @@ import { IUser } from '@/types';
 import SettingsPreview from '../previews/SettingsPreview';
 import UpdateDescriptionForm from '../forms/UpdateDescriptionForm';
 import { useState } from 'react';
+import { useAppSelector } from '@/lib/hooks';
 
-const UpdateUserDescription = ({ user }: { user: IUser }) => {
+const UpdateUserDescription = () => {
+  const user = useAppSelector((state) => state.user);
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -18,10 +20,15 @@ const UpdateUserDescription = ({ user }: { user: IUser }) => {
       content={
         <>
           {!isEditing && (
-            <p className="font-light text-sm">{user.description}</p>
+            <p className="font-light text-sm">{user.description || ''}</p>
           )}
 
-          {isEditing && <UpdateDescriptionForm user={user} />}
+          {isEditing && (
+            <UpdateDescriptionForm
+              user={user}
+              closeForm={() => setIsEditing(false)}
+            />
+          )}
         </>
       }
     />

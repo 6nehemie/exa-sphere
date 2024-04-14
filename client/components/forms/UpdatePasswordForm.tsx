@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import updatePasswordAction from '@/utils/actions/user/updatePasswordAction';
 
 const formSchema = z
   .object({
@@ -28,15 +29,14 @@ const formSchema = z
       .string()
       .min(6, { message: 'Password must be at least 6 characters' }),
   })
-  .refine((data) => data.newPassword !== data.confirmPassword, {
+  .refine((data) => data.newPassword === data.confirmPassword, {
     message: 'Passwords must match',
     path: ['confirmPassword'],
   });
 
-const UpdatePasswordForm = () => {
+const UpdatePasswordForm = ({ closeForm }: { closeForm: () => void }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,11 +46,17 @@ const UpdatePasswordForm = () => {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    const response = await updatePasswordAction(values);
+
+    if (response && response.error) {
+      setIsLoading(false);
+      return console.error(response.error);
+    }
+
+    closeForm();
+    setIsLoading(false);
   }
 
   return (

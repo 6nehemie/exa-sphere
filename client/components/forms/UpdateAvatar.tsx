@@ -7,9 +7,16 @@ import { ChangeEvent, useState } from 'react';
 import { Button } from '../ui/button';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { IUser } from '@/types';
+import { IUser, User } from '@/types';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import updateAvatarAction from '@/utils/actions/user/updateAvatarAction';
+import { updateUser } from '@/lib/features/user/userSlice';
+import deleteAvatarAction from '@/utils/actions/user/deleteAvatarAction';
 
-const UpdateAvatar = ({ user }: { user: IUser }) => {
+const UpdateAvatar = ({ user }: { user: User }) => {
+  const dispatch = useAppDispatch();
+  const fullName = `${user.firstName} ${user.lastName}`;
+
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -24,21 +31,38 @@ const UpdateAvatar = ({ user }: { user: IUser }) => {
     const formData = new FormData();
     formData.append('avatar', file);
 
-    // await updateAvatar(formData);
-    console.log('Avatar updated', formData);
+    const response = await updateAvatarAction(formData);
+
+    if (response.error) {
+      console.error(response.error);
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(false);
+    dispatch(updateUser(response));
   };
 
   const handleAvatarDelete = async () => {
     setIsDeleting(true);
-    // await deleteAvatar();
-    console.log('Avatar deleted');
+
+    const response = await deleteAvatarAction();
+
+    if (response.error) {
+      console.error(response.error);
+      setIsLoading(false);
+      return;
+    }
+
+    setIsDeleting(false);
+    dispatch(updateUser(response));
   };
 
   return (
     <div className="flex items-center gap-6">
       <Avatar className="size-16">
         <AvatarImage src={user.avatar} />
-        <AvatarFallback>{toInitials(user.fullName)}</AvatarFallback>
+        <AvatarFallback>{toInitials(fullName)}</AvatarFallback>
       </Avatar>
 
       <div className="flex items-center gap-2">

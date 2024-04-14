@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { cookies } from 'next/headers';
 
 export const noAuthFetch = axios.create({
   baseURL: process.env.SPRING_API_URL,

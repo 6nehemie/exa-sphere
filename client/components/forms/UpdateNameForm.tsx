@@ -15,20 +15,29 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { IUser } from '@/types';
+import { IUser, User } from '@/types';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import updateNameAction from '@/utils/actions/user/updateNameAction';
+import { useAppDispatch } from '@/lib/hooks';
+import { updateUser } from '@/lib/features/user/userSlice';
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(20),
   lastName: z.string().min(2).max(20),
 });
 
-const UpdateNameForm = ({ user }: { user: IUser }) => {
+const UpdateNameForm = ({
+  user,
+  closeForm,
+}: {
+  user: User;
+  closeForm: () => void;
+}) => {
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,11 +46,18 @@ const UpdateNameForm = ({ user }: { user: IUser }) => {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    const response = await updateNameAction(values);
+
+    if (response && response.error) {
+      setIsLoading(false);
+      return console.error(response.error);
+    }
+
+    dispatch(updateUser(response));
+    closeForm();
+    setIsLoading(false);
   }
 
   return (

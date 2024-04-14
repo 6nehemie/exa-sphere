@@ -15,19 +15,25 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { IUser } from '@/types';
+import { User } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import updateEmailAction from '@/utils/actions/user/updateEmailAction';
 
 const formSchema = z.object({
   email: z.string().email(),
   password: z.string().min(2),
 });
 
-const UpdateEmailForm = ({ user }: { user: IUser }) => {
+const UpdateEmailForm = ({
+  user,
+  closeForm,
+}: {
+  user: User;
+  closeForm: () => void;
+}) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,11 +42,21 @@ const UpdateEmailForm = ({ user }: { user: IUser }) => {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    const response = await updateEmailAction(values);
+
+    if (response && response.error) {
+      setIsLoading(false);
+      form.setError('email', {
+        type: 'manual',
+        message: response.error,
+      });
+      return console.error(response.error);
+    }
+
+    closeForm();
+    setIsLoading(false);
   }
 
   return (

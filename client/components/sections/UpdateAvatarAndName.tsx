@@ -6,8 +6,12 @@ import toInitials from '@/utils/functions/toInitials';
 import SettingsPreview from '../previews/SettingsPreview';
 import { useState } from 'react';
 import AvatarAndNameForm from '../forms/AvatarAndNameForm';
+import { useAppSelector } from '@/lib/hooks';
 
-const UpdateAvatarAndName = ({ user }: { user: IUser }) => {
+const UpdateAvatarAndName = () => {
+  const user = useAppSelector((state) => state.user);
+  const fullName = `${user.firstName} ${user.lastName}`;
+
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -23,14 +27,19 @@ const UpdateAvatarAndName = ({ user }: { user: IUser }) => {
             <div className=" flex items-center gap-8">
               <Avatar className="size-[84px]">
                 <AvatarImage src={user.avatar} />
-                <AvatarFallback>{toInitials(user.fullName)}</AvatarFallback>
+                <AvatarFallback>{toInitials(fullName)}</AvatarFallback>
               </Avatar>
 
-              <p className="font-light">{user.fullName}</p>
+              <p className="font-light">{fullName}</p>
             </div>
           )}
 
-          {isEditing && <AvatarAndNameForm user={user} />}
+          {isEditing && (
+            <AvatarAndNameForm
+              user={user}
+              closeForm={() => setIsEditing(false)}
+            />
+          )}
         </>
       }
     />

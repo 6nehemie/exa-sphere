@@ -55,7 +55,7 @@ const SignInForm = () => {
       if (response && response.error) throw new Error(response.error);
 
       setIsLoading(false);
-      router.push('/my-profiles');
+      router.refresh();
     } catch (error: any) {
       console.error(error);
 

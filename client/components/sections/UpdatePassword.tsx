@@ -17,7 +17,9 @@ const UpdatePassword = () => {
       content={
         <>
           {!isEditing && <p className="font-light text-sm">•••••••••••</p>}
-          {isEditing && <UpdatePasswordForm />}
+          {isEditing && (
+            <UpdatePasswordForm closeForm={() => setIsEditing(false)} />
+          )}
         </>
       }
     />

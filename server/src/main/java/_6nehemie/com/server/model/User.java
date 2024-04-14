@@ -39,7 +39,19 @@ public class User implements UserDetails {
     private String username;
     
     private String password;
-    
+
+    @Embedded
+    private Address address;
+
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
+    }
+
     private boolean isVerified;
     private String verificationCode;
     
@@ -78,4 +90,15 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+//    class Address {
+//        private String street;
+//        private String city;
+//        private String state;
+//        private String country;
+//        private String zipCode;
+//
+//        // Constructors, getters, and setters for Address class
+//        // For brevity, constructors, getters, and setters are not shown here
+//    }
 }

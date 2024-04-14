@@ -12,7 +12,7 @@ const getUser = async () => {
 
   try {
     const accessToken = session?.user?.accessToken;
-    const { data: user } = await noAuthFetch.get('user', {
+    const { data: user } = await noAuthFetch.get('/user', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

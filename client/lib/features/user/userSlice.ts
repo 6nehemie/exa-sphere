@@ -8,8 +8,10 @@ const initialState: User = {
   lastName: '',
   email: '',
   username: '',
+  isVerified: false,
   description: '',
   authType: '',
+  address: null,
 };
 
 const userSlice = createSlice({
@@ -19,8 +21,11 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       return action.payload;
     },
+    updateUser: (state, action) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, updateUser } = userSlice.actions;
 export default userSlice.reducer;

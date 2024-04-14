@@ -80,5 +80,15 @@ export interface User {
   email: string;
   username: string;
   description: string | null;
+  isVerified: boolean;
   authType: string;
+  address: Address | null;
+}
+
+export interface Address {
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  zip: string;
 }

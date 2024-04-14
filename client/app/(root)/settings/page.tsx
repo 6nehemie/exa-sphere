@@ -1,13 +1,12 @@
-import { settingsProfile } from '@/constants';
-import { Separator } from '@/components/ui/separator';
+import DeleteUser from '@/components/sections/DeleteUser';
+import UpdateAddress from '@/components/sections/UpdateAddress';
 import UpdateAvatarAndName from '@/components/sections/UpdateAvatarAndName';
 import UpdateEmail from '@/components/sections/UpdateEmail';
-import UpdateNumber from '@/components/sections/UpdateNumber';
-import UpdateAddress from '@/components/sections/UpdateAddress';
 import UpdateUserDescription from '@/components/sections/UpdateUserDescription';
-import { userInfo } from '@/constants';
+import { Separator } from '@/components/ui/separator';
+import { settingsProfile } from '@/constants';
 
-const ProfileSettings = () => {
+const ProfileSettings = async () => {
   return (
     <section className="space-y-14 md:space-y-10">
       <div className="space-y-2 mb-12">
@@ -19,23 +18,27 @@ const ProfileSettings = () => {
 
       <Separator />
 
-      <UpdateAvatarAndName user={userInfo} />
+      <UpdateAvatarAndName />
 
       <Separator />
 
-      <UpdateUserDescription user={userInfo} />
+      <UpdateUserDescription />
 
       <Separator />
 
-      <UpdateEmail user={userInfo} />
+      <UpdateEmail />
+
+      {/* <Separator />
+
+      <UpdateNumber user={userInfo} /> */}
 
       <Separator />
 
-      <UpdateNumber user={userInfo} />
+      <UpdateAddress />
 
       <Separator />
 
-      <UpdateAddress user={userInfo} />
+      <DeleteUser />
     </section>
   );
 };
