@@ -22,6 +22,7 @@ import { cn } from '@/lib/utils';
 import updateNameAction from '@/utils/actions/user/updateNameAction';
 import { useAppDispatch } from '@/lib/hooks';
 import { updateUser } from '@/lib/features/user/userSlice';
+import { useToast } from '../ui/use-toast';
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(20),
@@ -35,6 +36,7 @@ const UpdateNameForm = ({
   user: User;
   closeForm: () => void;
 }) => {
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,6 +59,11 @@ const UpdateNameForm = ({
 
     dispatch(updateUser(response));
     closeForm();
+
+    toast({
+      description: 'Your name has been updated.',
+    });
+
     setIsLoading(false);
   }
 

@@ -19,6 +19,7 @@ import { User } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import updateEmailAction from '@/utils/actions/user/updateEmailAction';
+import { useToast } from '../ui/use-toast';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -32,6 +33,7 @@ const UpdateEmailForm = ({
   user: User;
   closeForm: () => void;
 }) => {
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,6 +58,9 @@ const UpdateEmailForm = ({
     }
 
     closeForm();
+    toast({
+      description: 'Your email has been updated, you have been logged out.',
+    });
     setIsLoading(false);
   }
 

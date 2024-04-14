@@ -21,6 +21,7 @@ import { Address } from '@/types';
 import updateAddressAction from '@/utils/actions/user/updateAddressAction';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { useToast } from '../ui/use-toast';
 
 const formSchema = z.object({
   street: z.string().min(1, { message: 'Address is required' }),
@@ -37,6 +38,7 @@ const UpdateAddressForm = ({
   address: Address | null;
   closeForm: () => void;
 }) => {
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -63,6 +65,9 @@ const UpdateAddressForm = ({
     dispatch(updateUser(response));
     closeForm();
     setIsLoading(false);
+    toast({
+      description: 'Your address has been updated.',
+    });
   }
 
   return (

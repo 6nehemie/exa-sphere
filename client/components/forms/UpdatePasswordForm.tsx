@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import updatePasswordAction from '@/utils/actions/user/updatePasswordAction';
+import { useToast } from '../ui/use-toast';
 
 const formSchema = z
   .object({
@@ -35,6 +36,7 @@ const formSchema = z
   });
 
 const UpdatePasswordForm = ({ closeForm }: { closeForm: () => void }) => {
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -55,8 +57,11 @@ const UpdatePasswordForm = ({ closeForm }: { closeForm: () => void }) => {
       return console.error(response.error);
     }
 
-    closeForm();
+    toast({
+      description: 'Your password has been updated',
+    });
     setIsLoading(false);
+    closeForm();
   }
 
   return (

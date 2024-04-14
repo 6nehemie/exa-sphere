@@ -4,6 +4,7 @@ import SessionProvider from '@/providers/SessionProvider';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { getServerSession } from 'next-auth';
+import { Toaster } from '@/components/ui/toaster';
 
 // const inter = Inter({ subsets: ['latin'] });
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -25,6 +26,7 @@ export default async function RootLayout({
       <SessionProvider session={session}>
         <body className={cn('bg-gray-3 text-white', openSans.className)}>
           {children}
+          <Toaster />
         </body>
       </SessionProvider>
     </html>

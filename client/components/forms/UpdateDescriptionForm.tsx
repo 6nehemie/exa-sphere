@@ -22,6 +22,7 @@ import { useState } from 'react';
 import updateDescriptionAction from '@/utils/actions/user/updateDescriptionAction';
 import { useAppDispatch } from '@/lib/hooks';
 import { updateUser } from '@/lib/features/user/userSlice';
+import { useToast } from '../ui/use-toast';
 
 const formSchema = z.object({
   description: z.string().max(250),
@@ -34,6 +35,7 @@ const UpdateDescriptionForm = ({
   user: User;
   closeForm: () => void;
 }) => {
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -55,6 +57,9 @@ const UpdateDescriptionForm = ({
 
     dispatch(updateUser(response));
     closeForm();
+    toast({
+      description: 'Your description has been updated.',
+    });
     setIsLoading(false);
   }
 
