@@ -1,125 +1,58 @@
 'use client';
 
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '../ui/textarea';
+import { ReactNode, useState } from 'react';
+import AddItemBis from '../buttons/AddItemBis';
 import ProfileFormWrapper from '../wrappers/ProfileFormWrapper';
-import EndDate from './EndDate';
-import StartDate from './StartDate';
+import ExperienceCard from './ExperienceCard';
+import { cn } from '@/lib/utils';
 
-const Experiences = ({ control }: { control: any }) => {
-  // const handleStartDate = (event: ChangeEvent<HTMLInputElement>) => {
-  //   startDateRef.current.value = event.target.value;
-  // };
+const Experiences = ({ control, form }: { control: any; form: any }) => {
+  const [experience, setExperience] = useState<number>(1);
 
-  console.log(control);
+  const addExperience = () => {
+    if (experience < 3) {
+      setExperience((prev) => prev + 1);
+    }
+  };
+
+  const removeLastExperience = () => {
+    if (experience > 1) {
+      setExperience((prev) => prev - 1);
+    }
+  };
+
   return (
-    <ProfileFormWrapper title="Experiences">
-      <h3 className="font-light">Experience 1 *</h3>
-      <div className="md:grid grid-cols-2 max-md:space-y-4 gap-x-5">
-        <FormField
-          control={control}
-          name="jobTitle"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-light">Job Title *</FormLabel>
-              <FormControl>
-                <Input placeholder="e.g. Project Manager" {...field} />
-              </FormControl>
-              {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
-              <FormMessage />
-            </FormItem>
+    <ProfileFormWrapper
+      title="Experiences"
+      description="Your experiences shape credibility. One minimum required for a comprehensive profile. Add up to three to showcase skills."
+    >
+      <ExperienceCard control={control} experienceNum={1} form={form} />
+
+      {experience > 1 && (
+        <ExperienceCard control={control} experienceNum={2} form={form} />
+      )}
+
+      {experience > 2 && (
+        <ExperienceCard control={control} experienceNum={3} form={form} />
+      )}
+
+      <div className="grid grid-cols-2 justify-between pt-2">
+        {experience < 3 && (
+          <AddItemBis btnAction={addExperience} label="Add experience" />
+        )}
+
+        <div
+          onClick={removeLastExperience}
+          className={cn(
+            'text-sm font-light text-gray-1 hover:text-white transition-colors duration-200 cursor-pointer col-start-2 justify-self-end',
+            {
+              hidden: experience === 1,
+            }
           )}
-        />
-        <FormField
-          control={control}
-          name="company"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-light">Company Name *</FormLabel>
-              <FormControl>
-                <Input placeholder="e.g. ABC Company" {...field} />
-              </FormControl>
-              {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        >
+          <span>Remove experience</span>
+        </div>
       </div>
-
-      <div className="grid grid-cols-2 gap-x-5">
-        <StartDate control={control} />
-        <EndDate control={control} />
-      </div>
-
-      <FormField
-        control={control}
-        name="location"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="font-light">Location *</FormLabel>
-            <FormControl>
-              <Input placeholder="e.g. Zurich, Switzerland" {...field} />
-            </FormControl>
-            {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={control}
-        name="responsibilities"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="font-light">Responsibilities *</FormLabel>
-            <FormControl>
-              <Textarea
-                placeholder="e.g., Develop new features, Conduct market research, Manage project timelines"
-                {...field}
-              />
-            </FormControl>
-            <FormDescription>
-              Enter the main responsibilities associated with the job role.
-            </FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={control}
-        name="achievements"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="font-light">Achievements</FormLabel>
-            <FormControl>
-              <Textarea
-                placeholder="e.g., Increased sales by 20%, Received Employee of the Month award, Successfully led a team project"
-                {...field}
-              />
-            </FormControl>
-            <FormDescription>
-              Enter any notable achievements or accomplishments related to your
-              previous roles.
-            </FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
     </ProfileFormWrapper>
   );
 };

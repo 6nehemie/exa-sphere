@@ -13,114 +13,52 @@ import Characteristics from '../forms/Characteristics';
 import Experiences from '../forms/Experiences';
 import ProfileDetails from '../forms/ProfileDetails';
 import Skills from '../forms/Skills';
-
-const formSchema = z.object({
-  title: z.string().min(1, { message: 'Profile Title is required' }),
-  description: z.string().optional(),
-  skills: z
-    .string()
-    .min(1, { message: 'At least one skill is required' })
-    .refine(
-      (skills) => {
-        return skills.split(',').length <= 10;
-      },
-      { message: 'Skills should be less than 10' }
-    ),
-
-  experience: z.object({
-    jobTitle: z.string().min(1, { message: 'Job title is required' }),
-    company: z.string().min(1, { message: 'Company is required' }),
-    location: z.string().min(1, { message: 'Location is required' }),
-    startDate: z.string().min(1, { message: 'Start Date is required' }),
-    endDate: z.string(),
-    responsibilities: z
-      .string()
-      .min(1, { message: 'Responsibilities is required' }),
-    achievements: z.string().min(1).optional(),
-  }),
-
-  experience2: z
-    .object({
-      jobTitle: z.string().min(1, { message: 'Job title is required' }),
-      company: z.string().min(1, { message: 'Company is required' }),
-      location: z.string().min(1, { message: 'Location is required' }),
-      startDate: z.string().min(1, { message: 'Start Date is required' }),
-      endDate: z.string(),
-      responsibilities: z
-        .string()
-        .min(1, { message: 'Responsibilities is required' }),
-      achievements: z.string().min(1).optional(),
-    })
-    .optional(),
-
-  experience3: z
-    .object({
-      jobTitle: z.string().min(1, { message: 'Job title is required' }),
-      company: z.string().min(1, { message: 'Company is required' }),
-      location: z.string().min(1, { message: 'Location is required' }),
-      startDate: z.string().min(1, { message: 'Start Date is required' }),
-      endDate: z.string(),
-      responsibilities: z
-        .string()
-        .min(1, { message: 'Responsibilities is required' }),
-      achievements: z.string().min(1).optional(),
-    })
-    .optional(),
-
-  characteristics: z
-    .string()
-    .min(1, { message: 'At least one characteristic is required' })
-    .refine(
-      (characteristic) => {
-        return characteristic.split(',').length <= 8;
-      },
-      { message: 'Characteristics should be less than 10' }
-    ),
-});
+import experienceSchema from '@/utils/zod/experienceSchema';
 
 const NewProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof experienceSchema>>({
+    resolver: zodResolver(experienceSchema),
     defaultValues: {
       title: '',
       description: '',
       skills: '',
-      experience: {
-        jobTitle: '',
-        company: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-        responsibilities: '',
-        achievements: '',
-      },
-      experience2: {
-        jobTitle: '',
-        company: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-        responsibilities: '',
-        achievements: '',
-      },
-      experience3: {
-        jobTitle: '',
-        company: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-        responsibilities: '',
-        achievements: '',
-      },
+      experience1:
+        {
+          jobTitle: '',
+          company: '',
+          location: '',
+          startDate: '',
+          endDate: '',
+          responsibilities: '',
+          achievements: '',
+        } || null,
+      experience2:
+        {
+          jobTitle: '',
+          company: '',
+          location: '',
+          startDate: '',
+          endDate: '',
+          responsibilities: '',
+          achievements: '',
+        } || null,
+      experience3:
+        {
+          jobTitle: '',
+          company: '',
+          location: '',
+          startDate: '',
+          endDate: '',
+          responsibilities: '',
+          achievements: '',
+        } || null,
       characteristics: '',
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof experienceSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
@@ -137,11 +75,10 @@ const NewProfile = () => {
 
           <Skills control={form.control} />
 
-          <Experiences control={form.control} />
+          <Experiences control={form.control} form={form} />
 
           <Characteristics control={form.control} />
         </div>
-
         <div className="relative">
           <div className="xl:pl-16 xl:sticky top-[140px] space-y-2">
             <Button
