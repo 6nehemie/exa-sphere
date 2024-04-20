@@ -92,3 +92,34 @@ export interface Address {
   country: string;
   zip: string;
 }
+
+export interface Profile {
+  id: number;
+  title: string;
+  description?: string | undefined;
+  skills: string;
+  experience1: Experience;
+  experience2?: ExperienceOptional;
+  experience3?: ExperienceOptional;
+  characteristics: string;
+}
+
+export interface Experience {
+  jobTitle: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate?: string | undefined;
+  responsibilities: string;
+  achievements?: string | undefined;
+}
+
+export interface ExperienceOptional {
+  jobTitle?: string;
+  company?: string;
+  location?: string;
+  startDate?: string;
+  endDate?: string;
+  responsibilities?: string;
+  achievements?: string | undefined;
+}

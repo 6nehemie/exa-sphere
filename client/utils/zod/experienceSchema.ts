@@ -17,8 +17,10 @@ const experienceSchema = z.object({
     jobTitle: z.string().min(1, { message: 'Job title is required' }),
     company: z.string().min(1, { message: 'Company is required' }),
     location: z.string().min(1, { message: 'Location is required' }),
-    startDate: z.string().min(1, { message: 'Start Date is required' }),
-    endDate: z.string(),
+    startDate: z
+      .date()
+      .min(new Date(1900, 1, 1), { message: 'Start date is required' }),
+    endDate: z.date().optional(),
     responsibilities: z
       .string()
       .min(1, { message: 'Responsibilities is required' }),
@@ -30,8 +32,8 @@ const experienceSchema = z.object({
       jobTitle: z.string().optional(),
       company: z.string().optional(),
       location: z.string().optional(),
-      startDate: z.string().optional(),
-      endDate: z.string().optional(),
+      startDate: z.date().optional(),
+      endDate: z.date().optional(),
       responsibilities: z.string().optional(),
       achievements: z.string().optional(),
     })
@@ -42,8 +44,8 @@ const experienceSchema = z.object({
       jobTitle: z.string().optional(),
       company: z.string().optional(),
       location: z.string().optional(),
-      startDate: z.string().optional(),
-      endDate: z.string().optional(),
+      startDate: z.date().optional(),
+      endDate: z.date().optional(),
       responsibilities: z.string().optional(),
       achievements: z.string().optional(),
     })

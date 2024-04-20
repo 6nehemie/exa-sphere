@@ -21,8 +21,12 @@ const ExperienceCard = ({
   experienceNum: number;
   form: any;
 }) => {
+  const errorMsg =
+    form.formState.errors[`experience${experienceNum}`]?.message || '';
+
   return (
     <div className="border border-dashed border-gray-2 p-5 rounded-xl space-y-4">
+      {errorMsg && <p className="text-red-500 font-light">{errorMsg}</p>}
       <div className="md:grid grid-cols-2 max-md:space-y-4 gap-x-5">
         <FormField
           control={control}
@@ -111,7 +115,9 @@ const ExperienceCard = ({
         name={`experience${experienceNum}.achievements`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="font-light">Achievements</FormLabel>
+            <FormLabel className="font-light">
+              Achievements (optional)
+            </FormLabel>
             <FormControl>
               <Textarea
                 placeholder="e.g., Increased sales by 20%, Received Employee of the Month award, Successfully led a team project"

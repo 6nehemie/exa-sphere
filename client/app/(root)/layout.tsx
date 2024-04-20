@@ -5,7 +5,6 @@ import StoreProvider from '@/providers/StoreProvider';
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const user = await getUser();
-  console.log('User from Server: ', user);
 
   return (
     <StoreProvider user={user}>

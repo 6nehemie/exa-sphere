@@ -26,12 +26,11 @@ const ExperienceDate = ({
   dateName: string;
   form: any;
 }) => {
-  const [date, setDate] = React.useState<Date>();
-
-  form.setValue(
-    `experience${experienceNum}.${dateName}`,
-    date?.toDateString() || ''
+  const [date, setDate] = React.useState<Date>(
+    form.getValues(`experience${experienceNum}.${dateName}`) as any
   );
+
+  form.setValue(`experience${experienceNum}.${dateName}`, date || undefined);
 
   const errorMsg =
     form.formState.errors[`experience${experienceNum}`]?.[`${dateName}`]

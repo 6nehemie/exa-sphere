@@ -1,37 +1,39 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import { ChevronLeft, Users } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 const ProfileTracking = () => {
   const pathname = usePathname();
   return (
-    <p className="flex items-center gap-2 font-light text-sm text-gray-1">
-      <Link
-        href={'/my-profiles'}
-        className="hover:underline transition-transform duration-200"
-      >
-        my profiles
-      </Link>
-
-      <span
-        className={cn('', {
-          hidden: pathname === '/my-profiles',
+    <div>
+      <div
+        className={cn('flex items-center gap-2 text-sm font-light', {
+          hidden: pathname !== '/my-profiles',
         })}
       >
-        /
-      </span>
+        <div className="bg-gray-2 rounded-full p-1.5">
+          <Users size={12} />
+        </div>
+        <span>Profiles</span>
+      </div>
 
-      <Link
-        href={'/my-profiles/new-profile'}
-        className={cn('hover:underline transition-transform duration-200', {
-          hidden: pathname !== '/my-profiles/new-profile',
-        })}
+      <a
+        href="/my-profiles"
+        className={cn(
+          'flex items-center gap-2 text-sm font-light hover:underline w-max',
+          {
+            hidden: pathname === '/my-profiles',
+          }
+        )}
       >
-        new
-      </Link>
-    </p>
+        <div className="bg-gray-2 rounded-full p-1">
+          <ChevronLeft size={16} />
+        </div>
+        <span>Return</span>
+      </a>
+    </div>
   );
 };
 export default ProfileTracking;

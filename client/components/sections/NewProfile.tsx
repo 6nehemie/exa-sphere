@@ -14,8 +14,13 @@ import Experiences from '../forms/Experiences';
 import ProfileDetails from '../forms/ProfileDetails';
 import Skills from '../forms/Skills';
 import experienceSchema from '@/utils/zod/experienceSchema';
+import postProfileAction from '@/utils/actions/profile/postProfileAction';
+import { useRouter } from 'next/navigation';
+import { useToast } from '../ui/use-toast';
 
 const NewProfile = () => {
+  const router = useRouter();
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof experienceSchema>>({
@@ -29,8 +34,8 @@ const NewProfile = () => {
           jobTitle: '',
           company: '',
           location: '',
-          startDate: '',
-          endDate: '',
+          startDate: undefined,
+          endDate: undefined,
           responsibilities: '',
           achievements: '',
         } || null,
@@ -39,8 +44,8 @@ const NewProfile = () => {
           jobTitle: '',
           company: '',
           location: '',
-          startDate: '',
-          endDate: '',
+          startDate: undefined,
+          endDate: undefined,
           responsibilities: '',
           achievements: '',
         } || null,
@@ -49,8 +54,8 @@ const NewProfile = () => {
           jobTitle: '',
           company: '',
           location: '',
-          startDate: '',
-          endDate: '',
+          startDate: undefined,
+          endDate: undefined,
           responsibilities: '',
           achievements: '',
         } || null,
@@ -58,10 +63,22 @@ const NewProfile = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof experienceSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof experienceSchema>) {
+    setIsLoading(true);
+
+    const response = await postProfileAction(values);
+
+    if (response && response.error) {
+      return console.error(response.error);
+    }
+
+    setIsLoading(false);
+    toast({
+      title: 'Profile Created',
+      description: 'Your profile has been created successfully',
+    });
+
+    router.push('/my-profiles');
   }
 
   return (

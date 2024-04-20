@@ -1,13 +1,13 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { cn } from '@/lib/utils';
+import { Profile } from '@/types';
+import { useState } from 'react';
 import AddItemBis from '../buttons/AddItemBis';
 import ProfileFormWrapper from '../wrappers/ProfileFormWrapper';
 import ExperienceCard from './ExperienceCard';
-import { cn } from '@/lib/utils';
-import { Profile } from '@/types';
 
-const Experiences = ({
+const UpdateExperiences = ({
   control,
   form,
   profile,
@@ -16,7 +16,12 @@ const Experiences = ({
   form: any;
   profile?: Profile;
 }) => {
-  const [experience, setExperience] = useState<number>(1);
+  const ExpOpen = profile?.experience3?.jobTitle
+    ? 3
+    : profile?.experience2?.jobTitle
+    ? 2
+    : 1;
+  const [experience, setExperience] = useState<number>(ExpOpen);
 
   const addExperience = () => {
     if (experience < 3) {
@@ -26,6 +31,16 @@ const Experiences = ({
 
   const removeLastExperience = () => {
     if (experience > 1) {
+      // set values to null
+      // ? experience refers to the number of experiences (e.g. experience1, experience2, experience3)
+      form.setValue(`experience${experience}.jobTitle`, '');
+      form.setValue(`experience${experience}.company`, '');
+      form.setValue(`experience${experience}.location`, '');
+      form.setValue(`experience${experience}.startDate`, null);
+      form.setValue(`experience${experience}.endDate`, null);
+      form.setValue(`experience${experience}.responsibilities`, '');
+      form.setValue(`experience${experience}.achievements`, '');
+
       setExperience((prev) => prev - 1);
     }
   };
@@ -35,12 +50,7 @@ const Experiences = ({
       title="Experiences"
       description="Your experiences shape credibility. One minimum required for a comprehensive profile. Add up to three to showcase skills."
     >
-      <ExperienceCard
-        control={control}
-        experienceNum={1}
-        form={form}
-        profile={profile}
-      />
+      <ExperienceCard control={control} experienceNum={1} form={form} />
 
       {experience > 1 && (
         <ExperienceCard control={control} experienceNum={2} form={form} />
@@ -70,4 +80,4 @@ const Experiences = ({
     </ProfileFormWrapper>
   );
 };
-export default Experiences;
+export default UpdateExperiences;

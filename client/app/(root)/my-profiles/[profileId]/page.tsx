@@ -1,14 +1,14 @@
 import UpdateProfile from '@/components/sections/UpdateProfile';
-import { jobProfiles, profiles } from '@/constants';
+import { jobProfiles } from '@/constants';
+import getProfileAction from '@/utils/actions/profile/getProfileAction';
+import { redirect } from 'next/navigation';
 
-const Profile = ({ params }: { params: { profileId: string } }) => {
-  console.log(params.profileId);
+const Profile = async ({ params }: { params: { profileId: string } }) => {
+  const profile = await getProfileAction(params.profileId);
 
-  const profile = profiles.filter(
-    (profile) => String(profile.id) === params.profileId
-  );
-
-  console.log('Profile: ', profile);
+  if (profile.error) {
+    redirect('/my-profiles');
+  }
 
   return (
     <section>

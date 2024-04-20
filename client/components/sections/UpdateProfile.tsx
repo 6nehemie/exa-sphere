@@ -7,125 +7,118 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
+import { Profile } from '@/types';
+import experienceSchema from '@/utils/zod/experienceSchema';
 import { Loader2 } from 'lucide-react';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Characteristics from '../forms/Characteristics';
-import Experiences from '../forms/Experiences';
 import ProfileDetails from '../forms/ProfileDetails';
 import Skills from '../forms/Skills';
-import { IProfile } from '@/types';
+import UpdateExperiences from '../forms/UpdateExperiences';
+import updateProfileAction from '@/utils/actions/profile/updateProfileAction';
+import { useToast } from '@/components/ui/use-toast';
+import deleteProfile from '@/utils/actions/profile/deleteProfile';
 
-const formSchema = z.object({
-  title: z.string().min(1, { message: 'Profile Title is required' }),
-  description: z.string().optional(),
-  skills: z
-    .string()
-    .min(1, { message: 'At least one skill is required' })
-    .refine(
-      (skills) => {
-        return skills.split(',').length <= 10;
-      },
-      { message: 'Skills should be less than 10' }
-    ),
+const UpdateProfile = ({ profile }: { profile?: Profile }) => {
+  const router = useRouter();
+  const params = useParams();
+  const { toast } = useToast();
+  const pathname = usePathname();
+  const profileId = Number(params.profileId);
 
-  experience: z.object({
-    jobTitle: z.string().min(1, { message: 'Job title is required' }),
-    company: z.string().min(1, { message: 'Company is required' }),
-    location: z.string().min(1, { message: 'Location is required' }),
-    startDate: z.string().min(1, { message: 'Start Date is required' }),
-    endDate: z.string(),
-    responsibilities: z
-      .string()
-      .min(1, { message: 'Responsibilities is required' }),
-    achievements: z.string().min(1).optional(),
-  }),
-
-  experience2: z
-    .object({
-      jobTitle: z.string().min(1, { message: 'Job title is required' }),
-      company: z.string().min(1, { message: 'Company is required' }),
-      location: z.string().min(1, { message: 'Location is required' }),
-      startDate: z.string().min(1, { message: 'Start Date is required' }),
-      endDate: z.string(),
-      responsibilities: z
-        .string()
-        .min(1, { message: 'Responsibilities is required' }),
-      achievements: z.string().min(1).optional(),
-    })
-    .optional(),
-
-  experience3: z
-    .object({
-      jobTitle: z.string().min(1, { message: 'Job title is required' }),
-      company: z.string().min(1, { message: 'Company is required' }),
-      location: z.string().min(1, { message: 'Location is required' }),
-      startDate: z.string().min(1, { message: 'Start Date is required' }),
-      endDate: z.string(),
-      responsibilities: z
-        .string()
-        .min(1, { message: 'Responsibilities is required' }),
-      achievements: z.string().min(1).optional(),
-    })
-    .optional(),
-
-  characteristics: z
-    .string()
-    .min(1, { message: 'At least one characteristic is required' })
-    .refine(
-      (characteristic) => {
-        return characteristic.split(',').length <= 8;
-      },
-      { message: 'Characteristics should be less than 10' }
-    ),
-});
-
-const UpdateProfile = ({ profile }: { profile: any }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof experienceSchema>>({
+    resolver: zodResolver(experienceSchema),
     defaultValues: {
-      title: profile.title || 'test',
-      description: profile.description || '',
-      skills: profile.skills || '',
-      experience: {
-        jobTitle: '',
-        company: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-        responsibilities: '',
-        achievements: '',
+      title: profile?.title || '',
+      description: profile?.description || '',
+      skills: profile?.skills || '',
+      experience1: {
+        jobTitle: profile?.experience1.jobTitle || '',
+        company: profile?.experience1.company || '',
+        location: profile?.experience1.location || '',
+        startDate:
+          (profile?.experience1?.startDate &&
+            new Date(profile.experience1.startDate.substring(0, 10))) ||
+          undefined,
+        endDate:
+          (profile?.experience1?.endDate &&
+            new Date(profile.experience1.endDate.substring(0, 10))) ||
+          undefined,
+        responsibilities: profile?.experience1.responsibilities || '',
+        achievements: profile?.experience1.achievements || '',
       },
-      experience2: {
-        jobTitle: '',
-        company: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-        responsibilities: '',
-        achievements: '',
-      },
-      experience3: {
-        jobTitle: '',
-        company: '',
-        location: '',
-        startDate: '',
-        endDate: '',
-        responsibilities: '',
-        achievements: '',
-      },
-      characteristics: profile.characteristics || '',
+      experience2:
+        {
+          jobTitle: profile?.experience2?.jobTitle || '',
+          company: profile?.experience2?.company || '',
+          location: profile?.experience2?.location || '',
+          startDate:
+            (profile?.experience2?.startDate &&
+              new Date(profile.experience2.startDate.substring(0, 10))) ||
+            undefined,
+          endDate:
+            (profile?.experience2?.endDate &&
+              new Date(profile.experience2.endDate.substring(0, 10))) ||
+            undefined,
+          responsibilities: profile?.experience2?.responsibilities || '',
+          achievements: profile?.experience2?.achievements || '',
+        } || null,
+      experience3:
+        {
+          jobTitle: profile?.experience3?.jobTitle || '',
+          company: profile?.experience3?.company || '',
+          location: profile?.experience3?.location || '',
+          startDate:
+            (profile?.experience3?.startDate &&
+              new Date(profile.experience3.startDate.substring(0, 10))) ||
+            undefined,
+          endDate:
+            (profile?.experience3?.endDate &&
+              new Date(profile.experience3.endDate.substring(0, 10))) ||
+            undefined,
+          responsibilities: profile?.experience3?.responsibilities || '',
+          achievements: profile?.experience3?.achievements || '',
+        } || null,
+      characteristics: profile?.characteristics || '',
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof experienceSchema>) {
+    setIsLoading(true);
+
+    const response = await updateProfileAction(profileId, values);
+
+    if (response && response.error) {
+      return console.error(response.error);
+    }
+
+    setIsLoading(false);
+
+    toast({
+      title: 'Profile Updated',
+      description: 'Your profile has been updated successfully',
+    });
+
+    router.push(pathname);
   }
+
+  const handleDeleteProfile = async () => {
+    const response = await deleteProfile(profileId);
+
+    if (response && response.error) {
+      toast({
+        title: 'Error',
+        variant: 'destructive',
+        description: 'Failed to delete profile',
+      });
+      return console.error(response.error);
+    }
+
+    router.refresh();
+  };
 
   return (
     <Form {...form}>
@@ -138,11 +131,14 @@ const UpdateProfile = ({ profile }: { profile: any }) => {
 
           <Skills control={form.control} />
 
-          <Experiences control={form.control} />
+          <UpdateExperiences
+            control={form.control}
+            form={form}
+            profile={profile}
+          />
 
           <Characteristics control={form.control} />
         </div>
-
         <div className="relative">
           <div className="xl:pl-16 xl:sticky top-[140px] space-y-2">
             <Button
@@ -155,13 +151,22 @@ const UpdateProfile = ({ profile }: { profile: any }) => {
                   hidden: !isLoading,
                 })}
               />
-              <span>{isLoading ? 'saving...' : 'Save Profile'}</span>
+              <span>{isLoading ? 'saving...' : 'Update Profile'}</span>
             </Button>
 
             <p className="font-light text-sm text-gray-1">
               By saving the profile, you are creating a new profile that will be
               used to help generate a cover letter tailored to your profile.
             </p>
+
+            <div className="pt-4 flex justify-end">
+              <div
+                onClick={handleDeleteProfile}
+                className="text-sm font-light text-red-500 hover:text-red-400 transition-colors duration-200 cursor-pointer py-1.5 px-2.5"
+              >
+                Delete
+              </div>
+            </div>
           </div>
         </div>
       </form>
