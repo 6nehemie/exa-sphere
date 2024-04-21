@@ -1,58 +1,3 @@
-export const userInfo = {
-  id: 1,
-  avatar: '/avatar.png',
-  firstName: 'Naomi',
-  lastName: 'Liu',
-  fullName: 'Naomi Liu',
-  email: 'naomi.liu@test.com',
-  description:
-    'Experienced software engineer passionate about problem-solving and innovation. Skilled in full-stack development with a focus on React.js, Node.js, and Spring Boot. Committed to continuous learning and collaboration for impactful projects.',
-
-  phoneNumber: {
-    countryCode: '41',
-    number: '123 456 789',
-  },
-  phone: '+41 123 456 789',
-
-  address: {
-    id: 1,
-    title: 'Main Home, Zurich',
-    street: 'Brunnacherstrasse 100',
-    city: 'Zurich',
-    zip: '8047',
-    state: 'Zurich',
-    country: 'Switzerland',
-  },
-
-  education: [
-    {
-      school: 'University of XYZ',
-      degree: 'Bachelor of Science in Computer Science',
-      graduationYear: 2020,
-    },
-    {
-      school: 'ABC Business School',
-      degree: 'Master of Business Administration',
-      graduationYear: 2018,
-    },
-  ],
-};
-
-export const educationBis = [
-  {
-    degree: 'Bachelor of Science in Computer Science',
-    institution: 'ABC Business School',
-    graduationYear: '2018',
-    description: 'Graduated with honors',
-  },
-  {
-    degree: 'Master of Business Administration',
-    institution: 'XYZ University',
-    graduationYear: '2020',
-    description: 'Graduated with honors',
-  },
-];
-
 export const auth = {
   testimonial: `“Exa Sphere has been instrumental in streamlining my job application process. Their AI-generated cover letters, tailored to my job experience and the specific field I'm applying to, have been incredibly effective. It's like having a personal career advisor guiding me towards success.”`,
   author: 'Naomi Liu',
@@ -116,169 +61,1370 @@ export const settingsSecurity = {
     'Update your password to ensure your account is secure and protected.',
 };
 
-export const profiles = [
+export const generatedCoverLetter = [
   {
-    id: 1,
-    title: 'Software Engineer',
-    description:
-      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
-    skills: 'React.js, Node.js, Spring Boot',
-    experience: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience2: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience3: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    characteristics: 'Problem-solving, Innovative, Team Player',
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
   },
   {
-    id: 2,
-    title: 'Software Engineer',
-    description:
-      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
-    skills: 'React.js, Node.js, Spring Boot',
-    experience: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience2: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience3: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    characteristics: 'Problem-solving, Innovative, Team Player',
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
   },
   {
-    id: 3,
-    title: 'Software Engineer',
-    description:
-      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
-    skills: 'React.js, Node.js, Spring Boot',
-    experience: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience2: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience3: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    characteristics: 'Problem-solving, Innovative, Team Player',
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
   },
   {
-    id: 4,
-    title: 'Software Engineer',
-    description:
-      'Experienced Software Engineer profile showcasing expertise in full-stack development and innovative problem-solving.',
-    skills: 'React.js, Node.js, Spring Boot',
-    experience: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience2: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    experience3: {
-      jobTitle: 'Software Engineer',
-      company: 'XYZ Company',
-      location: 'Zurich, Switzerland',
-      startDate: 'Jan 2022',
-      endDate: 'Present',
-      responsibilities:
-        'Developed and maintained web applications using React.js and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-      achievements:
-        'Increased application performance by 30% through code optimization and refactoring.',
-    },
-    characteristics: 'Problem-solving, Innovative, Team Player',
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
+  },
+  {
+    jobTitle: 'Software Engineer',
+    company: 'Google',
+    location: 'Mountain View, CA',
+    jobType: 'Full-time',
+    experienceLevel: 'Mid-level',
+    description: `About the job
+    Who we are:
+    
+    BigID is an innovative tech startup that focuses on solutions for data security, compliance, privacy, and governance. We're leading the market in all things data: helping our customers reduce risk, drive business innovation, achieve compliance, build customer trust, make better decisions, and get more value from their data.
+    
+    We are building a global team with a passion for innovation and next-gen technology. BigID has been recognized for being one of CNBC’s Top 25 Startups powering the economy, we're on Built In's 2023 Best Places to Work, one of America's fastest-growing companies, Inc5000 2023, 3 years running, one of the 20 coolest identity access management and data protection companies, CRN Security 100 2023, a Market Leader in DSPM at the 11th annual Global InfoSec Awards (Cyber Defense Magazine) and 2023 Disruptor Gold Winner - Most Disruptive Cyber Security Software, Globee Awards.
+    
+    At BigID, our team is the foundation of our success. Join a people-centric culture that is fast-paced and rewarding: you’ll have the opportunity to work with some of the most talented people in the industry who value innovation, diversity, integrity, and collaboration.
+    
+    Who we seek:
+    
+    We’re looking for a software engineer with a “can do anything” spirit. Working on cross product features and enhancing product resources. As a software engineer you will play a key role in developing core solutions, building new services, implementing new technologies from scratch and bringing innovation to the team’s developments. Our ideal candidate is a customer facing team player who has hands-on Backend experience and is capable of claiming ownership of a feature, from one end to another.
+    
+    What you’ll do:
+    
+    Design logical solutions to complex challenges for our customers and internal developers
+    Write high-quality code, covered by solid unit and integration tests
+    Drive technological and architectural decisions
+    Review the design and code for other team members
+    Work directly with customers on features
+    
+    What you’ll bring:
+    
+    At least 3 years of hands-on experience in Backend development: Node.js, Java with a Proven track record of designing and implementing software solutions.
+    Excellent communication and collaboration skills.
+    Deep understanding of REST APIs, Databases, message queues, multi-tenancy, big data and scalable computing.
+    Experience with microservices (preferably in kubernetes environments)
+    Experience in Agile development
+    A can-do-attitude
+    
+    Advantages:
+    
+    Java and Spring knowledge
+    Full stack capabilities
+    Familiarity with SDK and shared clients practices
+    
+    What’s in it for you?!
+    
+    Our people are the foundation of our success, and we place a high priority on offering a wide range of benefits that make our team happier and healthier.
+    
+     Equity participation - everyone shares in our success
+     Flexible work arrangements
+     Other compulsory benefits based on country of residence
+    
+    Our Values:
+    
+    We look for people who embody our values - Care, Do, Try & Shine.
+    
+    Care - We care about our customers and each other
+    Do - We do what it takes to make a positive impact
+    Try - We try our best and we don’t give up
+    Shine - We shine and make it our mission to always stand out
+    
+    BigDiversity: We’re committed to creating a culture of inclusion, diversity, and equality – across race, gender, sexuality, disability, and neurodiversity – where innovation and growth thrive, every voice is heard, and everybody belongs. Learn more about us here.
+    
+    CPRA Employee Privacy Notice: CA 
+    
+    BigID is an E-Verify Participant.`,
   },
 ];

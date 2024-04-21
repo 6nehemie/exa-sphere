@@ -44,6 +44,10 @@ public class User implements UserDetails {
     private Address address;
 
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Education> educations;
+
+
     public boolean isVerified() {
         return isVerified;
     }
@@ -63,6 +67,9 @@ public class User implements UserDetails {
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Token> tokens;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Profile> profiles;
     
     private String description;
 

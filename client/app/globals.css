@@ -81,4 +81,38 @@
   .btn {
     @apply px-2 py-0.5 rounded-sm md:hover:bg-gray-2 transition-colors duration-200;
   }
+
+  .customScroll {
+    scrollbar-width: 16px;
+    scrollbar-color: #333333 transparent;
+    scroll-behavior: smooth;
+  }
+
+  .generateNav {
+    height: calc(100vh - 200px);
+  }
+
+  .generateCard .generatedCardMenu {
+    visibility: hidden;
+  }
+
+  .generateCard:hover .generatedCardMenu {
+    visibility: visible;
+  }
+
+  /* Chrome, Edge, and Safari */
+  /* .customScroll::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  .customScroll::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5px;
+  }
+
+  .customScroll::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 14px;
+    border: 3px solid transparent;
+  } */
 }

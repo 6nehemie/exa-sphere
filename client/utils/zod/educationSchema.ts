@@ -1,4 +1,3 @@
-import { group } from 'console';
 import { z } from 'zod';
 
 const educationSchema = z.object({
