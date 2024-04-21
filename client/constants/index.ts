@@ -26,19 +26,32 @@ export const userInfo = {
 
   education: [
     {
-      id: 1,
       school: 'University of XYZ',
       degree: 'Bachelor of Science in Computer Science',
       graduationYear: 2020,
     },
     {
-      id: 2,
       school: 'ABC Business School',
       degree: 'Master of Business Administration',
       graduationYear: 2018,
     },
   ],
 };
+
+export const educationBis = [
+  {
+    degree: 'Bachelor of Science in Computer Science',
+    institution: 'ABC Business School',
+    graduationYear: '2018',
+    description: 'Graduated with honors',
+  },
+  {
+    degree: 'Master of Business Administration',
+    institution: 'XYZ University',
+    graduationYear: '2020',
+    description: 'Graduated with honors',
+  },
+];
 
 export const auth = {
   testimonial: `“Exa Sphere has been instrumental in streamlining my job application process. Their AI-generated cover letters, tailored to my job experience and the specific field I'm applying to, have been incredibly effective. It's like having a personal career advisor guiding me towards success.”`,

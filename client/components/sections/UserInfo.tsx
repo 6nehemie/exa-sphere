@@ -4,10 +4,11 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 
 import toInitials from '@/utils/functions/toInitials';
-import { UserCog } from 'lucide-react';
+import { GraduationCap, UserCog } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { useAppSelector } from '@/lib/hooks';
+import { educationBis, userInfo } from '@/constants';
 
 const UserInfo = () => {
   const pathname = usePathname();
@@ -46,7 +47,7 @@ const UserInfo = () => {
         <p className="text-sm font-light text-gray-1">{user.description}</p>
       </div>
 
-      {/* <div className="space-y-4">
+      <div className="space-y-4">
         <div className="flex justify-between items-start">
           <h3 className="flex items-center gap-2">
             <GraduationCap size={20} className="" strokeWidth={1.4} />
@@ -61,17 +62,17 @@ const UserInfo = () => {
           </Link>
         </div>
 
-        {userInfo.education.map((item, index) => {
+        {educationBis.map((item, index) => {
           return (
             <div key={index}>
               <h4 className="font-light text-sm text-white">{item.degree}</h4>
               <p className="font-light text-sm text-gray-1">
-                {item.school} {item.graduationYear}
+                {item.institution} {item.graduationYear}
               </p>
             </div>
           );
         })}
-      </div> */}
+      </div>
     </section>
   );
 };

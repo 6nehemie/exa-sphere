@@ -35,12 +35,7 @@ const Experiences = ({
       title="Experiences"
       description="Your experiences shape credibility. One minimum required for a comprehensive profile. Add up to three to showcase skills."
     >
-      <ExperienceCard
-        control={control}
-        experienceNum={1}
-        form={form}
-        profile={profile}
-      />
+      <ExperienceCard control={control} experienceNum={1} form={form} />
 
       {experience > 1 && (
         <ExperienceCard control={control} experienceNum={2} form={form} />
