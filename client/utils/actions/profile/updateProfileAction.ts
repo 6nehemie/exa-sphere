@@ -52,13 +52,12 @@ const updateProfileAction = async (
   values = { ...values, id: profileId };
 
   try {
-    const response = await noAuthFetch.put(`/profiles`, values, {
+    await noAuthFetch.put(`/profiles`, values, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
 
-    console.log(response.data);
     return null;
   } catch (error: AxiosError | any) {
     const message = error.response.data.message;

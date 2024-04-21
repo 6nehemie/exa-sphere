@@ -123,3 +123,17 @@ export interface ExperienceOptional {
   responsibilities?: string;
   achievements?: string | undefined;
 }
+
+export interface IEducationAction {
+  degree: string;
+  institution: string;
+  graduationYear: string;
+  description?: string;
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  graduationYear: string;
+  description?: string;
+}

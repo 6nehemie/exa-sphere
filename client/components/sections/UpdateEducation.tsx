@@ -13,16 +13,21 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useToast } from '../ui/use-toast';
 import EducationCard from './EducationCard';
-import { educationBis } from '@/constants';
 import AddItemBis from '../buttons/AddItemBis';
+import postEducationAction from '@/utils/actions/education/postEducationAction';
+import { Education } from '@/types';
 
-const UpdateEducation = () => {
+const UpdateEducation = ({
+  educationsList,
+}: {
+  educationsList: Education[];
+}) => {
   const router = useRouter();
   const { toast } = useToast();
 
   //? Get the number of default educations
   const numDefaultEducations =
-    educationBis.length > 0 ? educationBis.length : 1;
+    educationsList.length > 0 ? educationsList.length : 0;
 
   const [educationNum, setEducationNum] = useState(numDefaultEducations);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +36,7 @@ const UpdateEducation = () => {
     resolver: zodResolver(educationSchema),
     defaultValues: {
       education: [
-        ...(educationBis || {
+        ...(educationsList || {
           degree: '',
           institution: '',
           graduationYear: '',
@@ -44,16 +49,24 @@ const UpdateEducation = () => {
   async function onSubmit(values: z.infer<typeof educationSchema>) {
     setIsLoading(true);
 
-    console.log('Saved Values', values);
-    // if (response && response.error) {
-    //   return console.error(response.error);
-    // }
+    const response = await postEducationAction(values.education);
+
+    if (response && response.error) {
+      toast({
+        title: 'Error',
+        description: 'An error occurred while saving your education details.',
+      });
+
+      setIsLoading(false);
+      return console.error(response.error);
+    }
 
     setIsLoading(false);
     toast({
       title: 'Education Saved',
       description: 'Your education details have been saved successfully.',
     });
+    router.refresh();
   }
 
   const handleAddEducation = () => {
@@ -73,7 +86,7 @@ const UpdateEducation = () => {
   };
 
   const removeLastExperience = () => {
-    if (form.getValues().education.length > 1 && educationNum > 1) {
+    if (form.getValues().education.length > 0 && educationNum > 0) {
       form.setValue('education', [...form.getValues().education.slice(0, -1)]);
       setEducationNum(educationNum - 1);
     }
@@ -108,7 +121,7 @@ const UpdateEducation = () => {
               className={cn(
                 'text-sm font-light text-gray-1 hover:text-white transition-colors duration-200 cursor-pointer col-start-2 justify-self-end',
                 {
-                  hidden: educationNum === 1,
+                  hidden: educationNum === 0,
                 }
               )}
             >

@@ -46,13 +46,12 @@ const postProfileAction = async (values: IProfileAction) => {
   const accessToken = await getUserToken();
 
   try {
-    const response = await noAuthFetch.post(`/profiles`, values, {
+    await noAuthFetch.post(`/profiles`, values, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
 
-    console.log(response.data);
     return null;
   } catch (error: AxiosError | any) {
     const message = error.response.data.message;

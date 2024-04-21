@@ -36,7 +36,6 @@ export const authOptions: NextAuthOptions = {
           });
 
           const data = response.data;
-          // console.log(data.user);
 
           const user = {
             id: data.user.id,
@@ -71,10 +70,6 @@ export const authOptions: NextAuthOptions = {
       }
 
       if (account?.provider === 'google') {
-        // console.log('Oauth User: ', user);
-        // console.log('Oauth Account: ', account);
-        // console.log('Oauth Profile: ', profile);
-
         try {
           const response = await noAuthFetch.post('/auth/oauth', {
             firstName: profile?.given_name,

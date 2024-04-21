@@ -24,8 +24,6 @@ const updateAddressAction = async (values: IUpdateAddress) => {
       },
     });
 
-    console.log(address);
-
     return { address };
   } catch (error: AxiosError | any) {
     console.error(error);

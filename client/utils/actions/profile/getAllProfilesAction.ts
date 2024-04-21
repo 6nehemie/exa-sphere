@@ -14,7 +14,6 @@ const getAllProfilesAction = async () => {
       },
     });
 
-    console.log(data);
     return data;
   } catch (error: AxiosError | any) {
     const message = error.response.data.message;

@@ -3,14 +3,15 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 
+import { educationBis } from '@/constants';
+import { useAppSelector } from '@/lib/hooks';
+import { cn } from '@/lib/utils';
 import toInitials from '@/utils/functions/toInitials';
 import { GraduationCap, UserCog } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { useAppSelector } from '@/lib/hooks';
-import { educationBis, userInfo } from '@/constants';
+import { Education } from '@/types';
 
-const UserInfo = () => {
+const UserInfo = ({ educations }: { educations: Education[] }) => {
   const pathname = usePathname();
   const user = useAppSelector((state) => state.user);
   const fullName = `${user.firstName} ${user.lastName}`;
@@ -45,6 +46,10 @@ const UserInfo = () => {
 
         <h1 className="text-3xl font-light">{fullName}</h1>
         <p className="text-sm font-light text-gray-1">{user.description}</p>
+
+        {!user.description && (
+          <p className="text-sm font-light text-gray-1">No description added</p>
+        )}
       </div>
 
       <div className="space-y-4">
@@ -62,7 +67,7 @@ const UserInfo = () => {
           </Link>
         </div>
 
-        {educationBis.map((item, index) => {
+        {educations.map((item, index) => {
           return (
             <div key={index}>
               <h4 className="font-light text-sm text-white">{item.degree}</h4>
@@ -72,6 +77,14 @@ const UserInfo = () => {
             </div>
           );
         })}
+
+        {educations.length === 0 && (
+          <div className="flex items-center justify-between">
+            <p className="font-light text-sm text-gray-1">
+              No education added yet
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

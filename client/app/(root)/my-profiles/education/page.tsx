@@ -1,7 +1,11 @@
 import UpdateEducation from '@/components/sections/UpdateEducation';
 import { education } from '@/constants';
+import { Education as EducationType, IEducationAction } from '@/types';
+import getEducationsAction from '@/utils/actions/education/getEducationsAction';
 
-const Education = () => {
+const Education = async () => {
+  const educationsList = (await getEducationsAction()) as EducationType[];
+
   return (
     <div>
       <div className="space-y-2 mb-12">
@@ -11,7 +15,7 @@ const Education = () => {
         </p>
       </div>
 
-      <UpdateEducation />
+      <UpdateEducation educationsList={educationsList} />
     </div>
   );
 };
