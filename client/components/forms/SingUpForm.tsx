@@ -38,10 +38,10 @@ const SingUpForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: 'Naomi',
-      lastName: 'Liu',
-      email: 'naomi.liu@one.com',
-      password: 'testtest',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
     },
   });
 
