@@ -1,6 +1,8 @@
 package _6nehemie.com.server.dto.profile;
 
-import _6nehemie.com.server.model.Experience;
+import _6nehemie.com.server.dto.experience.ExperienceResponseDto;
+
+import java.util.List;
 
 public record GetProfilesResponseDto(
         Long id,
@@ -8,8 +10,6 @@ public record GetProfilesResponseDto(
         String description,
         String skills,
         String title,
-        Experience experience1,
-        Experience experience2,
-        Experience experience3
+        List<ExperienceResponseDto> experiences
 ) {
 }

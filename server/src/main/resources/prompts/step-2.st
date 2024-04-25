@@ -1,0 +1,1 @@
+Come up with a cover letter in a friendly tone that shows my passion for {companyName}’s products and how you can add value to the company in the {jobTitle} role.

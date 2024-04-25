@@ -71,6 +71,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Profile> profiles;
     
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Generate> generates;
+    
     private String description;
 
     @Override

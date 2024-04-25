@@ -1,8 +1,10 @@
 package _6nehemie.com.server.dto.profile;
 
-import _6nehemie.com.server.model.Experience;
+import _6nehemie.com.server.dto.experience.ExperienceDto;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 public record PostProfileDto(
         @NotEmpty(message = "Title is required")
@@ -13,9 +15,7 @@ public record PostProfileDto(
         String skills,
         @NotEmpty(message = "Characteristics are required")
         String characteristics,
-        @NotNull(message = "Experience 1 is required")
-        Experience experience1,
-        Experience experience2,
-        Experience experience3
+        @Size(min = 1, message = "At least one experience is required")
+        List<ExperienceDto> experiences
 ) {
 }

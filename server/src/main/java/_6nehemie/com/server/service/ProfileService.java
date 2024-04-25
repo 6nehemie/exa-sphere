@@ -1,5 +1,6 @@
 package _6nehemie.com.server.service;
 
+import _6nehemie.com.server.dto.experience.ExperienceResponseDto;
 import _6nehemie.com.server.dto.profile.GetProfilesResponseDto;
 import _6nehemie.com.server.dto.profile.PostProfileDto;
 import _6nehemie.com.server.dto.profile.ProfileResponseDto;
@@ -8,6 +9,7 @@ import _6nehemie.com.server.exception.BadRequestException;
 import _6nehemie.com.server.model.Experience;
 import _6nehemie.com.server.model.Profile;
 import _6nehemie.com.server.model.User;
+import _6nehemie.com.server.repository.ExperienceRepository;
 import _6nehemie.com.server.repository.ProfileRepository;
 import _6nehemie.com.server.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -15,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,10 +25,12 @@ public class ProfileService {
 
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;
+    private final ExperienceRepository experienceRepository;
 
-    public ProfileService(ProfileRepository profileRepository, UserRepository userRepository) {
+    public ProfileService(ProfileRepository profileRepository, UserRepository userRepository, ExperienceRepository experienceRepository) {
         this.profileRepository = profileRepository;
         this.userRepository = userRepository;
+        this.experienceRepository = experienceRepository;
     }
 
     public GetProfilesResponseDto createProfile(UserDetails userDetails, PostProfileDto request) {
@@ -39,55 +44,30 @@ public class ProfileService {
         }
 
         Profile profile = new Profile();
-        Experience experience1 = new Experience();
-        Experience experience2 = new Experience();
-        Experience experience3 = new Experience();
+        
+        List<Experience> experiences = request.experiences().stream().map(experience -> {
+            Experience newExperience = new Experience();
+            newExperience.setJobTitle(experience.jobTitle());
+            newExperience.setCompany(experience.company());
+            newExperience.setLocation(experience.location());
+            newExperience.setResponsibilities(experience.responsibilities());
+            newExperience.setAchievements(experience.achievements());
+            newExperience.setStartDate(experience.startDate());
+            newExperience.setEndDate(experience.endDate());
+            newExperience.setProfile(profile);
+            return newExperience;
+        }).toList();
 
         profile.setTitle(request.title());
         profile.setDescription(request.description());
         profile.setSkills(request.skills());
         profile.setCharacteristics(request.characteristics());
+        profile.setExperiences(experiences);
         profile.setUser(user);
 
-        experience1.setJobTitle(request.experience1().getJobTitle());
-        experience1.setCompany(request.experience1().getCompany());
-        experience1.setLocation(request.experience1().getLocation());
-        experience1.setResponsibilities(request.experience1().getResponsibilities());
-        experience1.setAchievements(request.experience1().getAchievements());
-        experience1.setStartDate(request.experience1().getStartDate());
-        experience1.setEndDate(request.experience1().getEndDate());
-
-        profile.setExperience1(experience1);
-
-        if (request.experience2() != null && !request.experience2().getJobTitle().isEmpty()) {
-            experience2.setJobTitle(request.experience2().getJobTitle());
-            experience2.setCompany(request.experience2().getCompany());
-            experience2.setLocation(request.experience2().getLocation());
-            experience2.setResponsibilities(request.experience2().getResponsibilities());
-            experience2.setAchievements(request.experience2().getAchievements());
-            experience2.setStartDate(request.experience2().getStartDate());
-            experience2.setEndDate(request.experience2().getEndDate());
-
-            profile.setExperience2(experience2);
-        } else {
-            profile.setExperience2(null);
-        }
-
-        if (request.experience3() != null && !request.experience3().getJobTitle().isEmpty()) {
-            experience3.setJobTitle(request.experience3().getJobTitle());
-            experience3.setCompany(request.experience3().getCompany());
-            experience3.setLocation(request.experience3().getLocation());
-            experience3.setResponsibilities(request.experience3().getResponsibilities());
-            experience3.setAchievements(request.experience3().getAchievements());
-            experience3.setStartDate(request.experience3().getStartDate());
-            experience3.setEndDate(request.experience3().getEndDate());
-
-            profile.setExperience3(experience3);
-        } else {
-            profile.setExperience3(null);
-        }
 
         profileRepository.save(profile);
+        experienceRepository.saveAll(experiences);
 
         return new GetProfilesResponseDto(
                 profile.getId(),
@@ -95,9 +75,18 @@ public class ProfileService {
                 profile.getDescription(),
                 profile.getSkills(),
                 profile.getTitle(),
-                profile.getExperience1(),
-                profile.getExperience2(),
-                profile.getExperience3()
+                profile.getExperiences().stream().map(
+                        experience -> new ExperienceResponseDto(
+                                experience.getId(),
+                                experience.getJobTitle(),
+                                experience.getCompany(),
+                                experience.getLocation(),
+                                experience.getResponsibilities(),
+                                experience.getAchievements(),
+                                experience.getStartDate(),
+                                experience.getEndDate()
+                        )
+                ).toList()
         );
     }
 
@@ -112,9 +101,18 @@ public class ProfileService {
                         profile.getDescription(),
                         profile.getSkills(),
                         profile.getTitle(),
-                        profile.getExperience1(),
-                        profile.getExperience2(),
-                        profile.getExperience3()
+                        profile.getExperiences().stream()
+                                .map(experience -> new ExperienceResponseDto(
+                                        experience.getId(),
+                                        experience.getJobTitle(),
+                                        experience.getCompany(),
+                                        experience.getLocation(),
+                                        experience.getResponsibilities(),
+                                        experience.getAchievements(),
+                                        experience.getStartDate(),
+                                        experience.getEndDate()
+                                ))
+                                .toList()
                 ))
                 .toList();
     }
@@ -129,64 +127,48 @@ public class ProfileService {
                 profile.getDescription(),
                 profile.getSkills(),
                 profile.getTitle(),
-                profile.getExperience1(),
-                profile.getExperience2(),
-                profile.getExperience3()
+                profile.getExperiences().stream()
+                        .map(experience -> new ExperienceResponseDto(
+                                experience.getId(),
+                                experience.getJobTitle(),
+                                experience.getCompany(),
+                                experience.getLocation(),
+                                experience.getResponsibilities(),
+                                experience.getAchievements(),
+                                experience.getStartDate(),
+                                experience.getEndDate()
+                        ))
+                        .toList()
         );
     }
 
+    @Transactional
     public ProfileResponseDto updateProfile(UserDetails userDetails, UpdateProfileDto request) {
         Profile profile = profileRepository.findByIdAndUser_Username(request.id(), userDetails.getUsername())
                 .orElseThrow(() -> new BadRequestException("Profile not found"));
-
-        Experience experience1 = new Experience();
-        Experience experience2 = new Experience();
-        Experience experience3 = new Experience();
         
         profile.setTitle(request.title());
         profile.setDescription(request.description());
         profile.setSkills(request.skills());
         profile.setCharacteristics(request.characteristics());
+        
+        experienceRepository.deleteAllByProfile_Id(profile.getId());
 
-        experience1.setJobTitle(request.experience1().getJobTitle());
-        experience1.setCompany(request.experience1().getCompany());
-        experience1.setLocation(request.experience1().getLocation());
-        experience1.setResponsibilities(request.experience1().getResponsibilities());
-        experience1.setAchievements(request.experience1().getAchievements());
-        experience1.setStartDate(request.experience1().getStartDate());
-        experience1.setEndDate(request.experience1().getEndDate());
-
-        profile.setExperience1(experience1);
-
-        if (request.experience2() != null && !request.experience2().getJobTitle().isEmpty()) {
-            experience2.setJobTitle(request.experience2().getJobTitle());
-            experience2.setCompany(request.experience2().getCompany());
-            experience2.setLocation(request.experience2().getLocation());
-            experience2.setResponsibilities(request.experience2().getResponsibilities());
-            experience2.setAchievements(request.experience2().getAchievements());
-            experience2.setStartDate(request.experience2().getStartDate());
-            experience2.setEndDate(request.experience2().getEndDate());
-
-            profile.setExperience2(experience2);
-        } else {
-            profile.setExperience2(null);
-        }
-
-        if (request.experience3() != null && !request.experience3().getJobTitle().isEmpty()) {
-            experience3.setJobTitle(request.experience3().getJobTitle());
-            experience3.setCompany(request.experience3().getCompany());
-            experience3.setLocation(request.experience3().getLocation());
-            experience3.setResponsibilities(request.experience3().getResponsibilities());
-            experience3.setAchievements(request.experience3().getAchievements());
-            experience3.setStartDate(request.experience3().getStartDate());
-            experience3.setEndDate(request.experience3().getEndDate());
-
-            profile.setExperience3(experience3);
-        } else {
-            profile.setExperience3(null);
-        }
-
+        List<Experience> experiences = request.experiences().stream().map(experience -> {
+            Experience newExperience = new Experience();
+            newExperience.setJobTitle(experience.jobTitle());
+            newExperience.setCompany(experience.company());
+            newExperience.setLocation(experience.location());
+            newExperience.setResponsibilities(experience.responsibilities());
+            newExperience.setAchievements(experience.achievements());
+            newExperience.setStartDate(experience.startDate());
+            newExperience.setEndDate(experience.endDate());
+            newExperience.setProfile(profile);
+            return newExperience;
+        }).toList();
+        
         profileRepository.save(profile);
+        experienceRepository.saveAll(experiences);
         
         return new ProfileResponseDto(
                 "Profile updated successfully",

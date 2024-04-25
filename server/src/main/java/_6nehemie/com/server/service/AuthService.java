@@ -61,11 +61,11 @@ public class AuthService {
         user = userRepository.save(user);
 
         //? Send verification code to user
-//        emailService.sendEmail(
-//                user.getEmail(),
-//                "Verification Code",
-//                "Your verification code is: " + user.getVerificationCode()
-//        );
+        emailService.sendEmail(
+                user.getEmail(),
+                "Verification Code",
+                "Your verification code is: " + user.getVerificationCode()
+        );
 
         String token = jwtService.generateToken(user);
         Date expiresIn = jwtService.extractExpiration(token);

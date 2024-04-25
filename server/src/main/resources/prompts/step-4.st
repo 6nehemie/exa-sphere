@@ -1,0 +1,1 @@
+Produce a cover letter that showcases my {skills} abilities in a professional and positive tone.

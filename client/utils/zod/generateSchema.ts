@@ -21,10 +21,8 @@ const generateSchema = z.object({
     .string()
     .min(1, 'Experience level is required')
     .max(100, 'Experience level is too long'),
-  description: z
-    .string()
-    .min(1, 'Description is required')
-    .max(1000, 'Description is too long'),
+  profileId: z.string().min(1, 'Profile is required'),
+  description: z.string().min(1, 'Description is required'),
 });
 
 export default generateSchema;

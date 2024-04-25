@@ -14,23 +14,23 @@ import ExperienceDate from './ExperienceDate';
 
 const ExperienceCard = ({
   control,
-  experienceNum,
   form,
+  index,
 }: {
   control: any;
-  experienceNum: number;
   form: any;
+  index?: number;
 }) => {
-  const errorMsg =
-    form.formState.errors[`experience${experienceNum}`]?.message || '';
+  // const errorMsg =
+  //   form.formState.errors[`experiences[${index}]`]?.message || '';
 
   return (
     <div className="border border-dashed border-gray-2 p-5 rounded-xl space-y-4">
-      {errorMsg && <p className="text-red-500 font-light">{errorMsg}</p>}
+      {/* {errorMsg && <p className="text-red-500 font-light">{errorMsg}</p>} */}
       <div className="md:grid grid-cols-2 max-md:space-y-4 gap-x-5">
         <FormField
           control={control}
-          name={`experience${experienceNum}.jobTitle`}
+          name={`experiences[${index}].jobTitle`}
           render={({ field }) => (
             <FormItem>
               <FormLabel className="font-light">Job Title *</FormLabel>
@@ -46,7 +46,7 @@ const ExperienceCard = ({
 
         <FormField
           control={control}
-          name={`experience${experienceNum}.company`}
+          name={`experiences[${index}].company`}
           render={({ field }) => (
             <FormItem>
               <FormLabel className="font-light">Company Name *</FormLabel>
@@ -65,20 +65,20 @@ const ExperienceCard = ({
           form={form}
           dateName="startDate"
           label="Start Date *"
-          experienceNum={experienceNum}
+          index={index}
         />
 
         <ExperienceDate
           form={form}
+          index={index}
           dateName="endDate"
           label="End Date (optional)"
-          experienceNum={experienceNum}
         />
       </div>
 
       <FormField
         control={control}
-        name={`experience${experienceNum}.location`}
+        name={`experiences[${index}].location`}
         render={({ field }) => (
           <FormItem>
             <FormLabel className="font-light">Location *</FormLabel>
@@ -92,7 +92,7 @@ const ExperienceCard = ({
 
       <FormField
         control={control}
-        name={`experience${experienceNum}.responsibilities`}
+        name={`experiences[${index}].responsibilities`}
         render={({ field }) => (
           <FormItem>
             <FormLabel className="font-light">Responsibilities *</FormLabel>
@@ -112,7 +112,7 @@ const ExperienceCard = ({
 
       <FormField
         control={control}
-        name={`experience${experienceNum}.achievements`}
+        name={`experiences[${index}].achievements`}
         render={({ field }) => (
           <FormItem>
             <FormLabel className="font-light">

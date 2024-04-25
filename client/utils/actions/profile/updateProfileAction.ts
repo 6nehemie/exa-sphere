@@ -3,53 +3,29 @@
 import { noAuthFetch } from '@/utils/apis/exaSphereApi';
 import { AxiosError } from 'axios';
 import getUserToken from '../user/getUserToken';
+interface Experience {
+  jobTitle: string;
+  company: string;
+  location: string;
+  startDate: Date;
+  endDate?: Date | undefined;
+  responsibilities: string;
+  achievements?: string | undefined;
+}
 
 interface IProfileAction {
-  id?: number;
+  id: number;
   title: string;
   description?: string | undefined;
   skills: string;
-  experience1: {
-    jobTitle: string;
-    company: string;
-    location: string;
-    startDate: Date;
-    endDate?: Date | undefined;
-    responsibilities: string;
-    achievements?: string | undefined;
-  };
-  experience2?:
-    | {
-        jobTitle?: string;
-        company?: string;
-        location?: string;
-        startDate?: Date;
-        endDate?: Date;
-        responsibilities?: string;
-        achievements?: string | undefined;
-      }
-    | undefined;
-  experience3?:
-    | {
-        jobTitle?: string;
-        company?: string;
-        location?: string;
-        startDate?: Date;
-        endDate?: Date;
-        responsibilities?: string;
-        achievements?: string | undefined;
-      }
-    | undefined;
+  experiences: Experience[];
   characteristics: string;
 }
 
-const updateProfileAction = async (
-  profileId: number,
-  values: IProfileAction
-) => {
+const updateProfileAction = async (values: IProfileAction) => {
   const accessToken = await getUserToken();
 
-  values = { ...values, id: profileId };
+  // values = {id: profileId };
 
   try {
     await noAuthFetch.put(`/profiles`, values, {

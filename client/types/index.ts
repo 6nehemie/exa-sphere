@@ -98,9 +98,7 @@ export interface Profile {
   title: string;
   description?: string | undefined;
   skills: string;
-  experience1: Experience;
-  experience2?: ExperienceOptional;
-  experience3?: ExperienceOptional;
+  experiences: Experience[];
   characteristics: string;
 }
 
@@ -136,4 +134,16 @@ export interface Education {
   institution: string;
   graduationYear: string;
   description?: string;
+}
+
+export interface Generate {
+  id: number;
+  jobTitle: string;
+  company: string;
+  location: string;
+  jobType: string;
+  experienceLevel: string;
+  profileId: number | string;
+  description: string;
+  coverLetter: string;
 }

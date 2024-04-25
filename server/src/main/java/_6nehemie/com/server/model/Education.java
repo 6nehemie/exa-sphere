@@ -1,16 +1,14 @@
 package _6nehemie.com.server.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Education {
 
     @Id
@@ -24,5 +22,6 @@ public class Education {
     private String degree;
     private String institution;
     private Integer graduationYear;
+    @Column(columnDefinition = "TEXT")
     private String description;
 }

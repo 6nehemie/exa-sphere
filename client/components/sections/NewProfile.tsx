@@ -29,7 +29,7 @@ const NewProfile = () => {
       title: '',
       description: '',
       skills: '',
-      experience1:
+      experiences: [
         {
           jobTitle: '',
           company: '',
@@ -38,27 +38,9 @@ const NewProfile = () => {
           endDate: undefined,
           responsibilities: '',
           achievements: '',
-        } || null,
-      experience2:
-        {
-          jobTitle: '',
-          company: '',
-          location: '',
-          startDate: undefined,
-          endDate: undefined,
-          responsibilities: '',
-          achievements: '',
-        } || null,
-      experience3:
-        {
-          jobTitle: '',
-          company: '',
-          location: '',
-          startDate: undefined,
-          endDate: undefined,
-          responsibilities: '',
-          achievements: '',
-        } || null,
+        },
+      ],
+
       characteristics: '',
     },
   });
@@ -66,9 +48,12 @@ const NewProfile = () => {
   async function onSubmit(values: z.infer<typeof experienceSchema>) {
     setIsLoading(true);
 
+    console.log(values);
+
     const response = await postProfileAction(values);
 
     if (response && response.error) {
+      setIsLoading(false);
       return console.error(response.error);
     }
 
@@ -78,7 +63,7 @@ const NewProfile = () => {
       description: 'Your profile has been created successfully',
     });
 
-    router.push('/my-profiles');
+    router.push(`/my-profiles/${response.id}`);
   }
 
   return (

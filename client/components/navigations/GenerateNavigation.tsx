@@ -12,8 +12,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Generate } from '@/types';
 
-const GenerateNavigation = () => {
+const GenerateNavigation = ({
+  generatedList,
+}: {
+  generatedList: Generate[];
+}) => {
   const params = useParams();
   const router = useRouter();
 
@@ -36,15 +41,15 @@ const GenerateNavigation = () => {
       </div>
 
       <div className="overflow-hidden overflow-y-scroll customScroll generateNav pb-10 space-y-2">
-        {generatedCoverLetter.map((item, index) => {
+        {generatedList.map((item, index) => {
           return (
             <Link
               key={index}
-              href={`/generate/${index}`}
+              href={`/generate/${item.id}`}
               className={`generateCard ${cn(
                 ' flex items-center justify-between  text-sm space-y-1 rounded-sm hover:bg-gray-2 transition-colors duration-100 ',
                 {
-                  'bg-gray-2': index === +params.id,
+                  'bg-gray-2': item.id === +params.id,
                 }
               )}`}
             >

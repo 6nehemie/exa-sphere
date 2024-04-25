@@ -21,11 +21,27 @@ const Experiences = ({
   const addExperience = () => {
     if (experience < 3) {
       setExperience((prev) => prev + 1);
+
+      form.setValue('experiences', [
+        ...form.getValues('experiences'),
+        {
+          jobTitle: '',
+          company: '',
+          location: '',
+          startDate: '',
+          endDate: '',
+          responsibilities: '',
+          achievements: '',
+        },
+      ]);
     }
   };
 
   const removeLastExperience = () => {
     if (experience > 1) {
+      form.setValue('experiences', [
+        ...form.getValues('experiences').slice(0, -1),
+      ]);
       setExperience((prev) => prev - 1);
     }
   };
@@ -35,15 +51,16 @@ const Experiences = ({
       title="Experiences"
       description="Your experiences shape credibility. One minimum required for a comprehensive profile. Add up to three to showcase skills."
     >
-      <ExperienceCard control={control} experienceNum={1} form={form} />
+      {/* <ExperienceCard control={control} experienceNum={1} form={form} /> */}
 
-      {experience > 1 && (
-        <ExperienceCard control={control} experienceNum={2} form={form} />
-      )}
-
-      {experience > 2 && (
-        <ExperienceCard control={control} experienceNum={3} form={form} />
-      )}
+      {[...Array(experience)].map((_, index) => (
+        <ExperienceCard
+          key={index}
+          control={control}
+          index={index}
+          form={form}
+        />
+      ))}
 
       <div className="grid grid-cols-2 justify-between pt-2">
         {experience < 3 && (

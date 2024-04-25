@@ -17,24 +17,24 @@ import { FormLabel } from '@/components/ui/form';
 
 const ExperienceDate = ({
   label,
-  experienceNum,
   dateName,
   form,
+  index,
 }: {
   label: string;
-  experienceNum: number;
   dateName: string;
   form: any;
+  index?: number;
 }) => {
   const [date, setDate] = React.useState<Date>(
-    form.getValues(`experience${experienceNum}.${dateName}`) as any
+    form.getValues(`experiences[${index}].${dateName}`) as any
   );
 
-  form.setValue(`experience${experienceNum}.${dateName}`, date || undefined);
+  form.setValue(`experiences[${index}].${dateName}`, date || undefined);
 
   const errorMsg =
-    form.formState.errors[`experience${experienceNum}`]?.[`${dateName}`]
-      ?.message || '';
+    form.formState.errors[`experiences[${index}]`]?.[`${dateName}`]?.message ||
+    '';
 
   return (
     <>

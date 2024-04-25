@@ -35,53 +35,25 @@ const UpdateProfile = ({ profile }: { profile?: Profile }) => {
       title: profile?.title || '',
       description: profile?.description || '',
       skills: profile?.skills || '',
-      experience1: {
-        jobTitle: profile?.experience1.jobTitle || '',
-        company: profile?.experience1.company || '',
-        location: profile?.experience1.location || '',
-        startDate:
-          (profile?.experience1?.startDate &&
-            new Date(profile.experience1.startDate.substring(0, 10))) ||
-          undefined,
-        endDate:
-          (profile?.experience1?.endDate &&
-            new Date(profile.experience1.endDate.substring(0, 10))) ||
-          undefined,
-        responsibilities: profile?.experience1.responsibilities || '',
-        achievements: profile?.experience1.achievements || '',
-      },
-      experience2:
-        {
-          jobTitle: profile?.experience2?.jobTitle || '',
-          company: profile?.experience2?.company || '',
-          location: profile?.experience2?.location || '',
-          startDate:
-            (profile?.experience2?.startDate &&
-              new Date(profile.experience2.startDate.substring(0, 10))) ||
-            undefined,
-          endDate:
-            (profile?.experience2?.endDate &&
-              new Date(profile.experience2.endDate.substring(0, 10))) ||
-            undefined,
-          responsibilities: profile?.experience2?.responsibilities || '',
-          achievements: profile?.experience2?.achievements || '',
-        } || null,
-      experience3:
-        {
-          jobTitle: profile?.experience3?.jobTitle || '',
-          company: profile?.experience3?.company || '',
-          location: profile?.experience3?.location || '',
-          startDate:
-            (profile?.experience3?.startDate &&
-              new Date(profile.experience3.startDate.substring(0, 10))) ||
-            undefined,
-          endDate:
-            (profile?.experience3?.endDate &&
-              new Date(profile.experience3.endDate.substring(0, 10))) ||
-            undefined,
-          responsibilities: profile?.experience3?.responsibilities || '',
-          achievements: profile?.experience3?.achievements || '',
-        } || null,
+      experiences: [
+        ...(profile?.experiences?.map((experience) => ({
+          ...experience,
+          startDate: new Date(experience.startDate.slice(0, 10)),
+          endDate: experience.endDate
+            ? new Date(experience.endDate.slice(0, 10))
+            : undefined,
+        })) || [
+          {
+            jobTitle: '',
+            company: '',
+            location: '',
+            startDate: new Date(),
+            endDate: undefined,
+            responsibilities: '',
+            achievements: '',
+          },
+        ]),
+      ],
       characteristics: profile?.characteristics || '',
     },
   });
@@ -89,7 +61,7 @@ const UpdateProfile = ({ profile }: { profile?: Profile }) => {
   async function onSubmit(values: z.infer<typeof experienceSchema>) {
     setIsLoading(true);
 
-    const response = await updateProfileAction(profileId, values);
+    const response = await updateProfileAction({ ...values, id: profileId });
 
     if (response && response.error) {
       return console.error(response.error);
