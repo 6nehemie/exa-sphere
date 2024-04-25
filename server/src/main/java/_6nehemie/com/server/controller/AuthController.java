@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
-    private final EmailService emailService;
 
     public AuthController(AuthService authService, EmailService emailService) {
         this.authService = authService;
-        this.emailService = emailService;
     }
 
     //? register
@@ -39,16 +37,6 @@ public class AuthController {
         System.out.println(request);
         
         return ResponseEntity.ok(authService.oAuth(request));
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        emailService.sendEmail(
-                "nehemie.mbg@gmail.com",
-                "Test Email",
-                "This is a test email from Exa Sphere Backend Server!"
-        );
-        return "Welcome to Exa Sphere Backend Server!";
     }
 }
 

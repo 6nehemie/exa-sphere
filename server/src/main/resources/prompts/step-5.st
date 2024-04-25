@@ -1,1 +1,0 @@
-Suggest a tone and style for a cover letter to apply for a creative position in the industry field.

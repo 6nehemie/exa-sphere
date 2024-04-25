@@ -1,1 +1,0 @@
-Craft a compelling opening paragraph for a cover letter in the style.

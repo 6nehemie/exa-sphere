@@ -46,9 +46,6 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST ,"/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST ,"/auth/oauth").permitAll()
                         .requestMatchers(HttpMethod.GET ,"/auth/test").permitAll()
-                        .requestMatchers(HttpMethod.GET ,"/dad-jokes").permitAll()// temp
-                        .requestMatchers(HttpMethod.GET ,"/youtube/popular").permitAll()// temp
-                        .requestMatchers(HttpMethod.GET ,"/prompt").permitAll()// temp
                         .anyRequest().authenticated()
                 )
 

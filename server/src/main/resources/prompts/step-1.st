@@ -1,2 +1,0 @@
-Create a cover letter in a persuasive style for a {jobTitle} position at {companyName}, emphasizing my experience in {skills} and how it will benefit the company.
-For this job description {jobDescription}. Do not lie about skills that are not part of {skills}.

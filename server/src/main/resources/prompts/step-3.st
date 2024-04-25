@@ -1,1 +1,0 @@
-Develop a cover letter in a professional tone for a {jobTitle} position at {companyName}, highlighting my accomplishments in {skills} and how you can contribute to the company’s goals.

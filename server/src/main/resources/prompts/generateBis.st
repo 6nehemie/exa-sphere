@@ -15,7 +15,9 @@ Company Name: {companyName}
 experience level: {experienceLevel}
 description: {description}
 
-The rules to follow are important: You must not lie about my experiences, skills, or education. You must not copy and paste from the internet. You must not use any template
+The rules to follow are important: You must not lie about my experiences, skills, or education. You must not copy and paste from the internet. You must not use any template.
+
+As for the skills only user the ones that are relevant to the job description.
 
 Incorporate a compelling opening sentence for a cover letter to apply for a {jobTitle} role at {companyName}.
 
