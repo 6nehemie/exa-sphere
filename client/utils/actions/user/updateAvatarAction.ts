@@ -13,6 +13,7 @@ const updateAvatarAction = async (avatar: FormData) => {
     } = await noAuthFetch.put(`/user/avatar`, avatar, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'multipart/form-data',
       },
     });
 
