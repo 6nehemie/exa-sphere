@@ -1,17 +1,10 @@
 'use client';
 
-import { generatedCoverLetter } from '@/constants';
 import { cn } from '@/lib/utils';
-import { Ellipsis, FilePenLine, Repeat2 } from 'lucide-react';
+import { FilePenLine, Repeat2 } from 'lucide-react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Generate } from '@/types';
 
 const GenerateNavigation = ({
@@ -20,7 +13,6 @@ const GenerateNavigation = ({
   generatedList: Generate[];
 }) => {
   const params = useParams();
-  const router = useRouter();
 
   return (
     <div className="max-[1300px]:hidden fixed h-full w-[283px] pb-20 space-y-4">
@@ -61,30 +53,6 @@ const GenerateNavigation = ({
                   {item.location}
                 </div>
               </div>
-
-              {/* <div className={`generatedCardMenu`}>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild className="">
-                    <div className="py-1.5 px-2.5">
-                      <Ellipsis size={18} />
-                    </div>
-                  </DropdownMenuTrigger>
-
-                  <DropdownMenuContent className="w-32 mx-6 z-[120] p-0">
-                    <DropdownMenuItem
-                      onClick={async () => {
-                        console.log('Edit');
-                        router.push(`/generate/${index}`);
-                      }}
-                      className="text-sm font-light p-1"
-                    >
-                      <button className="py-2.5 px-3.5 w-full text-start rounded-sm">
-                        Delete
-                      </button>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div> */}
             </Link>
           );
         })}

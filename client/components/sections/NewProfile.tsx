@@ -48,8 +48,6 @@ const NewProfile = () => {
   async function onSubmit(values: z.infer<typeof experienceSchema>) {
     setIsLoading(true);
 
-    console.log(values);
-
     const response = await postProfileAction(values);
 
     if (response && response.error) {

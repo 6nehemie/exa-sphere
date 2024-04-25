@@ -112,7 +112,7 @@ const UpdateEducation = ({
             {educationNum < 3 && (
               <AddItemBis
                 btnAction={handleAddEducation}
-                label="Add experience"
+                label="Add Education"
               />
             )}
 

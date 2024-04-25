@@ -32,8 +32,6 @@ const postProfileAction = async (values: IProfileAction) => {
       },
     });
 
-    console.log('Profile Response: ', response.data);
-
     return response.data;
   } catch (error: AxiosError | any) {
     const message = error.response.data.message;

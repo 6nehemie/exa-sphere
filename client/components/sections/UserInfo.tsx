@@ -3,7 +3,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 
-import { educationBis } from '@/constants';
 import { useAppSelector } from '@/lib/hooks';
 import { cn } from '@/lib/utils';
 import toInitials from '@/utils/functions/toInitials';

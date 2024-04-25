@@ -242,7 +242,11 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                   hidden: !isLoading,
                 })}
               />
-              <span>{isLoading ? 'saving...' : 'Generate Cover Letter'}</span>
+              <span>
+                {isLoading
+                  ? 'Generating Cover Letter...'
+                  : 'Generate Cover Letter'}
+              </span>
             </Button>
           </div>
         </div>
