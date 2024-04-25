@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
 
   if (!success) {
     return Response.json(
-      { success: false, message: 'Too Many Requestssss' },
+      { success: false, message: 'Too Many Requests' },
       { status: 429 }
     );
   }
