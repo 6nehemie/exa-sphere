@@ -34,7 +34,6 @@ public class AuthController {
     
     @PostMapping("/oauth")
     public ResponseEntity<AuthenticationResponseDto> oAuth(@Validated @RequestBody OAuthDto request) {
-        System.out.println(request);
         
         return ResponseEntity.ok(authService.oAuth(request));
     }

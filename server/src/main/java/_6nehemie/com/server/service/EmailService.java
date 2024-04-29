@@ -25,10 +25,9 @@ public class EmailService {
 
         try {
             SendEmailResponse data = resend.emails().send(sendEmailRequest);
-            System.out.println(data.getId());
+//            System.out.println(data.getId());
         } catch (ResendException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
         }
     }
 }
