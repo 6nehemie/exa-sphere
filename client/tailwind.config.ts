@@ -18,11 +18,22 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        openSans: ['Open Sans', 'sans-serif'],
+      },
       colors: {
         gray: {
           '1': '#EAEAEA',
           '2': '#333333',
           '3': '#1D1D1D',
+          'exa-1': '#DFDFDF',
+          'exa-2': '#BCBDBF',
+          'exa-3': '#313234',
+          'exa-4': '#242527',
+          'exa-5': '#1C1D1D',
+          'exa-6': '#141414',
+          'highlight-1': '#414244',
         },
 
         border: 'hsl(var(--border))',

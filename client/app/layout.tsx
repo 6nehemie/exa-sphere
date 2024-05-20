@@ -3,10 +3,10 @@ import { cn } from '@/lib/utils';
 import SessionProvider from '@/providers/SessionProvider';
 import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
-import { Open_Sans } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import './globals.css';
 
-const openSans = Open_Sans({ subsets: ['latin'] });
+const roboto = Roboto({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Exa Sphere',
@@ -27,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className={cn('bg-gray-3 text-white', openSans.className)}>
+        <body className={cn('bg-gray-exa-6 text-white', roboto.className)}>
           {children}
           <Toaster />
         </body>

@@ -43,7 +43,7 @@ const NavMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer">
+        <Avatar className="cursor-pointer max-lg:size-8">
           <AvatarImage src={user.avatar} alt="@shadcn" />
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>

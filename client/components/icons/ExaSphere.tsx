@@ -1,18 +1,18 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
-const Logo = ({ text, href }: { text?: string; href?: string }) => {
+const ExaSphere = ({ text, href }: { text?: string; href?: string }) => {
   return (
     <a href={!!href ? href : '/'} className={'flex items-center gap-4 w-max'}>
-      <Image
+      {/* <Image
         src={'/exa-sphere.png'}
         alt="exaSphere"
         width={28}
         height={28}
         className={cn('')}
-      />
+      /> */}
       <p
-        className={cn('font-light text-lg', {
+        className={cn('font-light text-lg font-openSans text-gray-exa-2', {
           [`${text}`]: !!text,
         })}
       >
@@ -21,4 +21,4 @@ const Logo = ({ text, href }: { text?: string; href?: string }) => {
     </a>
   );
 };
-export default Logo;
+export default ExaSphere;
