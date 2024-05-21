@@ -12,7 +12,7 @@ const ExaSphere = ({ text, href }: { text?: string; href?: string }) => {
         className={cn('')}
       /> */}
       <p
-        className={cn('font-light text-lg font-openSans text-gray-exa-2', {
+        className={cn('font-light lg:text-lg font-openSans text-gray-exa-2', {
           [`${text}`]: !!text,
         })}
       >

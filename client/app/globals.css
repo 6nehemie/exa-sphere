@@ -89,6 +89,12 @@
     grid-template-columns: max-content 1fr;
   }
 
+  .sidebar-grid {
+    display: grid;
+    gap: 32px;
+    grid-template-rows: max-content 1fr max-content;
+  }
+
   .customScroll {
     scrollbar-width: 16px;
     scrollbar-color: #333333 transparent;

@@ -53,7 +53,7 @@ const Navbar = () => {
         })}
       </div> */}
 
-        <div className="md:col-start-3 justify-self-end flex items-center gap-6 md:gap-5">
+        <div className="col-start-2 md:col-start-3 justify-self-end flex items-center gap-6 md:gap-5">
           <button className="max-lg:hidden font-openSans font-light text-xs px-4 py-3 rounded-2xl bg-gray-exa-3 hover:bg-gray-highlight-1 transition-colors duration-200">
             Pro <span className={cn('max-sm:hidden')}>member</span>
           </button>
