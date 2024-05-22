@@ -16,7 +16,7 @@ const Logo = ({ text, href }: { text?: string; href?: string }) => {
           [`${text}`]: !!text,
         })}
       >
-        Exa Sphere
+        ExaSphere
       </p>
     </a>
   );

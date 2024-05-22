@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import SessionProvider from '@/providers/SessionProvider';
 import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
-import { Open_Sans } from 'next/font/google';
+import { Roboto, Open_Sans } from 'next/font/google';
 import './globals.css';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -27,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className={cn('bg-gray-3 text-white', openSans.className)}>
+        <body className={cn('bg-gray-exa-6 text-white', openSans.className)}>
           {children}
           <Toaster />
         </body>
