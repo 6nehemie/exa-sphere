@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isOpen: false,
+  isOpen: localStorage.getItem('sidebar') === 'open' ? true : false,
 };
 
 const sidebarSlice = createSlice({
@@ -10,12 +10,15 @@ const sidebarSlice = createSlice({
   reducers: {
     toggleSidebar: (state) => {
       state.isOpen = !state.isOpen;
+      localStorage.setItem('sidebar', state.isOpen ? 'open' : 'closed');
     },
     openSidebar: (state) => {
       state.isOpen = true;
+      localStorage.setItem('sidebar', 'open');
     },
     closeSidebar: (state) => {
       state.isOpen = false;
+      localStorage.setItem('sidebar', 'closed');
     },
   },
 });

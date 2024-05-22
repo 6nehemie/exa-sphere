@@ -134,4 +134,13 @@
     transition: max-width 0.5s ease-in-out, opacity 0.5s ease-in-out,
       margin-left 0.5s ease-in-out;
   } */
+
+  .transition-opacity-height {
+    transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+  }
+  .hidden-opacity-height {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
 }
