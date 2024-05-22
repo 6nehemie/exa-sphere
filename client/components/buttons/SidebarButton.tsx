@@ -6,13 +6,15 @@ const SidebarButton = ({
   isOpen,
   text,
   children,
-  CN,
+  className,
+  disabled,
 }: {
   href: string;
   isOpen: boolean;
   text: string;
   children: React.ReactNode;
-  CN?: string;
+  className?: string;
+  disabled?: boolean;
 }) => {
   return (
     <Link
@@ -20,15 +22,18 @@ const SidebarButton = ({
       className={cn(
         'flex items-center w-max rounded-full text-gray-exa-1 hover:text-white transition-colors duration-200',
         {
-          [`${CN}`]: CN,
+          [`${className}`]: className,
+          'text-neutral-500 hover:text-neutral-500': disabled,
         }
       )}
     >
       <div
         className={cn(
-          'flex items-center justify-center aspect-square w-10 h-10',
+          'flex items-center justify-center aspect-square w-10 h-10 transition-colors duration-200',
           {
             'rounded-full': !isOpen,
+            'text-neutral-500 ': disabled,
+            'hover:text-neutral-500': !disabled,
           }
         )}
       >

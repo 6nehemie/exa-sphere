@@ -1,11 +1,12 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { FilePenLine, Repeat2 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import { Generate } from '@/types';
+import { Button } from '../ui/button';
+import { Ellipsis } from 'lucide-react';
 
 const GenerateNavigation = ({
   generatedList,
@@ -15,48 +16,45 @@ const GenerateNavigation = ({
   const params = useParams();
 
   return (
-    <div className="max-[1300px]:hidden fixed h-full w-[283px] pb-20 space-y-4">
-      <div className="sticky top-0 pb-2 bg-gray-3">
-        <Link
-          href="/generate"
-          className="flex py-1.5 px-2.5 bg-transparent hover:bg-gray-2 rounded-md items-center justify-between text-sm text-gray-1 hover:text-white transition-colors duration-200 ease-in-out"
-        >
-          <div className="flex items-center gap-2">
-            <Repeat2 className="" size={24} strokeWidth={1.4} />
-
-            <span>Generate new</span>
-          </div>
-          <div>
-            <FilePenLine size={16} strokeWidth={1.4} />
-          </div>
-        </Link>
-      </div>
-
-      <div className="overflow-hidden overflow-y-scroll customScroll generateNav pb-10 space-y-2">
-        {generatedList.map((item, index) => {
-          return (
+    <div className="w-full overflow-hidden pb-10">
+      {/* <div className="overflow-hidden customScroll generateNav pb-10 space-y-2"> */}
+      {generatedList.map((item, index) => {
+        return (
+          <Button
+            key={index}
+            className={cn(
+              'flex justify-between w-full bg-inherit hover:bg-gray-exa-3 transition-colors duration-100 p-0 pr-1 h-auto rounded-2xl',
+              {
+                'bg-gray-exa-3': item.id === +params.id,
+              }
+            )}
+          >
             <Link
-              key={index}
               href={`/generate/${item.id}`}
-              className={`generateCard ${cn(
-                ' flex items-center justify-between  text-sm space-y-1 rounded-sm hover:bg-gray-2 transition-colors duration-100 ',
-                {
-                  'bg-gray-2': item.id === +params.id,
-                }
+              className={`${cn(
+                'flex items-center justify-start w-full text-left overflow-x-hidden text-sm space-y-1 px-4 py-2.5'
               )}`}
             >
-              <div className="py-2 px-4 w-full">
-                <div>
-                  {item.company} - {item.jobTitle}
+              <div className="max-w-[185px] overflow-hidden whitespace-nowrap">
+                <div className="">
+                  <span>{item.company}</span>
+                  {' - '}
+                  <span className="font-light">{item.jobTitle}</span>
                 </div>
-                <div className="text-xs font-light text-gray-1">
-                  {item.location}
-                </div>
+                {/* <div className="font-light text-gray-1"></div> */}
               </div>
             </Link>
-          );
-        })}
-      </div>
+
+            <button
+              className={cn(
+                'p-1.5 hover:bg-gray-exa-4 rounded-full transition-colors duration-150'
+              )}
+            >
+              <Ellipsis size={20} strokeWidth={1.8} className="" />
+            </button>
+          </Button>
+        );
+      })}
     </div>
   );
 };

@@ -1,16 +1,9 @@
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
+import Link from 'next/link';
 
 const ExaSphere = ({ text, href }: { text?: string; href?: string }) => {
   return (
-    <a href={!!href ? href : '/'} className={'flex items-center gap-4 w-max'}>
-      {/* <Image
-        src={'/exa-sphere.png'}
-        alt="exaSphere"
-        width={28}
-        height={28}
-        className={cn('')}
-      /> */}
+    <Link href={!!href ? href : '/'} className={''}>
       <p
         className={cn('font-light lg:text-lg font-openSans text-gray-exa-2', {
           [`${text}`]: !!text,
@@ -18,7 +11,7 @@ const ExaSphere = ({ text, href }: { text?: string; href?: string }) => {
       >
         ExaSphere
       </p>
-    </a>
+    </Link>
   );
 };
 export default ExaSphere;

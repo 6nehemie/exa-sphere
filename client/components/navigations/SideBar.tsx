@@ -1,13 +1,17 @@
 'use client';
 
+import { toggleSidebar } from '@/lib/features/sidebar.ts/sidebarSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { cn } from '@/lib/utils';
 import { AlignJustify, Plus, Users } from 'lucide-react';
-import { toggleSidebar } from '@/lib/features/sidebar.ts/sidebarSlice';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import SidebarButton from '../buttons/SidebarButton';
 
-const SideBar = () => {
+import { Generate } from '@/types';
+import GenerateNavigation from './GenerateNavigation';
+
+const SideBar = ({ history }: { history?: Generate[] }) => {
+  const pathname = usePathname();
   const dispatch = useAppDispatch();
   const sidebar = useAppSelector((state) => state.sidebar);
 
@@ -29,27 +33,39 @@ const SideBar = () => {
       </button>
 
       {/* //? Navigation */}
-      <div className="pt-28 space-y-4">
+      <div className="pt-12 lg:pt-20 space-y-4">
         <SidebarButton
           href="/generate"
           isOpen={sidebar.isOpen}
           text="New letter"
-          CN="bg-gray-exa-4 hover:bg-gray-highlight-1"
+          disabled={pathname === '/generate'}
+          className={cn('max-lg:hidden bg-gray-exa-4', {
+            'hover:bg-gray-highlight-1': pathname !== '/generate',
+          })}
         >
-          <Plus className="size-5 text-white" strokeWidth={1.2} />
+          <Plus className={cn('size-5')} strokeWidth={1.2} />
         </SidebarButton>
 
         <SidebarButton
           href="/my-profiles"
           isOpen={sidebar.isOpen}
-          text="New letter"
-          CN="hover:bg-gray-exa-3 w-full"
+          text="My Profiles"
+          disabled={pathname === '/my-profiles'}
+          className={cn('w-full', {
+            'hover:bg-gray-exa-3': pathname !== '/my-profiles',
+          })}
         >
-          <Users className="size-4 text-white" strokeWidth={1.2} />
+          <Users className="size-4" strokeWidth={1.2} />
         </SidebarButton>
       </div>
 
-      <div>test</div>
+      <div className="space-y-5">
+        <p className="px-4 text-sm font-light">Recent</p>
+
+        <div className="w-full">
+          <GenerateNavigation generatedList={history!} />
+        </div>
+      </div>
 
       <div>test</div>
     </div>
