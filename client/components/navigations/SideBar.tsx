@@ -1,6 +1,9 @@
 'use client';
 
-import { toggleSidebar } from '@/lib/features/sidebar.ts/sidebarSlice';
+import {
+  toggleSidebar,
+  closeSidebar,
+} from '@/lib/features/sidebar.ts/sidebarSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { cn } from '@/lib/utils';
 import { AlignJustify, Plus, Users } from 'lucide-react';
@@ -96,7 +99,10 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
             <p className="px-3 text-sm font-light">Recent</p>
 
             <div className="w-full">
-              <GenerateNavigation generatedList={history!} />
+              <GenerateNavigation
+                generatedList={history!}
+                closeSidebar={() => dispatch(closeSidebar())}
+              />
             </div>
           </div>
         </div>
