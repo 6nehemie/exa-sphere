@@ -32,6 +32,13 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
     };
   }, [sidebar.isOpen]);
 
+  // Function to check if the screen is less than lg
+  const handleClick = () => {
+    if (window.innerWidth < 1024) {
+      dispatch(closeSidebar());
+    }
+  };
+
   return (
     <>
       <div
@@ -77,6 +84,7 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
           </SidebarButton>
 
           <SidebarButton
+            onClick={handleClick}
             href="/my-profiles"
             isOpen={sidebar.isOpen}
             text="My Profiles"
