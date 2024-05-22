@@ -1,7 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const getInitialSidebarState = () => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem('sidebar') === 'open';
+  }
+  return false;
+};
+
 const initialState = {
-  isOpen: localStorage.getItem('sidebar') === 'open' ? true : false,
+  isOpen: getInitialSidebarState(),
 };
 
 const sidebarSlice = createSlice({

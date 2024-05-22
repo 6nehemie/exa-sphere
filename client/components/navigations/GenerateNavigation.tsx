@@ -10,14 +10,22 @@ import { Button } from '../ui/button';
 
 const GenerateNavigation = ({
   generatedList,
+  closeSidebar,
 }: {
   generatedList: Generate[];
+  closeSidebar: () => void;
 }) => {
   const params = useParams();
 
+  // Function to check if the screen is less than lg
+  const handleClick = () => {
+    if (window.innerWidth < 1024) {
+      closeSidebar();
+    }
+  };
+
   return (
     <div className="w-full overflow-hidden pb-10">
-      {/* <div className="overflow-hidden customScroll generateNav pb-10 space-y-2"> */}
       {generatedList.map((item, index) => {
         return (
           <Button
@@ -30,6 +38,7 @@ const GenerateNavigation = ({
             )}
           >
             <Link
+              onClick={handleClick}
               href={`/generate/${item.id}`}
               className={`${cn(
                 'flex items-center justify-start w-full text-left overflow-x-hidden text-sm space-y-1 px-3 py-2'
