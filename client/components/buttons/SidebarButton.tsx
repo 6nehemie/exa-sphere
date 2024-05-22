@@ -8,6 +8,7 @@ const SidebarButton = ({
   children,
   className,
   disabled,
+  onClick,
 }: {
   href: string;
   isOpen: boolean;
@@ -15,10 +16,12 @@ const SidebarButton = ({
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  onClick?: () => void;
 }) => {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={cn(
         'flex items-center w-max rounded-full text-gray-exa-1 hover:text-white transition-colors duration-200',
         {
