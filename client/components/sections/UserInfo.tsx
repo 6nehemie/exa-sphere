@@ -41,7 +41,7 @@ const UserInfo = ({ educations }: { educations: Education[] }) => {
           </Link>
         </div>
 
-        <h1 className="text-2xl font-light">{fullName}</h1>
+        <h1 className="text-2xl font-light whitespace-nowrap">{fullName}</h1>
 
         <p className="text-sm text-gray-exa-1">{user.description}</p>
 

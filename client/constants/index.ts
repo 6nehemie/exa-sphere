@@ -32,7 +32,7 @@ export const newJobProfile = {
 };
 
 export const jobProfiles = {
-  title: 'Job Profiles',
+  title: 'My Profiles',
   description:
     'You can create, modify, and update up to 5 job profiles. Each profile allows you to showcase different aspects of your experience and skills. Feel free to manage your profiles to best represent your qualifications and career aspirations.',
 };

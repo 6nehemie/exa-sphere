@@ -11,15 +11,13 @@ const MyProfiles = async () => {
   const profiles = (await getAllProfilesAction()) as Profile[];
 
   return (
-    <section>
-      <div className="space-y-2 mb-12">
-        <h1 className="text-2xl font-light">{jobProfiles.title}</h1>
-        <p className="font-light text-sm text-gray-1 max-w-[830px]">
-          {jobProfiles.description}
-        </p>
+    <section className="space-y-14">
+      <div className="space-y-2">
+        <h1 className="text-3xl">{jobProfiles.title}</h1>
+        <p className="text-sm text-gray-exa-1">{jobProfiles.description}</p>
       </div>
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3  gap-5">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
         {profiles.map((profile) => {
           return <ProfileCard profile={profile} key={profile.id} />;
         })}
@@ -27,7 +25,7 @@ const MyProfiles = async () => {
         {profiles.length < 5 && (
           <Link
             href="/my-profiles/new"
-            className="hover:underline transition-transform duration-200 p-5 w-max"
+            className="hover:bg-gray-exa-4 rounded-xl p-2 px-3 w-max transition-colors duration-200 max-sm:mx-auto max-sm:mt-10"
           >
             <AddItem label="Add New Profile" />
           </Link>
