@@ -12,12 +12,12 @@ const AddItem = ({
   return (
     <button
       onClick={btnAction}
-      className="flex items-center gap-4 hover:underline focus:no-underline transition-all duration-200"
+      className="flex items-center gap-4 focus:no-underline transition-all duration-200 text-gray-exa-1 hover:text-white"
     >
-      <div className="bg-gray-2 p-0.5 rounded-full">
-        <Plus size={20} className="" strokeWidth={0.8} />
+      <div className="flex items-center justify-center bg-gray-exa-5 h-9 w-9 rounded-full">
+        <Plus size={24} className="" strokeWidth={1.8} />
       </div>
-      <span className="text-sm font-light">{label}</span>
+      <span className="text-sm">{label}</span>
     </button>
   );
 };

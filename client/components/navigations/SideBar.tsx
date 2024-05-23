@@ -76,11 +76,16 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
             isOpen={sidebar.isOpen}
             text="New letter"
             disabled={pathname === '/generate'}
-            className={cn('max-lg:hidden bg-gray-exa-4', {
+            className={cn('max-lg:hidden bg-gray-exa-4 group', {
               'hover:bg-gray-highlight-1': pathname !== '/generate',
             })}
           >
-            <Plus className={cn('size-5')} strokeWidth={1.2} />
+            <Plus
+              className={cn('size-5  transition-colors duration-200', {
+                'group-hover:text-white': pathname !== '/generate',
+              })}
+              strokeWidth={1.2}
+            />
           </SidebarButton>
 
           <SidebarButton
@@ -90,10 +95,15 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
             text="My Profiles"
             disabled={pathname === '/my-profiles'}
             className={cn('w-full', {
-              'hover:bg-gray-exa-3': pathname !== '/my-profiles',
+              'hover:bg-gray-exa-3 group': pathname !== '/my-profiles',
             })}
           >
-            <Users className="size-4" strokeWidth={1.2} />
+            <Users
+              className={cn('size-4 transition-colors duration-200', {
+                'group-hover:text-white': pathname !== '/my-profiles',
+              })}
+              strokeWidth={1.2}
+            />
           </SidebarButton>
         </div>
 
