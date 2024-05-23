@@ -50,26 +50,26 @@ const NavMenu = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="max-w-72 w-full mx-6 mr-10 z-[120]">
-        <DropdownMenuLabel className="text-sm font-light">
-          <p>
+        <DropdownMenuLabel className="text-sm font-light space-y-1 p-2.5">
+          <p className="font-normal">
             {user.firstName && user.firstName} {user.lastName && user.lastName}
           </p>
-          <p>{user.email}</p>
+          <p className="text-gray-exa-1">{user.email}</p>
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup className="px-0">
-          <Link href="/my-profiles">
+          <Link href="/">
             <DropdownMenuItem>
-              <Sparkles className="mr-2 h-4 w-4" />
+              <Sparkles className="mr-3.5 size-5" />
               <span>My Plan</span>
             </DropdownMenuItem>
           </Link>
 
           <Link href="/settings">
             <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
+              <Settings className="mr-3.5 size-5" />
               <span>Settings</span>
             </DropdownMenuItem>
           </Link>
@@ -77,7 +77,7 @@ const NavMenu = () => {
 
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>
-          <LogOut className="mr-2 h-4 w-4" />
+          <LogOut className="mr-3.5 size-5" />
           <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
