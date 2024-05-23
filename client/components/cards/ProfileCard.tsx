@@ -15,6 +15,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
       <div className="p-1.5 rounded-full w-max h-max bg-gray-2">
         <User size={18} />
       </div>
+
       <div className="space-y-3.5">
         <h3 className="font-light">{profile.title}</h3>
         <p className="font-light text-sm text-gray-1">
