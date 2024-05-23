@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-import { LogOut, Repeat2, Settings, Users } from 'lucide-react';
+import { LogOut, Repeat2, Settings, Users, Sparkles } from 'lucide-react';
 
 import {
   DropdownMenu,
@@ -49,31 +49,27 @@ const NavMenu = () => {
         </Avatar>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-56 mx-6 z-[120]">
-        <DropdownMenuLabel className="text-sm font-light">
-          {user.email}
+      <DropdownMenuContent className="max-w-72 w-full mx-6 mr-10 z-[120]">
+        <DropdownMenuLabel className="text-sm font-light space-y-1 p-2.5">
+          <p className="font-normal">
+            {user.firstName && user.firstName} {user.lastName && user.lastName}
+          </p>
+          <p className="text-gray-exa-1">{user.email}</p>
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup className="px-0">
-          <Link href="/my-profiles">
+          <Link href="/">
             <DropdownMenuItem>
-              <Users className="mr-2 h-4 w-4" />
-              <span>Profiles</span>
-            </DropdownMenuItem>
-          </Link>
-
-          <Link href="/generate">
-            <DropdownMenuItem>
-              <Repeat2 className="mr-2 h-4 w-4" />
-              <span>Generate</span>
+              <Sparkles className="mr-3.5 size-5" />
+              <span>My Plan</span>
             </DropdownMenuItem>
           </Link>
 
           <Link href="/settings">
             <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
+              <Settings className="mr-3.5 size-5" />
               <span>Settings</span>
             </DropdownMenuItem>
           </Link>
@@ -81,7 +77,7 @@ const NavMenu = () => {
 
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>
-          <LogOut className="mr-2 h-4 w-4" />
+          <LogOut className="mr-3.5 size-5" />
           <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
