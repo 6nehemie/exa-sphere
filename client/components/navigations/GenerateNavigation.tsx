@@ -45,7 +45,7 @@ const GenerateNavigation = ({
               )}`}
             >
               <div className="lg:max-w-[186px] overflow-hidden whitespace-nowrap">
-                <div className="">
+                <div className="text-gray-exa-1">
                   <span>{item.company}</span>
                   {' - '}
                   <span className="font-light">{item.jobTitle}</span>
