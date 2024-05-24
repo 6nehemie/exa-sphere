@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation';
 import SidebarButton from '../buttons/SidebarButton';
 
 import { Generate } from '@/types';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import GenerateNavigation from './GenerateNavigation';
 
 const SideBar = ({ history }: { history?: Generate[] }) => {
@@ -19,8 +19,11 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
   const dispatch = useAppDispatch();
   const sidebar = useAppSelector((state) => state.sidebar);
   const sidebarRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     if (sidebar.isOpen) {
       document.body.classList.add('max-lg:overflow-hidden');
     } else {
@@ -32,12 +35,15 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
     };
   }, [sidebar.isOpen]);
 
-  // Function to check if the screen is less than lg
   const handleClick = () => {
     if (window.innerWidth < 1024) {
       dispatch(closeSidebar());
     }
   };
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <>
@@ -50,7 +56,7 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
             'visible opacity-100': sidebar.isOpen,
           }
         )}
-      ></div>
+      />
 
       <div
         ref={sidebarRef}
@@ -69,7 +75,6 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
           <AlignJustify size={22} />
         </button>
 
-        {/* //? Navigation */}
         <div className="pt-12 lg:pt-20 space-y-4">
           <SidebarButton
             href="/generate"

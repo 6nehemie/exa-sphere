@@ -61,7 +61,7 @@ const ExperienceDate = ({
             </Button>
           </PopoverTrigger>
 
-          <PopoverContent className="w-auto p-0 mx-6">
+          <PopoverContent className="w-auto p-0 mx-6 z-[500]">
             <Calendar
               mode="single"
               selected={date}

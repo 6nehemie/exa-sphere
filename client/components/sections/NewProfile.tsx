@@ -18,7 +18,7 @@ import postProfileAction from '@/utils/actions/profile/postProfileAction';
 import { useRouter } from 'next/navigation';
 import { useToast } from '../ui/use-toast';
 
-const NewProfile = () => {
+const NewProfile = ({ closeModal }: { closeModal: () => void }) => {
   const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -61,16 +61,23 @@ const NewProfile = () => {
       description: 'Your profile has been created successfully',
     });
 
-    router.push(`/my-profiles/${response.id}`);
+    form.reset();
+    router.refresh();
+    closeModal();
   }
+
+  const handleCancel = () => {
+    form.reset();
+    closeModal();
+  };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="xl:grid grid-cols-3 gap-x-5 space-y-14"
+        className="add-profile-form-grid overflow-y-auto"
       >
-        <div className="col-span-2 space-y-8">
+        <div className="px-6 py-4 col-span-2 space-y-8 h-full overflow-y-auto">
           <ProfileDetails control={form.control} />
 
           <Skills control={form.control} />
@@ -79,26 +86,27 @@ const NewProfile = () => {
 
           <Characteristics control={form.control} />
         </div>
-        <div className="relative">
-          <div className="xl:pl-16 xl:sticky top-[140px] space-y-2">
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full rounded-sm h-12 bg-white hover:bg-gray-1 text-gray-3"
-            >
-              <Loader2
-                className={cn('mr-2 h-4 w-4 animate-spin font-light', {
-                  hidden: !isLoading,
-                })}
-              />
-              <span>{isLoading ? 'saving...' : 'Save Profile'}</span>
-            </Button>
 
-            <p className="font-light text-sm text-gray-1">
-              By saving the profile, you are creating a new profile that will be
-              used to help generate a cover letter tailored to your profile.
-            </p>
+        <div className="flex items-center justify-end gap-2 relative border-t border-gray-exa-3 px-6 py-4">
+          <div
+            onClick={handleCancel}
+            className="rounded-sm text-gray-exa-1 text-sm font-light py-2.5 px-3 cursor-pointer border border-gray-exa-3 hover:bg-gray-exa-4 transition-colors duration-200"
+          >
+            Cancel
           </div>
+
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="rounded-sm bg-gray-exa-3 hover:bg-gray-highlight-1 text-gray-exa-1 hover:text-white py-2 px-3 font-light"
+          >
+            <Loader2
+              className={cn('mr-2 h-4 w-4 animate-spin font-light', {
+                hidden: !isLoading,
+              })}
+            />
+            <span>{isLoading ? 'saving...' : 'Save Profile'}</span>
+          </Button>
         </div>
       </form>
     </Form>

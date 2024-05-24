@@ -18,7 +18,7 @@ import { Textarea } from '../ui/textarea';
 
 const ProfileDetails = ({ control }: { control: any }) => {
   return (
-    <ProfileFormWrapper title="Profile Details">
+    <ProfileFormWrapper>
       <FormField
         control={control}
         name="title"

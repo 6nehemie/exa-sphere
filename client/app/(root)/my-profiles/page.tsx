@@ -1,5 +1,6 @@
 import AddItem from '@/components/buttons/AddItem';
 import ProfileCard from '@/components/cards/ProfileCard';
+import AddNewProfile from '@/components/sections/AddNewProfile';
 import { jobProfiles } from '@/constants';
 import { cn } from '@/lib/utils';
 import { Profile } from '@/types';
@@ -24,14 +25,15 @@ const MyProfiles = async () => {
         })}
 
         {profiles.length < 5 && (
-          <Link
-            href="/my-profiles/new"
-            className={cn(
-              'hover:bg-gray-exa-4 rounded-xl p-2 px-3 w-max transition-colors duration-200 max-sm:mx-auto max-sm:mt-10 h-max'
-            )}
-          >
-            <AddItem label="Add New Profile" />
-          </Link>
+          // <Link
+          //   href="/my-profiles/new"
+          //   className={cn(
+          //     'hover:bg-gray-exa-4 rounded-xl p-2 px-3 w-max transition-colors duration-200 max-sm:mx-auto max-sm:mt-10 h-max'
+          //   )}
+          // >
+          //   <AddItem label="Add New Profile" />
+          // </Link>
+          <AddNewProfile />
         )}
       </div>
     </section>
