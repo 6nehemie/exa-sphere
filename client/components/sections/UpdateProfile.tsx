@@ -7,27 +7,44 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
-import { Profile } from '@/types';
-import experienceSchema from '@/utils/zod/experienceSchema';
 import { Loader2 } from 'lucide-react';
-import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Characteristics from '../forms/Characteristics';
+import Experiences from '../forms/Experiences';
 import ProfileDetails from '../forms/ProfileDetails';
 import Skills from '../forms/Skills';
-import UpdateExperiences from '../forms/UpdateExperiences';
+import experienceSchema from '@/utils/zod/experienceSchema';
+import postProfileAction from '@/utils/actions/profile/postProfileAction';
+import { useRouter } from 'next/navigation';
+import { useToast } from '../ui/use-toast';
+import { Profile } from '@/types';
 import updateProfileAction from '@/utils/actions/profile/updateProfileAction';
-import { useToast } from '@/components/ui/use-toast';
 import deleteProfile from '@/utils/actions/profile/deleteProfile';
 
-const UpdateProfile = ({ profile }: { profile?: Profile }) => {
-  const router = useRouter();
-  const params = useParams();
-  const { toast } = useToast();
-  const pathname = usePathname();
-  const profileId = Number(params.profileId);
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import ConfirmationModal from '../wrappers/ConfirmationModal';
 
+const UpdateProfile = ({
+  closeModal,
+  profile,
+}: {
+  closeModal: () => void;
+  profile: Profile;
+}) => {
+  const router = useRouter();
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const form = useForm<z.infer<typeof experienceSchema>>({
     resolver: zodResolver(experienceSchema),
@@ -61,9 +78,10 @@ const UpdateProfile = ({ profile }: { profile?: Profile }) => {
   async function onSubmit(values: z.infer<typeof experienceSchema>) {
     setIsLoading(true);
 
-    const response = await updateProfileAction({ ...values, id: profileId });
+    const response = await updateProfileAction({ ...values, id: profile.id });
 
     if (response && response.error) {
+      setIsLoading(false);
       return console.error(response.error);
     }
 
@@ -71,14 +89,15 @@ const UpdateProfile = ({ profile }: { profile?: Profile }) => {
 
     toast({
       title: 'Profile Updated',
-      description: 'Your profile has been updated successfully',
+      description: 'Your profile has been updated',
     });
 
-    router.push(pathname);
+    router.refresh();
   }
 
   const handleDeleteProfile = async () => {
-    const response = await deleteProfile(profileId);
+    const response = await deleteProfile(profile.id);
+    setIsDeleting(true);
 
     if (response && response.error) {
       toast({
@@ -89,57 +108,62 @@ const UpdateProfile = ({ profile }: { profile?: Profile }) => {
       return console.error(response.error);
     }
 
+    setIsDeleting(false);
     router.refresh();
+    closeModal();
   };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="xl:grid grid-cols-3 gap-x-5 space-y-14"
+        className="add-profile-form-grid overflow-y-auto"
       >
-        <div className="col-span-2 space-y-8">
+        <div className="px-6 py-4 col-span-2 space-y-8 h-full overflow-y-auto">
           <ProfileDetails control={form.control} />
 
           <Skills control={form.control} />
 
-          <UpdateExperiences
-            control={form.control}
-            form={form}
-            profile={profile}
-          />
+          <Experiences control={form.control} form={form} />
 
           <Characteristics control={form.control} />
         </div>
-        <div className="relative">
-          <div className="xl:pl-16 xl:sticky top-[140px] space-y-2">
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full rounded-sm h-12 bg-white hover:bg-gray-1 text-gray-3"
+
+        <div className="flex items-center justify-end gap-2 relative border-t border-gray-exa-3 px-6 py-4">
+          <ConfirmationModal
+            title="Delete Profile?"
+            description="You will no longer see this profile in Exasphere."
+            cancelLabel="Cancel"
+            confirmLabel="Delete Profile"
+            confirmAction={handleDeleteProfile}
+            confirmStyle="bg-red-500 font-light hover:bg-red-700"
+            cancelStyle="bg-gray-exa-4 border-none font-light hover:bg-gray-highlight-1 hover:text-white"
+          >
+            <div
+              aria-disabled={isDeleting || isLoading}
+              className="rounded-sm text-gray-exa-1 text-sm py-2 px-3 cursor-pointer border border-red-600 bg-red-500 hover:bg-red-700 transition-colors duration-200"
             >
               <Loader2
                 className={cn('mr-2 h-4 w-4 animate-spin font-light', {
-                  hidden: !isLoading,
+                  hidden: !isDeleting,
                 })}
               />
-              <span>{isLoading ? 'saving...' : 'Update Profile'}</span>
-            </Button>
-
-            <p className="font-light text-sm text-gray-1">
-              By saving the profile, you are creating a new profile that will be
-              used to help generate a cover letter tailored to your profile.
-            </p>
-
-            <div className="pt-4 flex justify-end">
-              <div
-                onClick={handleDeleteProfile}
-                className="text-sm font-light text-red-500 hover:text-red-400 transition-colors duration-200 cursor-pointer py-1.5 px-2.5"
-              >
-                Delete
-              </div>
+              <span>{isDeleting ? 'Deleting Profile' : 'Delete Profile'}</span>
             </div>
-          </div>
+          </ConfirmationModal>
+
+          <Button
+            type="submit"
+            disabled={isLoading || isDeleting}
+            className="rounded-sm bg-gray-exa-3 hover:bg-gray-highlight-1 text-gray-exa-1 hover:text-white py-2 px-3 font-light"
+          >
+            <Loader2
+              className={cn('mr-2 h-4 w-4 animate-spin font-light', {
+                hidden: !isLoading,
+              })}
+            />
+            <span>{isLoading ? 'saving...' : 'Save Profile'}</span>
+          </Button>
         </div>
       </form>
     </Form>
