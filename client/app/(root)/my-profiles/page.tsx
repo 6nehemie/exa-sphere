@@ -11,7 +11,7 @@ const MyProfiles = async () => {
 
   return (
     <section className="space-y-14">
-      <div className="space-y-2">
+      <div className="space-y-6">
         <h1 className="text-3xl">{jobProfiles.title}</h1>
         <p className="text-sm text-gray-exa-1">{jobProfiles.description}</p>
       </div>
