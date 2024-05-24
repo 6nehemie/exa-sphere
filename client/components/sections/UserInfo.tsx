@@ -22,7 +22,6 @@ const UserInfo = ({ educations }: { educations: Education[] }) => {
 
   return (
     <>
-      {/* <div className="fixed top-0 right-0 left-0 bottom-0 z-[1000] bg-gray-1"></div> */}
       <UpdateUserInfo
         educations={educations}
         isModalOpen={isModalOpen}
