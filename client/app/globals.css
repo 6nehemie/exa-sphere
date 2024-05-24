@@ -95,6 +95,17 @@
     grid-template-rows: max-content 1fr max-content;
   }
 
+  .add-profile-modal-grid {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+  }
+
+  .add-profile-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content;
+  }
+
   .customScroll {
     scrollbar-width: 16px;
     scrollbar-color: #333333 transparent;
@@ -138,6 +149,7 @@
   .transition-opacity-height {
     transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
   }
+
   .hidden-opacity-height {
     opacity: 0;
     height: 0;

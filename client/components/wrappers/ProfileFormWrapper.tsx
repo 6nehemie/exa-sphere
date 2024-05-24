@@ -6,16 +6,19 @@ const ProfileFormWrapper = ({
   className,
   description,
 }: {
-  title: string;
+  title?: string;
   children: ReactNode;
   className?: string;
   description?: string;
 }) => {
   return (
     <div className="space-y-6">
-      <div>
-        <h3 className="font-light text-lg">{title}</h3>
-      </div>
+      {title && (
+        <div>
+          <h3 className="font-light text-lg">{title}</h3>
+        </div>
+      )}
+
       {description && (
         <p className="text-sm font-light text-gray-1">{description}</p>
       )}
