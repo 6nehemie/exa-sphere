@@ -14,7 +14,7 @@ const Navbar = () => {
           'grid grid-cols-2 md:grid-cols-3 p-side py-5 sticky top-0 z-[100] mb-14 md:mb-[68px] bg-gray-exa-6'
         )}
       >
-        <div className="max-lg:hidden self-center">
+        <div className="max-lg:hidden self-center w-max">
           <ExaSphere href="/my-profiles" text="max-sm:hidden" />
         </div>
 

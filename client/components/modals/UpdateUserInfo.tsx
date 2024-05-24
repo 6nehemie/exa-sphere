@@ -1,31 +1,25 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Profile } from '@/types';
+
 import { X } from 'lucide-react';
-import { useState } from 'react';
-import UpdateProfile from '../sections/UpdateProfile';
+import UpdateEducation from '../sections/UpdateEducation';
+import { Education } from '@/types';
 
-const ProfileCard = ({ profile }: { profile: Profile }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+const UpdateUserInfo = ({
+  isModalOpen,
+  closeModal,
+  educations,
+}: {
+  educations: Education[];
+  isModalOpen: boolean;
+  closeModal: () => void;
+}) => {
   return (
     <>
-      <button
-        key={profile.id}
-        onClick={() => setIsModalOpen(true)}
-        className={cn(
-          'relative flex flex-col items-start text-left p-5 rounded-xl bg-gray-exa-5 md:hover:bg-gray-highlight-1 transition-colors duration-200 min-h-[140px] space-y-3.5 cursor-pointer z-0'
-        )}
-      >
-        <h3 className="">{profile.title}</h3>
-
-        <p className="text-sm text-gray-exa-1">{profile?.description || ''}</p>
-      </button>
-
       {/* //? backdrop */}
       <div
-        onClick={() => setIsModalOpen(false)}
+        onClick={closeModal}
         className={cn(
           'fixed top-0 right-0 left-0 bottom-0 z-[499] backdrop-blur-[1px] bg-gray-exa-6 bg-opacity-30 transition-all duration-300 ease-in-out',
           {
@@ -46,22 +40,18 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
         )}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-exa-3">
-          <h2 className="font-medium">Update Profile</h2>
+          <h2 className="font-medium">Update Infos</h2>
           <button
-            onClick={() => setIsModalOpen(false)}
+            onClick={closeModal}
             className="p-2 bg-gray-exa-3 rounded-xl text-gray-exa-1 hover:bg-gray-highlight-1 hover:text-white transition-colors duration-200"
           >
             <X size={20} className="" strokeWidth={1.8} />
           </button>
         </div>
 
-        <UpdateProfile
-          profile={profile}
-          closeModal={() => setIsModalOpen(false)}
-        />
+        <UpdateEducation closeModal={closeModal} educations={educations} />
       </div>
     </>
   );
 };
-
-export default ProfileCard;
+export default UpdateUserInfo;
