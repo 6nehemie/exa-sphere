@@ -7,31 +7,19 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
+import { Profile } from '@/types';
+import deleteProfile from '@/utils/actions/profile/deleteProfile';
+import updateProfileAction from '@/utils/actions/profile/updateProfileAction';
+import experienceSchema from '@/utils/zod/experienceSchema';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Characteristics from '../forms/Characteristics';
 import Experiences from '../forms/Experiences';
 import ProfileDetails from '../forms/ProfileDetails';
 import Skills from '../forms/Skills';
-import experienceSchema from '@/utils/zod/experienceSchema';
-import postProfileAction from '@/utils/actions/profile/postProfileAction';
-import { useRouter } from 'next/navigation';
 import { useToast } from '../ui/use-toast';
-import { Profile } from '@/types';
-import updateProfileAction from '@/utils/actions/profile/updateProfileAction';
-import deleteProfile from '@/utils/actions/profile/deleteProfile';
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import ConfirmationModal from '../wrappers/ConfirmationModal';
 
 const UpdateProfile = ({

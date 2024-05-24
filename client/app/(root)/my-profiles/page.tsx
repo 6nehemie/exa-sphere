@@ -16,7 +16,7 @@ const MyProfiles = async () => {
         <p className="text-sm text-gray-exa-1">{jobProfiles.description}</p>
       </div>
 
-      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5 z-0">
         {profiles.map((profile) => {
           return <ProfileCard profile={profile} key={profile.id} />;
         })}
