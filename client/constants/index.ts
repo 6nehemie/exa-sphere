@@ -44,7 +44,10 @@ export const education = {
 };
 
 export const generate = {
-  title: 'Generate Your Cover Letter',
+  title: {
+    part1: 'Hey',
+    part2: "Let's make your cover letter shine!",
+  },
   description:
     'Create customized cover letters tailored to your skills and experiences. Simply select a profile and job, and let us assist you in crafting the perfect cover letter for your application.',
 };

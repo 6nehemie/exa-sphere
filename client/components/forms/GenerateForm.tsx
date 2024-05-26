@@ -34,9 +34,11 @@ import {
 } from '@/components/ui/select';
 import { Profile } from '@/types';
 import postGenerateAction from '@/utils/actions/generate/postGenerateAction';
+import { useAppSelector } from '@/lib/hooks';
 
 const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
   const router = useRouter();
+  const user = useAppSelector((state) => state.user);
   const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -80,23 +82,31 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className=" space-y-4">
-          <div className="space-y-2 mb-12">
-            <h1 className="text-2xl font-light">{generate.title}</h1>
-            <p className="font-light text-sm text-gray-1">
-              {generate.description}
-            </p>
-          </div>
+    <div className="generate-new-grid gap-y-20">
+      <h1 className="text-5xl font-roboto space-y-2 mt-14 md:mt-[68px]">
+        <span className="block text-gray-exa-1">
+          {generate.title.part1}, {user.firstName}
+        </span>
+        <span className="block text-gray-highlight-1">
+          {generate.title.part2}
+        </span>
+      </h1>
 
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 self-end"
+        >
           <div className="grid md:grid-cols-2 gap-5">
             <FormField
               control={form.control}
               name={`jobTitle`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-light">Job Title *</FormLabel>
+                  <FormLabel className="">
+                    Job Title{' '}
+                    <span className="text-gray-exa-2">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <div>
                       <Input {...field} />
@@ -111,7 +121,9 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
               name={`company`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-light">Company *</FormLabel>
+                  <FormLabel className="">
+                    Company <span className="text-gray-exa-2">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <div>
                       <Input {...field} />
@@ -129,7 +141,9 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
               name={`location`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-light">Location *</FormLabel>
+                  <FormLabel className="">
+                    Location <span className="text-gray-exa-2">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <div>
                       <Input {...field} />
@@ -144,7 +158,9 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
               name={`jobType`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-light">Job Type *</FormLabel>
+                  <FormLabel className="">
+                    Job Type <span className="text-gray-exa-2">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <div>
                       <Input {...field} />
@@ -162,7 +178,10 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
               name={`experienceLevel`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-light">Experience Level</FormLabel>
+                  <FormLabel className="">
+                    Experience Level{' '}
+                    <span className="text-gray-exa-2">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <div>
                       <Input {...field} />
@@ -177,30 +196,35 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
               name={`profileId`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-light">Select Profile *</FormLabel>
+                  <FormLabel className="">
+                    Select Profile{' '}
+                    <span className="text-gray-exa-2">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={(value) =>
                         form.setValue('profileId', value)
                       }
                     >
-                      <SelectTrigger className="w-full bg-transparent border-gray-2 text-sm font-light">
+                      <SelectTrigger className="w-full text-sm font-light">
                         <SelectValue placeholder="No Profile Selected" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-3 border-gray-2 text-white">
+
+                      <SelectContent className="bg-gray-exa-3  text-gray-exa-1 p-1 border-none">
                         <SelectGroup>
                           <SelectLabel className="font-normal">
                             {profiles.length > 0
                               ? 'Profiles'
                               : 'A profile is required to generate a cover letter.'}
                           </SelectLabel>
+
                           {profiles.map((profile) => (
                             <SelectItem
                               key={profile.id}
                               value={`${profile.id}`}
-                              className="text-sm font-light"
+                              className="text-sm font-light hover:bg-gray-highlight-1"
                             >
-                              <SelectLabel className="font-light text-sm px-0 text-start">
+                              <SelectLabel className="font-light text-sm px-0 text-start ">
                                 {profile.title}
                               </SelectLabel>
                             </SelectItem>
@@ -220,7 +244,10 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
             name={`description`}
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-light">Job Description *</FormLabel>
+                <FormLabel className="">
+                  Job Description{' '}
+                  <span className="text-gray-exa-2">(required)</span>
+                </FormLabel>
                 <FormControl>
                   <div>
                     <Textarea
@@ -235,11 +262,11 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
             )}
           />
 
-          <div className="flex justify-end w-full mt-12">
+          <div className="flex flex-col items-end mt-12 py-4 space-y-2">
             <Button
               type="submit"
               disabled={isLoading}
-              className="rounded-sm h-10 bg-white hover:bg-gray-1 text-gray-3 font-light"
+              className="max-md:w-full ml-auto rounded-full h-10 bg-gray-highlight-1 text-gray-exa-1 hover:bg-gray-exa-3"
             >
               <Loader2
                 className={cn('mr-2 h-4 w-4 animate-spin font-light', {
@@ -252,10 +279,15 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                   : 'Generate Cover Letter'}
               </span>
             </Button>
+
+            <p className="font-light text-gray-exa-2 max-md:mx-auto">
+              Exa Sphere can make mistakes. Please review your cover letter
+              carefully before using it.
+            </p>
           </div>
-        </div>
-      </form>
-    </Form>
+        </form>
+      </Form>
+    </div>
   );
 };
 export default GenerateForm;

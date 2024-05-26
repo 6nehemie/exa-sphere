@@ -106,6 +106,16 @@
     grid-template-rows: 1fr max-content;
   }
 
+  .generate-new-grid {
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-rows: max-content 1fr;
+  }
+
+  .generate-section {
+    min-height: calc(100vh - 80px);
+  }
+
   .customScroll {
     scrollbar-width: 16px;
     scrollbar-color: #333333 transparent;

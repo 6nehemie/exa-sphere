@@ -4,6 +4,10 @@ import getAllProfilesAction from '@/utils/actions/profile/getAllProfilesAction';
 const Generate = async () => {
   const profiles = await getAllProfilesAction();
 
-  return <GenerateForm profiles={profiles} />;
+  return (
+    <>
+      <GenerateForm profiles={profiles} />
+    </>
+  );
 };
 export default Generate;

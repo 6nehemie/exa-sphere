@@ -15,7 +15,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
 
   return (
     <StoreProvider user={user}>
-      <main className="w-screen">
+      <main className="w-full">
         <SidebarTrigger />
 
         <div className="flex">
