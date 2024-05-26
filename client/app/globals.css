@@ -102,14 +102,18 @@
 
   .add-profile-form-grid {
     display: grid;
-    min-height: calc(100vh - 124px);
     grid-template-columns: 1fr;
     grid-template-rows: 1fr max-content;
   }
 
   .generate-new-grid {
+    min-height: calc(100vh - 80px);
     display: grid;
     grid-template-rows: max-content 1fr;
+  }
+
+  .generate-section {
+    min-height: calc(100vh - 80px);
   }
 
   .customScroll {
