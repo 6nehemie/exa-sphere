@@ -206,23 +206,25 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                         form.setValue('profileId', value)
                       }
                     >
-                      <SelectTrigger className="w-full bg-transparent border-gray-2 text-sm font-light">
+                      <SelectTrigger className="w-full text-sm font-light">
                         <SelectValue placeholder="No Profile Selected" />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-3 border-gray-2 text-white">
+
+                      <SelectContent className="bg-gray-exa-3  text-gray-exa-1 p-1 border-none">
                         <SelectGroup>
                           <SelectLabel className="font-normal">
                             {profiles.length > 0
                               ? 'Profiles'
                               : 'A profile is required to generate a cover letter.'}
                           </SelectLabel>
+
                           {profiles.map((profile) => (
                             <SelectItem
                               key={profile.id}
                               value={`${profile.id}`}
-                              className="text-sm font-light"
+                              className="text-sm font-light hover:bg-gray-highlight-1"
                             >
-                              <SelectLabel className="font-light text-sm px-0 text-start">
+                              <SelectLabel className="font-light text-sm px-0 text-start ">
                                 {profile.title}
                               </SelectLabel>
                             </SelectItem>
