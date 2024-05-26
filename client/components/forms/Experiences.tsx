@@ -16,7 +16,9 @@ const Experiences = ({
   form: any;
   profile?: Profile;
 }) => {
-  const [experience, setExperience] = useState<number>(1);
+  const experiences = form.getValues('experiences') || [];
+  const numDefaultExperiences = experiences.length > 0 ? experiences.length : 1;
+  const [experience, setExperience] = useState<number>(numDefaultExperiences);
 
   const addExperience = () => {
     if (experience < 3) {

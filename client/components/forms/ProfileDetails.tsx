@@ -24,7 +24,9 @@ const ProfileDetails = ({ control }: { control: any }) => {
         name="title"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="font-light">Profile Title *</FormLabel>
+            <FormLabel className="">
+              Profile Title <span className="text-gray-exa-2">(required)</span>
+            </FormLabel>
             <FormControl>
               <Input
                 placeholder="Profile Title * (e.g., 'Software Engineer', 'Marketing Specialist')"
@@ -45,8 +47,9 @@ const ProfileDetails = ({ control }: { control: any }) => {
         name="description"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="font-light">
-              Profile Description (Optional)
+            <FormLabel className="">
+              Profile Description{' '}
+              <span className="text-gray-exa-2">(optional)</span>
             </FormLabel>
             <FormControl>
               <Textarea placeholder="" {...field} />

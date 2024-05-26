@@ -24,7 +24,9 @@ const Skills = ({ control }: { control: any }) => {
         name="skills"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="font-light">Skills (max 10) *</FormLabel>
+            <FormLabel className="">
+              Skills <span className="text-gray-exa-2">(required, max 10)</span>
+            </FormLabel>
             <FormControl>
               <Textarea
                 placeholder="Please enter your skills separated by commas. For example: 'JavaScript, HTML, CSS'."
