@@ -150,6 +150,7 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name={`jobType`}

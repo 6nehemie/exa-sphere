@@ -86,7 +86,7 @@ const UpdateDescriptionForm = ({
         <Button
           type="submit"
           disabled={isLoading}
-          className="bg-white hover:bg-gray-1 text-gray-3 h-9"
+          className="bg-gray-exa-1 hover:bg-gray-exa-2 text-black h-9 rounded-full"
         >
           <Loader2
             className={cn('mr-2 h-4 w-4 animate-spin', {

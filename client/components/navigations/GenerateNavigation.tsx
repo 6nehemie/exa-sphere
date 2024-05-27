@@ -18,7 +18,7 @@ const GenerateNavigation = ({
   };
 
   return (
-    <div className="w-full overflow-hidden pb-10">
+    <div className="w-full overflow-hidden pb-10 h-full">
       {generatedList.map((generatedItem, index) => {
         return (
           <SidebarHistoryBtn
