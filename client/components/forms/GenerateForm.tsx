@@ -93,10 +93,7 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
       </h1>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 self-end"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid md:grid-cols-2 gap-5">
             <FormField
               control={form.control}
@@ -153,6 +150,7 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name={`jobType`}
@@ -262,7 +260,7 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
             )}
           />
 
-          <div className="flex flex-col items-end mt-12 py-4 space-y-2">
+          <div className="flex flex-col items-end mt-12 pb-4 space-y-2">
             <Button
               type="submit"
               disabled={isLoading}
@@ -280,7 +278,7 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
               </span>
             </Button>
 
-            <p className="font-light text-gray-exa-2 max-md:mx-auto">
+            <p className="text-sm font-light text-gray-exa-2 max-md:mx-auto">
               Exa Sphere can make mistakes. Please review your cover letter
               carefully before using it.
             </p>

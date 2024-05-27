@@ -23,8 +23,9 @@ const Characteristics = ({ control }: { control: any }) => {
         name="characteristics"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="font-light">
-              Characteristics or Strengths (max 8) *
+            <FormLabel className="">
+              Characteristics or Strengths{' '}
+              <span className="text-gray-exa-2">(required, max 8)</span>
             </FormLabel>
             <FormControl>
               <Textarea

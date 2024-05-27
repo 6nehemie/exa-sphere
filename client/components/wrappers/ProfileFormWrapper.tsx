@@ -12,16 +12,14 @@ const ProfileFormWrapper = ({
   description?: string;
 }) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {title && (
         <div>
-          <h3 className="font-light text-lg">{title}</h3>
+          <h3 className="text-lg">{title}</h3>
         </div>
       )}
 
-      {description && (
-        <p className="text-sm font-light text-gray-1">{description}</p>
-      )}
+      {description && <p className="text-sm text-gray-exa-2">{description}</p>}
 
       <div className={`space-y-4 ${className}`}>{children}</div>
     </div>

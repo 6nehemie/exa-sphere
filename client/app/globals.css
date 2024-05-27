@@ -92,7 +92,7 @@
   .sidebar-grid {
     display: grid;
     gap: 32px;
-    grid-template-rows: max-content 1fr max-content;
+    grid-template-rows: max-content 1fr;
   }
 
   .add-profile-modal-grid {
@@ -117,6 +117,7 @@
   }
 
   .customScroll {
+    padding: 0;
     scrollbar-width: 16px;
     scrollbar-color: #333333 transparent;
     scroll-behavior: smooth;

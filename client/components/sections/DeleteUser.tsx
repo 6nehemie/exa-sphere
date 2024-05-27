@@ -27,7 +27,7 @@ const DeleteUser = () => {
                 });
               });
           }}
-          className="font-light bg-gray-2"
+          className="bg-red-500 1 h-10 hover:bg-red-700 text-white rounded-xl"
         >
           <span>Delete Account</span>
         </Button>

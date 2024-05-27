@@ -15,10 +15,9 @@ const GeneratePage = async ({
   return (
     <>
       <div className="space-y-6">
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <h1 className="text-lg">Generated Cover Letter:</h1>
-        </div>
-
+        </div> */}
         <UpdateCoverLetter generate={generate} />
       </div>
     </>

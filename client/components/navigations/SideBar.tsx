@@ -112,7 +112,7 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
           </SidebarButton>
         </div>
 
-        <div>
+        <div className="overflow-hidden overflow-y-auto customScroll">
           <div
             className={cn('space-y-5 transition-all', {
               'max-w-0 opacity-0 duration-300': !sidebar.isOpen,
@@ -121,7 +121,7 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
           >
             <p className="px-3 text-sm font-light">Recent</p>
 
-            <div className="w-full">
+            <div className="overflow-hidden w-full">
               <GenerateNavigation
                 generatedList={history!}
                 closeSidebar={() => dispatch(closeSidebar())}
@@ -130,7 +130,7 @@ const SideBar = ({ history }: { history?: Generate[] }) => {
           </div>
         </div>
 
-        <div></div>
+        {/* <div></div> */}
       </div>
     </>
   );

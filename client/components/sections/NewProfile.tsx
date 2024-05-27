@@ -77,7 +77,7 @@ const NewProfile = ({ closeModal }: { closeModal: () => void }) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="add-profile-form-grid overflow-y-auto"
       >
-        <div className="px-6 py-4 col-span-2 space-y-8 h-full overflow-y-auto">
+        <div className="px-6 py-4 col-span-2 space-y-12 h-full overflow-y-auto pb-12">
           <ProfileDetails control={form.control} />
 
           <Skills control={form.control} />
