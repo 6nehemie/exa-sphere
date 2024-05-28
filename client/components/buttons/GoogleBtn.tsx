@@ -11,7 +11,7 @@ const GoogleBtn = () => {
       type="submit"
       onClick={() => signIn('google')}
       className={cn(
-        'w-full bg-gray-3 border border-gray-2 text-white hover:bg-gray-2 font-normal'
+        'w-full bg-inherit h-12 rounded-xl border border-gray-2 text-white hover:bg-gray-exa-3 font-normal'
       )}
     >
       <FaGoogle className="mr-2" />

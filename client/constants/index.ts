@@ -63,3 +63,21 @@ export const settingsSecurity = {
   description:
     'Update your password to ensure your account is secure and protected.',
 };
+
+export const generateFormData = {
+  experienceLevel: [
+    // 'Internship',
+    'Entry Level',
+    'Mid-Senior Level',
+    'Director',
+    'Executive',
+    'Associate',
+  ],
+  employmentType: [
+    'Full-time',
+    'Part-time',
+    'Contract',
+    'Temporary',
+    'Internship',
+  ],
+};

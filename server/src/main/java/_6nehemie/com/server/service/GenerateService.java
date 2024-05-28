@@ -13,6 +13,7 @@ import _6nehemie.com.server.repository.EducationRepository;
 import _6nehemie.com.server.repository.GenerateRepository;
 import _6nehemie.com.server.repository.ProfileRepository;
 import _6nehemie.com.server.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -114,10 +115,10 @@ public class GenerateService {
         return new GenerateResponseDto("Cover letter updated successfully", HttpStatus.OK.value());
     }
 
-
+    @Transactional
     public GenerateResponseDto deleteGenerate(UserDetails userDetails, Long id) {
         generateRepository.deleteByIdAndUser_Username(id, userDetails.getUsername());
 
-        return new GenerateResponseDto("Generate deleted successfully", HttpStatus.OK.value());
+        return new GenerateResponseDto("Chat deleted successfully", HttpStatus.OK.value());
     }
 }

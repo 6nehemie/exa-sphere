@@ -116,6 +116,9 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
         </dependency>
+        
+        <!-- Rate limiter -->
+
     </dependencies>
 
     <build>
