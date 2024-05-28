@@ -8,9 +8,7 @@ Exa Sphere simplifies the cover letter creation process by providing a user-frie
 
 Check out the design on [Figma](https://www.figma.com/file/GluIauxVpVQ4xv037S9478/Exa-Sphere?type=design&node-id=0%3A1&mode=design&t=hwRQXqItRbMfzDfb-1)
 
-![Job Profiles](./figma-design/My%20Profiles.png)
-![Generate Cover letter](./figma-design/Generate%20Cover%20Letter%20Page.png)
-![Sign In page](./figma-design/Login.png)
+![Job Profiles](./figma-design/new-design.png)
 
 ## Features
 
