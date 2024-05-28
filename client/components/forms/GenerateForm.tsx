@@ -22,7 +22,7 @@ import { useState } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { generate } from '@/constants';
+import { generate, generateFormData } from '@/constants';
 import {
   Select,
   SelectContent,
@@ -160,9 +160,29 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                     Job Type <span className="text-gray-exa-2">(required)</span>
                   </FormLabel>
                   <FormControl>
-                    <div>
-                      <Input {...field} />
-                    </div>
+                    <Select
+                      onValueChange={(value) => form.setValue('jobType', value)}
+                    >
+                      <SelectTrigger className="w-full text-sm font-light">
+                        <SelectValue placeholder="No job type selected" />
+                      </SelectTrigger>
+
+                      <SelectContent className="bg-gray-exa-4  text-gray-exa-1 p-1 border-none">
+                        <SelectGroup>
+                          {generateFormData.employmentType.map((jobType) => (
+                            <SelectItem
+                              key={jobType}
+                              value={`${jobType}`}
+                              className="text-sm font-light hover:bg-gray-highlight-1"
+                            >
+                              <SelectLabel className="font-light text-sm px-0 text-start ">
+                                {jobType}
+                              </SelectLabel>
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -181,14 +201,37 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                     <span className="text-gray-exa-2">(required)</span>
                   </FormLabel>
                   <FormControl>
-                    <div>
-                      <Input {...field} />
-                    </div>
+                    <Select
+                      onValueChange={(value) =>
+                        form.setValue('experienceLevel', value)
+                      }
+                    >
+                      <SelectTrigger className="w-full text-sm font-light">
+                        <SelectValue placeholder="No Experience level selected" />
+                      </SelectTrigger>
+
+                      <SelectContent className="bg-gray-exa-4  text-gray-exa-1 p-1 border-none">
+                        <SelectGroup>
+                          {generateFormData.experienceLevel.map((expLevel) => (
+                            <SelectItem
+                              key={expLevel}
+                              value={`${expLevel}`}
+                              className="text-sm font-light hover:bg-gray-highlight-1"
+                            >
+                              <SelectLabel className="font-light text-sm px-0 text-start ">
+                                {expLevel}
+                              </SelectLabel>
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name={`profileId`}
@@ -205,10 +248,10 @@ const GenerateForm = ({ profiles }: { profiles: Profile[] }) => {
                       }
                     >
                       <SelectTrigger className="w-full text-sm font-light">
-                        <SelectValue placeholder="No Profile Selected" />
+                        <SelectValue placeholder="No profile selected" />
                       </SelectTrigger>
 
-                      <SelectContent className="bg-gray-exa-3  text-gray-exa-1 p-1 border-none">
+                      <SelectContent className="bg-gray-exa-4  text-gray-exa-1 p-1 border-none">
                         <SelectGroup>
                           <SelectLabel className="font-normal">
                             {profiles.length > 0

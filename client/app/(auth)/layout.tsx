@@ -15,12 +15,12 @@ const AuthLayout = async ({ children }: { children: ReactNode }) => {
     <main className="min-h-screen h-full">
       <div
         className={cn(
-          'grid lg:grid-cols-2 min-h-screen h-full w-screen bg-gray-3 text-white'
+          'grid lg:grid-cols-2 min-h-screen h-full w-screen bg-gray-exa-6 text-white'
         )}
       >
         <div
           className={cn(
-            `${boxStyle} flex flex-col justify-between max-lg:hidden bg-gray-2`
+            `${boxStyle} flex flex-col justify-between max-lg:hidden bg-gray-exa-5`
           )}
         >
           <Logo />
