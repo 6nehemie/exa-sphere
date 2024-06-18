@@ -6,19 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "generates")
 public class Generate {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    
+
     String jobTitle;
     String company;
     String location;
@@ -29,9 +27,9 @@ public class Generate {
     String description;
     @Column(columnDefinition = "TEXT")
     String coverLetter;
-    
+
     Long createdAt;
-    
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;

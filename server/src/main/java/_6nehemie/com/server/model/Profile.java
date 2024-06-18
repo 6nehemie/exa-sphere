@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -30,5 +31,5 @@ public class Profile {
     private User user;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
-    private List<Experience> experiences;
+    private List<Experience> experiences = new ArrayList<>();
 }

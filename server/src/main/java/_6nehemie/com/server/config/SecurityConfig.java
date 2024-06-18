@@ -26,7 +26,9 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final CustomLogoutHandler logoutHandler;
 
-    public SecurityConfig(UserDetailsImpl userDetailsService, JwtAuthenticationFilter jwtAuthenticationFilter, CustomLogoutHandler logoutHandler) {
+    public SecurityConfig(
+            UserDetailsImpl userDetailsService, JwtAuthenticationFilter jwtAuthenticationFilter, CustomLogoutHandler logoutHandler
+    ) {
         this.userDetailsService = userDetailsService;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.logoutHandler = logoutHandler;
@@ -42,10 +44,10 @@ public class SecurityConfig {
                     ex.authenticationEntryPoint(restAuthenticationEntryPoint);
                 }) // Handle auth errors
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST,"/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST ,"/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST ,"/auth/oauth").permitAll()
-                        .requestMatchers(HttpMethod.GET ,"/auth/test").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/oauth").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/auth/test").permitAll()
                         .anyRequest().authenticated()
                 )
 

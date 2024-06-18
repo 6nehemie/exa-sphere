@@ -88,6 +88,16 @@ public class UserService {
         );
     }
 
+    /**
+     * Updates the email of a user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request The request object containing the new email and the user's password.
+     * @return An EmailResponseDto object containing the updated email, a success message, and the HTTP status.
+     * @throws NotFoundException If the user is not found.
+     * @throws BadRequestException If the user's authentication type is not CREDENTIALS, the password is invalid, or the new email already exists.
+     *
+     */
     public EmailResponseDto updateEmail(UserDetails userDetails, UpdateEmailDto request) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
