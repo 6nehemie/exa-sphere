@@ -33,16 +33,16 @@ public class AiService {
     /**
      * Generate a cover letter
      *
-     * @param jobInfo - the job information
-     * @param user - the user
-     * @param profile - the profile
+     * @param jobInfo    - the job information object
+     * @param user       - the user
+     * @param profile    - the profile
      * @param educations - the list of educations
      * @return - the generated cover letter
      */
     public String generateCoverLetter(Generate jobInfo, User user, Profile profile, List<Education> educations) {
         //? Just for testing purposes
         PromptTemplate promptGenerateTemplate = new PromptTemplate(generate);
-        
+
         //? Fetch the user experiences from the selected profile
         String experiences = profile.getExperiences().toString();
 
