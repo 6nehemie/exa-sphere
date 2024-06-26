@@ -39,6 +39,11 @@ public class UserService {
     }
 
 
+    /**
+     * Get user infroamtion
+     * @param userDetails - the user details of the authenticated user
+     * @return - the user response
+     */
     public GetUserResponseDto getUser(UserDetails userDetails) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
@@ -58,6 +63,12 @@ public class UserService {
         );
     }
 
+    /**
+     * Update the name of a user.
+     * @param userDetails The details of the authenticated user.
+     * @param request The request object containing the new first and last names.
+     * @return A FullNameResponseDto object containing the updated first and last names, a success message, and the HTTP status.
+     */
     public FullNameResponseDto updateName(UserDetails userDetails, UpdateNameDto request) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
@@ -74,6 +85,14 @@ public class UserService {
         );
     }
 
+    /**
+     * Updates the description of a user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request The request object containing the new description.
+     * @return A DescriptionResponseDto object containing the updated description, a success message, and the HTTP status.
+     * @throws NotFoundException If the user is not found.
+     */
     public DescriptionResponseDto updateDescription(UserDetails userDetails, UpdateDescription request) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
@@ -139,6 +158,15 @@ public class UserService {
         );
     }
 
+    /**
+     * Updates the password of a user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request The request object containing the old and new passwords.
+     * @return A PasswordResponseDto object containing a success message and the HTTP status.
+     * @throws NotFoundException If the user is not found.
+     * @throws BadRequestException If the user's authentication type is not CREDENTIALS, the old password is invalid.
+     */
     public PasswordResponseDto updatePassword(UserDetails userDetails, UpdatePasswordDto request) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
@@ -160,6 +188,12 @@ public class UserService {
         );
     }
 
+    /**
+     * Updates the address of a user.
+     * @param userDetails The details of the authenticated user.
+     * @param request The request object containing the new address.
+     * @return
+     */
     public AddressResponseDto updateAddress(UserDetails userDetails, UpdateAddressDto request) {
 
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
@@ -186,6 +220,11 @@ public class UserService {
         );
     }
 
+    /**
+     * Deletes the address of a user.
+     * @param userDetails The details of the authenticated user.
+     * @return An AddressResponseDto object containing a success message and the HTTP status.
+     */
     public AddressResponseDto deleteAddress(UserDetails userDetails) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
@@ -200,6 +239,11 @@ public class UserService {
         );
     }
 
+    /**
+     * Deletes a user.
+     * @param userDetails The details of the authenticated user.
+     * @return A ResponseDto object containing a success message and the HTTP status.
+     */
     public ResponseDto deleteUser(UserDetails userDetails) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found!"));
@@ -212,6 +256,12 @@ public class UserService {
         );
     }
 
+    /**
+     * Updates the avatar of a user.
+     * @param userDetails The details of the authenticated user.
+     * @param avatar The new avatar.
+     * @return An UpdateAvatarResponseDto object containing the new avatar URL, a success message, and the HTTP status.
+     */
     public UpdateAvatarResponseDto updateAvatar(UserDetails userDetails, MultipartFile avatar) {
 
         // Find user by username
@@ -236,6 +286,11 @@ public class UserService {
         return new UpdateAvatarResponseDto(user.getAvatar(), "Avatar was updated", HttpStatus.CREATED.value());
     }
 
+    /**
+     * Deletes the avatar of a user.
+     * @param userDetails The details of the authenticated user.
+     * @return An UpdateAvatarResponseDto object containing a success message and the HTTP status.
+     */
     public UpdateAvatarResponseDto deleteAvatar(UserDetails userDetails) {
 
         // Find user by username

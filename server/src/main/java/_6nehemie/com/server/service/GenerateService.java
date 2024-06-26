@@ -38,6 +38,12 @@ public class GenerateService {
         this.aiService = aiService;
     }
 
+    /**
+     * Create a new generate
+     * @param userDetails - the user details of the authenticated user
+     * @param request - the post generate request object
+     * @return - the generate response
+     */
     public GetGenerateResponseDto createGenerate(UserDetails userDetails, PostGenerateDto request) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("User not found")
@@ -78,6 +84,11 @@ public class GenerateService {
         );
     }
 
+    /**
+     * Get all generates of the user
+     * @param userDetails - the user details of the authenticated user
+     * @return - the list of generates
+     */
     public List<GetGenerateResponseDto> getAllGenerates(UserDetails userDetails) {
         List<Generate> generateList = generateRepository.findAllByUser_UsernameOrderByCreatedAtDesc(userDetails.getUsername());
 
@@ -90,6 +101,12 @@ public class GenerateService {
         )).toList();
     }
 
+    /**
+     * Get generate by id
+     * @param userDetails - the user details of the authenticated user
+     * @param id - the id of the generate
+     * @return - the generate response
+     */
     public GetGenerateResponseDto getGenerateById(UserDetails userDetails, Long id) {
         Generate generate = generateRepository.findByIdAndUser_Username(id, userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("Generate not found")
@@ -104,6 +121,12 @@ public class GenerateService {
         );
     }
 
+    /**
+     * Update cover letter of the generate
+     * @param userDetails - the user details of the authenticated user
+     * @param request - the put generate request object
+     * @return - the generate response
+     */
     public GenerateResponseDto updateCoverLetter(UserDetails userDetails, PutGenerateDto request) {
         Generate generate = generateRepository.findByIdAndUser_Username(request.id(), userDetails.getUsername()).orElseThrow(
                 () -> new NotFoundException("Generate not found")
@@ -115,6 +138,12 @@ public class GenerateService {
         return new GenerateResponseDto("Cover letter updated successfully", HttpStatus.OK.value());
     }
 
+    /**
+     * Delete generate by id
+     * @param userDetails - the user details of the authenticated user
+     * @param id - the id of the generated 
+     * @return - the generate response
+     */
     @Transactional
     public GenerateResponseDto deleteGenerate(UserDetails userDetails, Long id) {
         generateRepository.deleteByIdAndUser_Username(id, userDetails.getUsername());

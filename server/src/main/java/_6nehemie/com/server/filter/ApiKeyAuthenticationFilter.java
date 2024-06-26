@@ -10,15 +10,25 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * API key authentication filter
+ * @param apiKeyService - the api key service
+ */
 @Component
 public class ApiKeyAuthenticationFilter extends OncePerRequestFilter {
     
     private final ApiKeyService apiKeyService;
-
+    
     public ApiKeyAuthenticationFilter(ApiKeyService apiKeyService) {
         this.apiKeyService = apiKeyService;
     }
 
+    /**
+     * Filters the request
+     * @param request - the request object
+     * @param response - the response object
+     * @param filterChain - the filter chain object
+     */
     @Override
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain

@@ -32,18 +32,28 @@ public class ProfileService {
         this.experienceRepository = experienceRepository;
     }
 
+    /**
+     * Create a new profile for the user
+     * @param userDetails - the user details of the authenticated user
+     * @param request - the post profile request object
+     * @return - the get profiles response
+     */
     public GetProfilesResponseDto createProfile(UserDetails userDetails, PostProfileDto request) {
-        // can create up to 5 profiles
+        // Fetch user
         User user = getUser(userDetails);
 
+        // Fetch user profiles
         List<Profile> profiles = profileRepository.findByUser_Username(userDetails.getUsername());
 
+        // can create up to 5 profiles
         if (profiles.size() >= 5) {
             throw new BadRequestException("You can only create up to 5 profiles");
         }
-
+        
+        // Create new profile
         Profile profile = new Profile();
         
+        // Map experiences from request to list of Experience
         List<Experience> experiences = request.experiences().stream().map(experience -> {
             Experience newExperience = new Experience();
             newExperience.setJobTitle(experience.jobTitle());
@@ -57,6 +67,7 @@ public class ProfileService {
             return newExperience;
         }).toList();
 
+        // Set profile fields
         profile.setTitle(request.title());
         profile.setDescription(request.description());
         profile.setSkills(request.skills());
@@ -64,10 +75,11 @@ public class ProfileService {
         profile.setExperiences(experiences);
         profile.setUser(user);
 
-
+        // Save profile and experiences 
         profileRepository.save(profile);
         experienceRepository.saveAll(experiences);
 
+        // Return GetProfilesResponseDto
         return new GetProfilesResponseDto(
                 profile.getId(),
                 profile.getCharacteristics(),
@@ -89,6 +101,11 @@ public class ProfileService {
         );
     }
 
+    /**
+     * Get all profiles of the user
+     * @param userDetails - the user details of the authenticated user
+     * @return - the list of get profiles response
+     */
     public List<GetProfilesResponseDto> getProfiles(UserDetails userDetails) {
         List<Profile> profiles = profileRepository.findByUser_Username(userDetails.getUsername());
         
@@ -116,6 +133,12 @@ public class ProfileService {
                 .toList();
     }
 
+    /**
+     * Get a profile by id
+     * @param userDetails - the user details of the authenticated user
+     * @param id - the id of the profile
+     * @return - the get profiles response
+     */
     public GetProfilesResponseDto getProfile(UserDetails userDetails, Long id) {
         Profile profile = profileRepository.findByIdAndUser_Username(id, userDetails.getUsername())
                 .orElseThrow(() -> new BadRequestException("Profile not found"));
@@ -141,6 +164,12 @@ public class ProfileService {
         );
     }
 
+    /**
+     * Update a profile
+     * @param userDetails - the user details of the authenticated user
+     * @param request - the update profile request object
+     * @return - the profile response
+     */
     @Transactional
     public ProfileResponseDto updateProfile(UserDetails userDetails, UpdateProfileDto request) {
         Profile profile = profileRepository.findByIdAndUser_Username(request.id(), userDetails.getUsername())
@@ -175,6 +204,12 @@ public class ProfileService {
         );
     }
 
+    /**
+     * Delete a profile
+     * @param userDetails - the user details of the authenticated user
+     * @param id - the id of the profile
+     * @return - the profile response
+     */
     @Transactional
     public ProfileResponseDto deleteProfile(UserDetails userDetails, Long id) {
         if (!profileRepository.existsByIdAndUser_Username(id, userDetails.getUsername())) {
@@ -189,7 +224,11 @@ public class ProfileService {
         );
     }
 
-
+    /**
+     * Get user by user details
+     * @param userDetails - the user details of the authenticated user
+     * @return - the user object
+     */
     private User getUser(UserDetails userDetails) {
         return userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new BadRequestException("User not found"));

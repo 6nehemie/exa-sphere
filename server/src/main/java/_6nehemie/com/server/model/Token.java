@@ -6,6 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Token for user
+ * @param id - the id of the token
+ * @param token - the token
+ * @param isValid - the validity of the token
+ * @param user - the user of the token
+ */
 @Getter
 @Setter
 @NoArgsConstructor

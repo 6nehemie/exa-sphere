@@ -18,8 +18,6 @@ const logoutAction = async () => {
 
     // ? Delete the cookies & therefore the session
     deleteAuthCookies();
-
-    //? Unvalidate the session
   } catch (error: AxiosError | any) {
     const message = error.response?.data.message || error.message;
     return { error: message };

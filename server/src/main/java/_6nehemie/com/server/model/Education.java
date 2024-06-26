@@ -3,6 +3,15 @@ package _6nehemie.com.server.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Education for user
+ * @param id - the id of the education
+ * @param user - the user of the education
+ * @param degree - the degree of the education
+ * @param institution - the institution of the education
+ * @param graduationYear - the graduation year of the education
+ * @param description - the description of the education
+ */
 @Entity
 @Getter
 @Setter

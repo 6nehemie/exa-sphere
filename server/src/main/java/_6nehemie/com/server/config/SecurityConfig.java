@@ -39,6 +39,7 @@ public class SecurityConfig {
         RestAuthenticationEntryPoint restAuthenticationEntryPoint = new RestAuthenticationEntryPoint();
 
         return http
+                // Disable CSRF to enable the use of postman
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(ex -> {
                     ex.authenticationEntryPoint(restAuthenticationEntryPoint);
@@ -50,6 +51,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/auth/test").permitAll()
                         .anyRequest().authenticated()
                 )
+
 
                 .userDetailsService(userDetailsService)
                 .sessionManagement(session -> session
@@ -65,12 +67,13 @@ public class SecurityConfig {
                 )
                 .build();
     }
-
+    
+    // Encodes the password
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+    
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();

@@ -22,7 +22,13 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
-    // post mapping to create a new profile
+    /**
+     * Post mapping to create a profile
+     *
+     * @param userDetails the user authentication details
+     * @param request     the request body
+     * @return GetProfilesResponseDto
+     */
     @PostMapping
     public ResponseEntity<GetProfilesResponseDto> createProfile(
             @AuthenticationPrincipal UserDetails userDetails, @RequestBody PostProfileDto request
@@ -30,27 +36,51 @@ public class ProfileController {
 
         return ResponseEntity.ok(profileService.createProfile(userDetails, request));
     }
-    
-    // get mapping to get a list of profile
+
+    /**
+     * Get mapping to get all profiles
+     *
+     * @param userDetails the user authentication details
+     * @return List of GetProfilesResponseDto
+     */
     @GetMapping
     public ResponseEntity<List<GetProfilesResponseDto>> getProfiles(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(profileService.getProfiles(userDetails));
     }
-    
+
+    /**
+     * Get mapping to get a profile by id
+     *
+     * @param userDetails the user authentication details
+     * @param id          the profile id
+     * @return GetProfilesResponseDto
+     */
     @GetMapping("/{id}")
     public ResponseEntity<GetProfilesResponseDto> getProfile(@AuthenticationPrincipal UserDetails userDetails, @PathVariable Long id) {
         return ResponseEntity.ok(profileService.getProfile(userDetails, id));
     }
-    
-    // update mapping to update a profile
+
+    /**
+     * Put mapping to update a profile
+     *
+     * @param userDetails the user authentication details
+     * @param request     the request body
+     * @return ProfileResponseDto
+     */
     @PutMapping
     public ResponseEntity<ProfileResponseDto> updateProfile(
-            @AuthenticationPrincipal UserDetails userDetails,  @RequestBody UpdateProfileDto request
+            @AuthenticationPrincipal UserDetails userDetails, @RequestBody UpdateProfileDto request
     ) {
         return ResponseEntity.ok(profileService.updateProfile(userDetails, request));
     }
-    
-    // delete mapping to delete a profile
+
+    /**
+     * Delete mapping to delete a profile
+     *
+     * @param userDetails the user authentication details
+     * @param id          the profile id
+     * @return ProfileResponseDto
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<ProfileResponseDto> deleteProfile(@AuthenticationPrincipal UserDetails userDetails, @PathVariable Long id) {
         return ResponseEntity.ok(profileService.deleteProfile(userDetails, id));

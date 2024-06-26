@@ -11,6 +11,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "generates")
+/**
+ * Generate for user
+ * @param id - the id of the generate
+ * @param jobTitle - the job title of the generate
+ * @param company - the company of the generate
+ * @param location - the location of the generate
+ * @param jobType - the job type of the generate
+ * @param experienceLevel - the experience level of the generate
+ * @param profileId - the profile id of the generate
+ * @param description - the description of the generate
+ * @param coverLetter - the cover letter of the generate
+ * @param createdAt - the created at of the generate
+ * @param user - the user of the generate
+ */
 public class Generate {
 
     @Id

@@ -22,28 +22,60 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * Retrieves the details of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @return A GetUserResponseDto object containing the user's details.
+     */
     @GetMapping
     public ResponseEntity<GetUserResponseDto> getUser(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(userService.getUser(userDetails));
     }
 
+    /**
+     * Deletes the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @return A ResponseDto object containing the result of the operation.
+     */
     @DeleteMapping
     public ResponseEntity<ResponseDto> deleteUser(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(userService.deleteUser(userDetails));
     }
 
+    /**
+     * Updates the avatar of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param avatar      The new avatar.
+     * @return UpdateAvatarResponseDto
+     */
     @PutMapping("/avatar")
     public ResponseEntity<UpdateAvatarResponseDto> updateAvatar(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("avatar") MultipartFile avatar) {
 
         return ResponseEntity.ok(userService.updateAvatar(userDetails, avatar));
     }
 
+    /**
+     * Deletes the avatar of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @return UpdateAvatarResponseDto
+     */
     @DeleteMapping("/avatar")
     public ResponseEntity<UpdateAvatarResponseDto> deleteAvatar(@AuthenticationPrincipal UserDetails userDetails) {
 
         return ResponseEntity.ok(userService.deleteAvatar(userDetails));
     }
 
+    /**
+     * Updates the full name of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request     The new full name.
+     * @return FullNameResponseDto
+     */
     @PutMapping("/name")
     public ResponseEntity<FullNameResponseDto> updateFullName(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -51,7 +83,14 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.updateName(userDetails, request));
     }
-    
+
+    /**
+     * Updates the description of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request     The new description.
+     * @return DescriptionResponseDto
+     */
     @PutMapping("/description")
     public ResponseEntity<DescriptionResponseDto> updateDescription(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -59,7 +98,14 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.updateDescription(userDetails, request));
     }
-    
+
+    /**
+     * Updates the email of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request     The new email.
+     * @return EmailResponseDto
+     */
     @PutMapping("/email")
     public ResponseEntity<EmailResponseDto> updateEmail(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -67,7 +113,14 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.updateEmail(userDetails, request));
     }
-    
+
+    /**
+     * Updates the password of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request     The new password.
+     * @return PasswordResponseDto
+     */
     @PutMapping("/password")
     public ResponseEntity<PasswordResponseDto> updatePassword(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -75,7 +128,14 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.updatePassword(userDetails, request));
     }
-    
+
+    /**
+     * Updates the address of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @param request     The new address.
+     * @return AddressResponseDto
+     */
     @PutMapping("/address")
     public ResponseEntity<AddressResponseDto> updateAddress(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -83,7 +143,13 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.updateAddress(userDetails, request));
     }
-    
+
+    /**
+     * Deletes the address of the authenticated user.
+     *
+     * @param userDetails The details of the authenticated user.
+     * @return AddressResponseDto
+     */
     @DeleteMapping("/address")
     public ResponseEntity<AddressResponseDto> deleteAddress(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(userService.deleteAddress(userDetails));

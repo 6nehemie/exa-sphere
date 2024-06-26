@@ -13,6 +13,13 @@ public class EmailService {
     @Value("${email.resend.access-key}")
     private String resendAccessKey;
 
+    /**
+     * Send an email
+     *
+     * @param to - the recipient
+     * @param subject - the subject of the email
+     * @param body - the body of the email
+     */
     public void sendEmail(String to, String subject, String body) {
         Resend resend = new Resend(resendAccessKey);
 

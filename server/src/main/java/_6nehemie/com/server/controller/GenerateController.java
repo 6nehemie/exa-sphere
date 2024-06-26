@@ -23,6 +23,13 @@ public class GenerateController {
         this.generateService = generateService;
     }
 
+    /**
+     * Post mapping to create generate
+     *
+     * @param userDetails the user authentication details
+     * @param request     the request body
+     * @return the response entity
+     */
     @PostMapping
     public ResponseEntity<GetGenerateResponseDto> createGenerate(
             @AuthenticationPrincipal UserDetails userDetails, @RequestBody @Validated PostGenerateDto request
@@ -30,6 +37,12 @@ public class GenerateController {
         return ResponseEntity.ok(generateService.createGenerate(userDetails, request));
     }
 
+    /**
+     * Get mapping to get all generates
+     *
+     * @param userDetails the user authentication details
+     * @return the list of generated cover letters
+     */
     @GetMapping
     public ResponseEntity<List<GetGenerateResponseDto>> getAllGenerates(
             @AuthenticationPrincipal UserDetails userDetails
@@ -37,6 +50,13 @@ public class GenerateController {
         return ResponseEntity.ok(generateService.getAllGenerates(userDetails));
     }
 
+    /**
+     * Get mapping to get generate by id
+     *
+     * @param userDetails the user authentication details
+     * @param id          the generate id
+     * @return the generated cover letter
+     */
     @GetMapping("/{id}")
     public ResponseEntity<GetGenerateResponseDto> getGenerateById(
             @AuthenticationPrincipal UserDetails userDetails, @PathVariable Long id
@@ -44,7 +64,13 @@ public class GenerateController {
         return ResponseEntity.ok(generateService.getGenerateById(userDetails, id));
     }
 
-    // put mapping //? update cover letter
+    /**
+     * Put mapping to update generate
+     *
+     * @param userDetails the user authentication details
+     * @param request     the request body
+     * @return the response entity
+     */
     @PutMapping
     public ResponseEntity<GenerateResponseDto> updateCoverLetter(
             @AuthenticationPrincipal UserDetails userDetails, @RequestBody @Validated PutGenerateDto request
@@ -52,7 +78,13 @@ public class GenerateController {
         return ResponseEntity.ok(generateService.updateCoverLetter(userDetails, request));
     }
 
-    // delete mapping //? delete generate
+    /**
+     * Delete mapping to delete generate
+     *
+     * @param userDetails the user authentication details
+     * @param id          the generate id
+     * @return 
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<GenerateResponseDto> deleteGenerate(
             @AuthenticationPrincipal UserDetails userDetails, @PathVariable Long id

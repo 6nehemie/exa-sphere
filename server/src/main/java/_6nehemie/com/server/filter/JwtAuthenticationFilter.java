@@ -16,6 +16,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * JWT authentication filter
+ * @param jwtService - the JWT service
+ * @param userDetailsService - the user details service
+ */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
@@ -27,6 +32,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
     }
 
+    /**
+     * Filters the request
+     * @param request - the request object
+     * @param response - the response object
+     * @param filterChain - the filter chain object
+     */
     @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,

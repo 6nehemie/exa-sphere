@@ -23,6 +23,11 @@ public class S3Service {
         this.s3Client = s3Client;
     }
 
+    /**
+     * Upload a file to S3
+     * @param file - the file to upload 
+     * @return - the file URL and key
+     */
     public S3UploadDto uploadFile(MultipartFile file) {
 
         // ? Create a unique file key
@@ -45,6 +50,10 @@ public class S3Service {
         }
     }
 
+    /**
+     * Delete a file from S3
+     * @param fileKey - the file key to delete
+     */
     public void deleteFile(String fileKey) {
         s3Client.deleteObject(s3BucketName, fileKey);
     }

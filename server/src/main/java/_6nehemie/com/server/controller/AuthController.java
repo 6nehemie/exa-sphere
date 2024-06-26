@@ -20,18 +20,31 @@ public class AuthController {
         this.authService = authService;
     }
 
-    //? register
+    /**
+     * Post mapping for register
+     * @param request RegisterDto
+     * @return AuthenticationResponseDto with jwt token 
+     */
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponseDto> register(@Validated @RequestBody RegisterDto request) {
         return ResponseEntity.ok(authService.register(request));
     }
 
-    //? login
+    /**
+     * Post mapping for login
+     * @param request LoginDto
+     * @return AuthenticationResponseDto with jwt token
+     */
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponseDto> login(@Validated @RequestBody LoginDto request) {
         return ResponseEntity.ok(authService.login(request));
     }
     
+    /**
+     * Post mapping for oAuth
+     * @param request OAuthDto
+     * @return AuthenticationResponseDto with jwt token
+     */
     @PostMapping("/oauth")
     public ResponseEntity<AuthenticationResponseDto> oAuth(@Validated @RequestBody OAuthDto request) {
         

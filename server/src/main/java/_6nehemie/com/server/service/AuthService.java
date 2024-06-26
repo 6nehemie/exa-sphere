@@ -41,6 +41,12 @@ public class AuthService {
         this.codeGeneratorService = codeGeneratorService;
     }
 
+    /**
+     * Register a new user
+     *
+     * @param request - the register request object
+     * @return - the authentication response
+     */
     @Transactional
     public AuthenticationResponseDto register(RegisterDto request) {
         if (userRepository.existsByEmail(request.email())) {
@@ -52,9 +58,10 @@ public class AuthService {
         user.setLastName(request.lastName());
         user.setEmail(request.email());
         user.setUsername(request.email());
-        
+
+        // Encode password
         user.setPassword(passwordEncoder.encode(request.password()));
-        
+
         user.setRole(Role.USER);
         user.setAuthType(Registration.CREDENTIALS);
 
@@ -90,6 +97,12 @@ public class AuthService {
     }
 
 
+    /**
+     * Verify user account
+     *
+     * @param request - the verification request object
+     * @return - the authentication response
+     */
     public AuthenticationResponseDto login(LoginDto request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.username(), request.password())
@@ -120,6 +133,12 @@ public class AuthService {
         );
     }
 
+    /**
+     * Verify user account
+     *
+     * @param request - the verification request object
+     * @return - the authentication response
+     */
     public void revokeAllTokens(User user) {
         List<Token> validTokens = tokenRepository.findAllByUser_Id(user.getId());
 
@@ -132,6 +151,12 @@ public class AuthService {
         tokenRepository.saveAll(validTokens);
     }
 
+    /**
+     * Verify user account
+     *
+     * @param request - the verification request object
+     * @return - the authentication response
+     */
     private void saveUserToken(String token, User user) {
         Token tokenEntity = new Token();
         tokenEntity.setToken(token);
@@ -140,6 +165,12 @@ public class AuthService {
         tokenRepository.save(tokenEntity);
     }
 
+    /**
+     * Verify user account
+     *
+     * @param request - the verification request object
+     * @return - the authentication response
+     */
     public AuthenticationResponseDto oAuth(OAuthDto request) {
         //? Check if provider is google
         if (!"google".equals(request.provider().provider())

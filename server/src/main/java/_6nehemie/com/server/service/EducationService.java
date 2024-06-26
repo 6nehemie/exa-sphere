@@ -26,6 +26,12 @@ public class EducationService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Save educations of the user
+     * @param userDetails - the user details the authenticated user
+     * @param request - the post education request object
+     * @return - the education response
+     */
     @Transactional
     public EducationResponseDto saveEducations(UserDetails userDetails, PostEducationDto request) {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(
@@ -58,6 +64,11 @@ public class EducationService {
         );
     }
 
+    /**
+     * Get educations of the user
+     * @param userDetails - the user details of the authenticated user
+     * @return - the list of educations
+     */
     public List<GetEducationResponseDto> getEducations(UserDetails userDetails) {
         List<Education> educations = educationRepository.findAllByUser_UsernameOrderByGraduationYearDesc(userDetails.getUsername());
         

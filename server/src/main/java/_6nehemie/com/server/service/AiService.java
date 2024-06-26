@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+
 @Service
 public class AiService {
 
@@ -29,11 +30,23 @@ public class AiService {
         this.generate = resourceLoader.getResource(generate);
     }
 
+    /**
+     * Generate a cover letter
+     *
+     * @param jobInfo - the job information
+     * @param user - the user
+     * @param profile - the profile
+     * @param educations - the list of educations
+     * @return - the generated cover letter
+     */
     public String generateCoverLetter(Generate jobInfo, User user, Profile profile, List<Education> educations) {
+        //? Just for testing purposes
         PromptTemplate promptGenerateTemplate = new PromptTemplate(generate);
         
+        //? Fetch the user experiences from the selected profile
         String experiences = profile.getExperiences().toString();
 
+        //? Create a prompt with the user's information and the job information
         Prompt prompt = promptGenerateTemplate
                 .create(Map.of(
                         "fullName", user.getFirstName() + " " + user.getLastName(),
@@ -46,6 +59,7 @@ public class AiService {
                         "description", jobInfo.getDescription()
                 ));
 
+        //? Return the generated cover letter
         return chatClient.call(prompt).getResult().getOutput().getContent();
     }
 

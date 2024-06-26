@@ -6,8 +6,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ExperienceRepository extends JpaRepository<Experience, Long> {
-        
-        List<Experience> findAllByProfile_Id(Long profileId);
-        
-        void deleteAllByProfile_Id(Long profileId);
+
+    /**
+     * Find all experiences by profile id
+     *
+     * @param profileId - the profile id
+     * @return - the list of experiences
+     */
+    List<Experience> findAllByProfile_Id(Long profileId);
+
+    /**
+     * Delete all experiences by profile id
+     *
+     * @param profileId - the profile id
+     * @return
+     */
+    void deleteAllByProfile_Id(Long profileId);
 }

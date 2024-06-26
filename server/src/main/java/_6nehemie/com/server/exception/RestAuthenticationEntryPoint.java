@@ -11,6 +11,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Rest authentication entry point
+ * @param request - the request object
+ * @param response - the response object
+ * @param authException - the authentication exception object
+ */
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
